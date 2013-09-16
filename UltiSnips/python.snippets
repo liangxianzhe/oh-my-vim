@@ -1,0 +1,63 @@
+###########################################################################
+#                             Python Snippets                             #
+###########################################################################
+
+##############
+#  New File  #
+##############
+
+snippet script "Template for new script" !b
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+
+"""
+    `!p snip.rv =snip.rv =  fn`: ${1}
+"""
+
+__author__ = "joe di castro <joe@joedicastro.com>"
+__license__ = "GNU General Public License version 3"
+__date__ = "`date +%d/%m/%Y`"
+__version__ = "0.1"
+
+try:
+    import sys
+    import os
+    ${2}
+except ImportError:
+    # Checks the installation of the necessary python modules
+    print((os.linesep * 2).join(["An error found importing one module:",
+          str(sys.exc_info()[1]), "You need to install it", "Stopping..."]))
+    sys.exit(-2)
+
+
+def main():
+    """Main section"""
+    ${4:pass}
+
+if __name__ == "__main__":
+    main()
+
+###############################################################################
+#                                  Changelog                                  #
+###############################################################################
+#
+# 0.1:
+#
+# * First attempt
+#
+endsnippet
+
+###########################################################################
+#                             Simple Script                               #
+###########################################################################
+
+snippet ss "Template for a new simple script" !b
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+
+"""
+${1}
+"""
+
+${2}
+endsnippet

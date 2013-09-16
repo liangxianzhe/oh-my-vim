@@ -1,0 +1,39 @@
+###########################################################################
+#                            Pelican Snippets                             #
+###########################################################################
+
+####################
+#  Article Header  #
+####################
+
+snippet head "Header" b
+title: ${1}
+date: `date +%Y-%m-%d\ %H:%M`
+tags: ${2}
+status: draft
+
+$0
+endsnippet
+
+
+####################
+#  Pygments Lexer  #
+####################
+
+snippet lex "Pygments Lexer" b
+    :::${1:lexer}
+    $0
+endsnippet
+
+####################
+#  Centered Image  #
+####################
+ 
+snippet cimg "Centered Image" b
+<p style="text-align:center;"><img src="pictures/${1:image}" width="${2:width}"
+height="${3:height}" alt="${4:image name}" /></p>
+
+$0
+endsnippet
+
+
