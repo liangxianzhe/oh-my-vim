@@ -1,0 +1,8 @@
+bundle/
+*.swp
+tmp/
+.DS_Store
+local.vimrc
+before.vimrc
+extra.vimrc
+after.vimrc
