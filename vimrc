@@ -4,11 +4,8 @@
 "                        \ V /| | | | | | | | | (__
 "                       (_)_/ |_|_| |_| |_|_|  \___|
 "
-" Author: joe di castro <joe@joedicastro.com>
-" Source: http://github.com/joedicastro/dotfiles/tree/master/vim
-"
-" This file is under a lot of stress, it changes frequently, so it's better if
-" you watch the DVCS commits to stay in the loop.
+" Author: Xianzhe Liang <liangxianzhe@gmail.com>
+" Source: https://github.com/liangxianzhe/dotvim
 
 " Setup language {{{ ==========================================================
 
@@ -501,6 +498,10 @@ function! ToggleRelativeAbsoluteNumber()
   endif
 endfunction
 
+" Set the relative number for defaulteq
+set number
+set relativenumber
+
 " }}}
 
 " Show hidden chars {{{
@@ -514,8 +515,10 @@ set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
 
 set foldmethod=marker
 
-" Toggle folding
+" Default open all folds
+set foldlevel=100
 
+" Toggle folding
 nnoremap \ za
 vnoremap \ za
 
@@ -540,8 +543,6 @@ autocmd! BufWritePost vimrc source %
 
 " Spelling {{{
 
-" turn on the spell checking and set the Spanish language
-nmap <Leader>ss :setlocal spell spelllang=es<CR>
 " turn on the spell checking and set the English language
 nmap <Leader>se :setlocal spell spelllang=en<CR>
 " turn off the spell checking
@@ -820,7 +821,8 @@ autocmd FileType git set nofoldenable
 
 " Google Translator {{{
 
-let g:goog_user_conf = {'langpair': 'es|en', 'v_key': 'T'}
+" Translate to zh (Chinese). Using language code iso 639-1
+let g:goog_user_conf = {'langpair': 'en|zh', 'v_key': 'T'}
 
 " }}}
 
@@ -862,19 +864,13 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " }}}
 
-" Po.vim {{{ -----------------------------------------------------------------
-
-let g:po_translator = "joe di castro <joe@joedicastro.com>"
-
-" }}}
-
 " PythonMode {{{ -------------------------------------------------------------
 
 let g:pymode_breakpoint_key = '<Leader>B'
 
 let g:pymode_lint_checker = 'pylint,pep8,mccabe,pep257'
 let g:pymode_lint_ignore = ''
-let g:pymode_lint_config = $HOME.'/dotfiles/pylint/pylint.rc'
+" let g:pymode_lint_config = $HOME.'/dotfiles/pylint/pylint.rc'
 let g:pymode_virtualenv = 0
 
 let g:pymode_rope = 1
@@ -1086,8 +1082,6 @@ let g:unite_source_menu_menus.spelling = {
         \                                        ⌘ [space]s',
     \}
 let g:unite_source_menu_menus.spelling.command_candidates = [
-    \['▷ spell checking in Spanish                                  ⌘ ,ss',
-        \'setlocal spell spelllang=es'],
     \['▷ spell checking in English                                  ⌘ ,se',
         \'setlocal spell spelllang=en'],
     \['▷ turn off spell checking                                    ⌘ ,so',
@@ -1564,11 +1558,12 @@ let g:vimfiler_data_directory = $HOME.'/.vim/tmp/vimfiler'
 
 " Vim-markdown-extra-preview {{{
 
-" map <LocalLeader>mp :Me<CR>
-" map <LocalLeader>mr :Mer<CR>
+map <LocalLeader>mp :Me<CR>
+map <LocalLeader>mr :Mer<CR>
 
-" let g:VMEPextensions = ['extra', 'codehilite']
-" let g:VMEPhtmlreader= '/usr/bin/chromium'
+let g:VMEPextensions = ['extra', 'codehilite']
+" Choose a brower to open html file. It must accept file path as parameter
+let g:VMEPhtmlreader= '/usr/bin/open -a "/Applications/Google Chrome.app"'
 
 " }}}
 
@@ -1674,5 +1669,3 @@ if filereadable(s:vimcustomfile)
 endif
 
 " }}}
-
-" vim:foldmethod=marker
