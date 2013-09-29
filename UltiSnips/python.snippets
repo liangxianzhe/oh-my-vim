@@ -11,12 +11,15 @@ snippet script "Template for new script" !b
 # -*- coding: utf8 -*-
 
 """
-    `!p snip.rv =snip.rv =  fn`: ${1}
+`!p snip.rv =snip.rv =  fn`
+
+${1}
+
 """
 
 __author__ = "joe di castro <joe@joedicastro.com>"
-__license__ = "GNU General Public License version 3"
-__date__ = "`date +%d/%m/%Y`"
+__license__ = "MIT"
+__date__ = "`date +%Y-%m-%d`"
 __version__ = "0.1"
 
 try:
@@ -24,27 +27,25 @@ try:
     import os
     ${2}
 except ImportError:
-    # Checks the installation of the necessary python modules
-    print((os.linesep * 2).join(["An error found importing one module:",
-          str(sys.exc_info()[1]), "You need to install it", "Stopping..."]))
+    print('''
+          An error found importing one module:
+          
+          {0}
+          
+          You need to install it
+          
+          Stopping...
+          '''.format(str(sys.exc_info()[1])).replace(' ', '')
+          )
     sys.exit(-2)
 
 
 def main():
-    """Main section"""
+    """Main section."""
     ${4:pass}
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
-
-###############################################################################
-#                                  Changelog                                  #
-###############################################################################
-#
-# 0.1:
-#
-# * First attempt
-#
 endsnippet
 
 ###########################################################################

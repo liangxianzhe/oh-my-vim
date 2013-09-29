@@ -60,8 +60,6 @@ NeoBundle 'Shougo/unite.vim'
 
 " Unite sources
 NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
-NeoBundleLazy 'Shougo/unite-session', {'autoload':{'unite_sources':'session',
-            \ 'commands' : ['UniteSessionSave', 'UniteSessionLoad']}}
 NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
 NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':
             \ 'colorscheme'}}
@@ -118,6 +116,8 @@ NeoBundle 'airblade/vim-gitgutter'
 " Git viewer
 NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
             \ 'autoload':{'commands':'Gitv'}}
+" Browse GitHub events in Vim
+NeoBundle 'joedicastro/vim-github-dashboard'
 
 " }}}
 
@@ -302,6 +302,8 @@ set encoding=utf-8              " setup the encoding to UTF-8
 set ls=2                        " status line always visible
 set go-=T                       " hide the toolbar
 set go-=m                       " hide the menu
+" The next two lines are quite tricky, but in Gvim, if you don't do this, if you
+" only hide all the scrollbars, the vertical scrollbar is showed anyway
 set go+=rRlLbh                  " show all the scrollbars
 set go-=rRlLbh                  " hide all the scrollbars
 set visualbell                  " turn on the visual bell
@@ -729,6 +731,10 @@ let g:airline_powerline_fonts=1
 let g:airline_detect_whitespace = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 
+" let g:airline#extensions#tabline#enabled = 2
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#buffer_min_count = 1
+
 " }}}
 
 " ColorV {{{
@@ -786,6 +792,7 @@ nnoremap <Leader>gl :exe "silent Glog <Bar> Unite -no-quit
 nnoremap <Leader>gL :exe "silent Glog -- <Bar> Unite -no-quit
             \ quickfix"<CR>:redraw!<CR>
 nnoremap <Leader>gt :!tig<CR>:redraw!<CR>
+nnoremap <Leader>gS :exe "silent !shipit"<CR>:redraw!<CR>
 nnoremap <Leader>gg :exe 'silent Ggrep -i '.input("Pattern: ")<Bar>Unite
             \ quickfix -no-quit<CR>
 nnoremap <Leader>ggm :exe 'silent Glog --grep='.input("Pattern: ").' <Bar>
@@ -819,10 +826,30 @@ autocmd FileType git set nofoldenable
 
 " }}}
 
-" Google Translator {{{
+" GitHub dashboard {{{
 
-" Translate to zh (Chinese). Using language code iso 639-1
-let g:goog_user_conf = {'langpair': 'en|zh', 'v_key': 'T'}
+nnoremap <Leader>gD :exe 'GHD! '.input("Username: ")<CR>
+nnoremap <Leader>gA :exe 'GHA! '.input("Username or repository: ")<CR>
+
+function! GHDashboard (...)
+  if &filetype == 'github-dashboard'
+    " first variable is the statusline builder
+    let builder = a:1
+
+    call builder.add_section('airline_a', 'GitHub ')
+    call builder.add_section('airline_b',
+                \ ' %{get(split(get(split(github_dashboard#statusline(), " "),
+                \ 1, ""), ":"), 0, "")} ')
+    call builder.add_section('airline_c',
+                \ ' %{get(split(get(split(github_dashboard#statusline(), " "),
+                \ 2, ""), "]"), 0, "")} ')
+
+    " tell the core to use the contents of the builder
+    return 1
+  endif
+endfunction
+
+autocmd FileType github-dashboard call airline#add_statusline_func('GHDashboard')
 
 " }}}
 
@@ -866,8 +893,12 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " PythonMode {{{ -------------------------------------------------------------
 
+nmap <silent><Leader>n :PyLint<CR>
+
 let g:pymode_breakpoint_key = '<Leader>B'
 
+let g:pymode_lint = 1
+let g:pymode_lint_write = 0
 let g:pymode_lint_checker = 'pylint,pep8,mccabe,pep257'
 let g:pymode_lint_ignore = ''
 " let g:pymode_lint_config = $HOME.'/dotfiles/pylint/pylint.rc'
@@ -883,13 +914,25 @@ let g:pymode_rope_always_show_complete_menu = 1
 
 " Syntastic {{{
 
+nmap <silent><Leader>N :SyntasticCheck<CR>:Errors<CR>
+
 let g:syntastic_python_pylint_exe = "pylint2"
+let g:syntastic_mode_map = { 'mode': 'active',
+            \ 'active_filetypes': [],
+            \ 'passive_filetypes': ['python'] }
 
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_error_symbol  = '⚡'
 let g:syntastic_style_warning_symbol  = '⚡'
 
+" }}}
+
+" Google Translator {{{
+  
+" Translate to zh (Chinese). Using language code iso 639-1
+let g:goog_user_conf = {'langpair': 'en|zh', 'v_key': 'T'}
+  
 " }}}
 
 " Unite {{{
@@ -1226,8 +1269,14 @@ let g:unite_source_menu_menus.git.command_candidates = [
         \'Glcd'],
     \['▷ git browse             (fugitive)                          ⌘ ,gB',
         \'Gbrowse'],
+    \['▷ github dashboard       (github-dashboard)                  ⌘ ,gD',
+        \'exe "GHD! " input("Username: ")'],
+    \['▷ github activity        (github-dashboard)                  ⌘ ,gA',
+        \'exe "GHA! " input("Username or repository: ")'],
+    \['▷ github issues & PR                                         ⌘ ,gS',
+        \'normal ,gS'],
     \]
-nnoremap <silent>[menu]g :Unite -silent -winheight=26 -start-insert menu:git<CR>
+nnoremap <silent>[menu]g :Unite -silent -winheight=29 -start-insert menu:git<CR>
 " }}}
 
 " code menu {{{
@@ -1242,8 +1291,8 @@ let g:unite_source_menu_menus.code.command_candidates = [
         \'normal K'],
     \['▷ insert a breakpoint                        (pymode)        ⌘ ,B',
         \'normal ,B'],
-    \['▷ togle pylint revison                       (pymode)',
-        \'PyLintToggle'],
+    \['▷ pylint check                               (pymode)        ⌘ ,n',
+        \'PyLint'],
     \['▷ run with python2 in tmux panel             (vimux)         ⌘ ,rr',
         \'normal ,rr'],
     \['▷ run with python3 in tmux panel             (vimux)         ⌘ ,r3',
@@ -1294,10 +1343,10 @@ let g:unite_source_menu_menus.code.command_candidates = [
         \'RopeModuleToPackage'],
     \['▷ show docs for current word                 (rope)          ⌘ C-C r a d',
         \'RopeShowDoc'],
-    \['▷ syntastic check                            (syntastic)',
-        \'SyntasticCheck'],
-    \['▷ syntastic errors                           (syntastic)',
-        \'Errors'],
+    \['▷ syntastic toggle                           (syntastic)',
+        \'SyntasticToggleMode'],
+    \['▷ syntastic check & errors                   (syntastic)     ⌘ ,N',
+        \'normal ,N'],
     \['▷ list virtualenvs                           (virtualenv)',
         \'Unite output:VirtualEnvList'],
     \['▷ activate virtualenv                        (virtualenv)',
@@ -1332,22 +1381,6 @@ let g:unite_source_menu_menus.markdown.command_candidates = [
         \'Mer'],
     \]
 nnoremap <silent>[menu]k :Unite -silent menu:markdown<CR>
-" }}}
-
-" sessions menu {{{
-let g:unite_source_menu_menus.sessions = {
-    \ 'description' : '       sessions
-        \                                              ⌘ [space]h',
-    \}
-let g:unite_source_menu_menus.sessions.command_candidates = [
-    \['▷ load session',
-        \'Unite session'],
-    \['▷ make session (default)',
-        \'UniteSessionSave'],
-    \['▷ make session (custom)',
-        \'exe "UniteSessionSave " input("name: ")'],
-    \]
-nnoremap <silent>[menu]h :Unite -silent menu:sessions<CR>
 " }}}
 
 " bookmarks menu {{{
@@ -1519,20 +1552,17 @@ endif
 
 let g:junkfile#directory=expand($HOME."/.vim/tmp/junk")
 
-" make this dir if no exists previously
-silent! call MakeDirIfNoExists(expand(unite_data_directory)."/session/")
-
 " }}}
 
 " Utl {{{
 
 map <Leader>j :Utl <CR><Bar>:redraw!<CR>
 
-let g:utl_cfg_hdl_scm_http_system = "silent :!open %u &"
-let g:utl_cfg_hdl_mt_application_pdf = 'silent :!open %p &'
-let g:utl_cfg_hdl_mt_image_jpeg = 'silent :!open %p &'
-let g:utl_cfg_hdl_mt_image_gif = 'silent :!open %p &'
-let g:utl_cfg_hdl_mt_image_png = 'silent :!open %p &'
+let g:utl_cfg_hdl_scm_http_system = "silent !firefox %u &"
+let g:utl_cfg_hdl_mt_application_pdf = 'silent :!zathura %p &'
+let g:utl_cfg_hdl_mt_image_jpeg = 'silent :!sxiv %p &'
+let g:utl_cfg_hdl_mt_image_gif = 'silent :!sxiv %p &'
+let g:utl_cfg_hdl_mt_image_png = 'silent :!sxiv %p &'
 
 " }}}
 
