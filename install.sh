@@ -45,11 +45,6 @@ if [ ! -d "bundle" ]; then
     mkdir bundle
 fi
 
-if [ ! -f local.vimrc ]; then
-  echo "Let's create a 'local.vimrc' file so you have some bundles by default."
-  echo "let g:dotvim_packages = ['all']" > 'local.vimrc'
-fi
-
 echo "You are all set. Open your vim and it will set up a bunch of plugins for you. This may take
 a while..."
 echo ""
