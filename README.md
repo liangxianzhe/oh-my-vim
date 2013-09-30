@@ -3,7 +3,78 @@
 
 __Version 0.8  (2013-09-29)__
 
-This is my attemp of vim config.
+Everyone should try this awesome vim config. It meant to be clean, easy to use
+out of the box, well organized and easy to fork and maintain.
+
+How to install
+--------------
+
+### For lazy people
+
+#### Install a bunch of tools needed:
+
+For Mac OS, you can just use my script (require brew installed):
+
+    curl -L https://raw.github.com/liangxianzhe/dotvim/master/prepare_mac.sh | sh
+
+For Linux, you will need figure out what the above script does, and install them
+according (apt-get etc) for now. Please note a vim with lua support is needed. 
+Please contact me if you'd like to help to create script.
+
+#### Set up the vim:
+
+First delete/backup your ~/.vimrc and ~/.vim, then run:
+
+    curl -L https://raw.github.com/liangxianzhe/dotvim/master/install.sh | sh
+
+Now open vim, it will set up a bunch of plugins at the first time. Then you are
+all set.
+
+### For those who actually care about what is done
+
+Please read the install.sh.
+
+Configuration
+-------------
+
+You can overwrite default configuration and key bindings by using one of 
+following files:
+
+`~/.vim/before.vimrc` will be loaded before everything else.
+
+`~/.vim/extra.vimrc` will be loaded after bundle is initialized and before
+the settings take place. The idea was so people could add Bundle lines
+without having to worry about conflicts in vimrc when pulling. 
+
+`~/.vim/after.vimrc` will be loaded after all configuration options are set. 
+This is best place to change default behaviour (keybindings) and/or 
+color scheme.
+
+Disclaimer & Acknowledgments 
+----------------------------
+
+Obviously I steal many work from others. This is my special thanks to:
+
+Joe Di Castro (joedicastro)'s 
+[dotfiles](https://github.com/joedicastro/dotfiles/tree/master/vim). Most part 
+of this config is from Joe, including large amount of this README.  His idea of
+using Unite to create UI for vim commands is brilliant.
+
+Zaiste! (zaiste)'s [vimified](https://github.com/zaiste/vimified). Thanks to his 
+setup script.
+
+They are not using any licence. But some dotfiles I borrow is using MIT license,
+so I go for MIT as well.
+
+Usage
+-----
+
+First please note:
+> `<Leader>` key is mapped to `,` 
+
+> `<LocalLeader>` key is mapped to `<space>`
+
+> `<LocalLeader>u` i.e. `<space>u` will trigger the awesome Unite UI 
 
 The purpose of this document is to compile all the customizations available in
 my vim configuration, to help me reorganize them properly, and as a sort of
@@ -21,25 +92,6 @@ with the current version of the image).
 
 To all this we must add everything that Vim provides by default, which is no
 small service.
-
-> I have mapped the `<Leader>` key to `,` and the `<LocalLeader>` key to ` `
-> (spacebar)
-
-    DISCLAIMER & ACKNOWLEDGMENTS
-
-    Obviously, a prior knowledge of Vim is needed to take full advantage of this
-    configuration, the same way it will be necessary to look at certain
-    plugins' documentation to become familiar with them beyond the guidelines
-    that I put in this document.
-
-    This configuration is based on many others. So many that I don't remember
-    them all, and it would be quite unfair to mention a few and omit others. But
-    because many generously share their settings, I have been able to arrive at
-    mine and I hope that this document will also serve as a small compensation
-    for such great help that they provided to me. And thanks also to all those
-    developers who created the plugins included in this config (now and in the
-    past), because without their wonderful contribution and generosity to share it
-    with the rest of the world, this configuration would not be possible.
 
 
 ## Unite
