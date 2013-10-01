@@ -3,7 +3,7 @@
 
 __Version 0.8  (2013-09-29)__
 
-Everyone should try this awesome vim config. It meant to be clean, easy to use
+Everyone should try this awesome vim config. It is clean, easy to use
 out of the box, well organized and easy to fork and maintain.
 
 How to install
@@ -17,15 +17,17 @@ For Mac OS, you can just use my script (require brew installed):
 
     curl -L https://raw.github.com/liangxianzhe/dotvim/master/prepare_mac.sh | sh
 
-For Linux, you will need figure out what the above script does, and install them
-according (apt-get etc) for now. Please note a vim with lua support is needed. 
+For Linux, you will need to figure out what the above script does, and install them
+according (apt-get etc). Please note a vim with lua support is needed. 
 Please contact me if you'd like to help to create script.
 
 #### Set up the vim:
 
-First delete/backup your ~/.vimrc and ~/.vim, then run:
+First delete your ~/.vimrc and ~/.vim (backup if you like), then run:
 
     curl -L https://raw.github.com/liangxianzhe/dotvim/master/install.sh | sh
+
+This will clone this repo to your current folder. Then link ~/.vimrc and ~/.vim.
 
 Now open vim, it will set up a bunch of plugins at the first time. Then you are
 all set.
@@ -42,18 +44,18 @@ following files:
 
 `~/.vim/before.vimrc` will be loaded before everything else.
 
-`~/.vim/extra.vimrc` will be loaded after bundle is initialized and before
+`~/.vim/extra.vimrc` will be loaded after bundles are initialized and before
 the settings take place. The idea was so people could add Bundle lines
 without having to worry about conflicts in vimrc when pulling. 
 
 `~/.vim/after.vimrc` will be loaded after all configuration options are set. 
-This is best place to change default behaviour (keybindings) and/or 
+This is the best place to change default behaviour (keybindings) or
 color scheme.
 
 Disclaimer & Acknowledgments 
 ----------------------------
 
-Obviously I steal many work from others. This is my special thanks to:
+Obviously I steal a lot work from others. Here is my special thanks to:
 
 Joe Di Castro (joedicastro)'s 
 [dotfiles](https://github.com/joedicastro/dotfiles/tree/master/vim). Most part 
@@ -64,7 +66,7 @@ Zaiste! (zaiste)'s [vimified](https://github.com/zaiste/vimified). Thanks to his
 setup script.
 
 They are not using any licence. But some dotfiles I borrow is using MIT license,
-so I go for MIT as well.
+so I go for MIT license as well.
 
 Usage
 -----
@@ -75,6 +77,9 @@ First please note:
 > `<LocalLeader>` key is mapped to `<space>`
 
 > `<LocalLeader>u` i.e. `<space>u` will trigger the awesome Unite UI 
+
+===
+Below is from Joe...
 
 The purpose of this document is to compile all the customizations available in
 my vim configuration, to help me reorganize them properly, and as a sort of
