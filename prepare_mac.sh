@@ -1,5 +1,8 @@
 #!/usr/env sh
 
+# Update brew
+brew update
+
 # Tools we need
 brew install ctags ag ack ranger tig
 
