@@ -29,7 +29,7 @@ fi
 
 if [ ! -d "$INSTALLDIR/dotvim" ]; then
     echo "As we can't find dotvim in the current directory, we will create it."
-    git clone git@github.com:liangxianzhe/dotvim.git
+    git clone git@github.com:liangxianzhe/dotvim.gi://github.com/liangxianzhe/dotvim.git
     create_symlinks
     cd $INSTALLDIR/dotvim
 
