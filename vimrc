@@ -197,8 +197,8 @@ endif
 " Import packages {{{
 
 for package in g:dotvim_packages
-if filereadable(package . ".vimrc")
-    exec ':so ' . package . ".vimrc"
+if filereadable($HOME . "/.vim/" . package . ".vimrc")
+    exec ':so ' $HOME . "/.vim/" . package . ".vimrc"
 endif
 endfor
 
