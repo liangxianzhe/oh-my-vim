@@ -71,7 +71,7 @@ First please note:
 
 First give you a sense how the Unite UI looks like.
 
-![intro](https://raw.github.com/liangxianzhe/dotvim-image/master/intro.gif "intro)
+![intro](https://github.com/liangxianzhe/dotvim-image/blob/master/intro.gif?raw=true "intro)
 
 The rest of this doc will introduce most features or tools I use.
 
@@ -101,7 +101,7 @@ Here is current packages.
 
 [Unite](#unite)
 
-<a name="unite"/>
+<a id="unite"/>
 ## Unite
 
 Unite is an interface that unifies various "query results" under a common
