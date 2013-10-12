@@ -76,7 +76,7 @@ let g:colorv_cache_fav=$HOME.'/.vim/tmp/vim_colorv_cache_fav'
 " Unite Menu {{{
 let g:unite_source_menu_menus.colorv = {
     \ 'description' : '         color management
-        \                                      ⌘ [space]c',
+        \                                      ⌘ [space]l',
     \}
 let g:unite_source_menu_menus.colorv.command_candidates = [
     \['▷ open colorv                                                ⌘ ,cv',
@@ -109,6 +109,6 @@ let g:unite_source_menu_menus.colorv.command_candidates = [
         \'exe "ColorVTurn2 " " ".input("Color 1 (hex): ")
         \" ".input("Color 2 (hex): ")'],
     \]
-nnoremap <silent>[menu]c :Unite -silent menu:colorv<CR>
+nnoremap <silent>[menu]l :Unite -silent menu:colorv<CR>
 
 " END Unite Menu }}}

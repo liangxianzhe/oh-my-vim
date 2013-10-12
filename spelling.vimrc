@@ -17,9 +17,20 @@ nmap <Leader>sa zg
 
 " Plugins {{{
 
+" translate text with google translator
+NeoBundle 'maksimr/vim-translator'
+
 " END Plugins }}}
 
 " Plugin Setup {{{
+
+" Google Translator {{{
+  
+" Translate to zh (Chinese). Using language code iso 639-1
+" Selected words and press 'T' to translate
+let g:goog_user_conf = {'langpair': 'en|zh', 'v_key': 'T'}
+  
+" }}}
 
 " END Plugin Setup }}}
 

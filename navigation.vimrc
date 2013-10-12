@@ -14,6 +14,15 @@ NeoBundle 'jimsei/winresizer'
 
 " Plugin Setup {{{
 
+" winresizer {{{
+
+let g:winresizer_start_key = '<C-C><C-W>'
+" cancelar pulsando ESC
+" let g:winresizer_finish_with_escape = 1
+let g:winresizer_keycode_finish = 27
+
+" }}}
+
 " zoomwintab {{{
 
 map <Leader>z :ZoomWinTabToggle<CR>

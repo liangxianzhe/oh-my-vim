@@ -4,6 +4,12 @@
 
 " Plugins {{{
 
+" grep
+nnoremap <silent><Leader>a :Unite -silent -auto-preview -winheight=40 -no-quit
+            \ grep<CR>
+nnoremap <silent><Leader>A :UniteWithCursorWord -silent -auto-preview 
+            \ -winheight=40 -no-quit grep<CR>
+
 " END Plugins }}}
 
 " Plugin Setup {{{
@@ -28,7 +34,9 @@ let g:unite_source_menu_menus.grep = {
     \}
 let g:unite_source_menu_menus.grep.command_candidates = [
     \['▷ grep (ag → ack → grep)                                     ⌘ ,a',
-        \'Unite -no-quit grep'],
+        \'Unite -auto-preview -winheight=40 -no-quit grep'],
+    \['▷ grep current word                                          ⌘ ,A',
+        \'UniteWithCursorWord -auto-preview -winheight=40 -no-quit grep'],
     \['▷ find',
         \'Unite find'],
     \['▷ locate',

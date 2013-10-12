@@ -1,43 +1,36 @@
 # My Vim Configuration
 
-
 __Version 0.8  (2013-09-29)__
 
 Everyone should try this awesome vim config. It is clean, easy to use
 out of the box, well organized and easy to fork and maintain.
 
-How to install
---------------
+# How to install
 
-### For lazy people
+## Install a bunch of tools needed
 
-#### Install a bunch of tools needed:
-
-For Mac OS, you can just use my script (require brew installed):
+For Mac OS, you can just use my script (require brew installed). This will
+install some necessory tools and the latest vim (7.4) with lua support.
 
     curl -L https://raw.github.com/liangxianzhe/dotvim/master/prepare_mac.sh | sh
 
 For Linux, you will need to figure out what the above script does, and install them
 according (apt-get etc). Please note a vim with lua support is needed. 
-Please contact me if you'd like to help to create script.
 
-#### Set up the vim:
+## Set up the vim:
 
 First delete your ~/.vimrc and ~/.vim (backup if you like), then run:
 
     curl -L https://raw.github.com/liangxianzhe/dotvim/master/install.sh | sh
 
-This will clone this repo to your current folder. Then link ~/.vimrc and ~/.vim.
+This will clone the repo to your current folder, then link to ~/.vimrc and ~/.vim.
 
 Now open vim, it will set up a bunch of plugins at the first time. Then you are
 all set.
 
-### For those who actually care about what is done
+If you prefer mannual setup or care what has been done, please read the sript.
 
-Please read the install.sh.
-
-Configuration
--------------
+# Configuration
 
 You can overwrite default configuration and key bindings by using one of 
 following files:
@@ -52,8 +45,7 @@ without having to worry about conflicts in vimrc when pulling.
 This is the best place to change default behaviour (keybindings) or
 color scheme.
 
-Disclaimer & Acknowledgments 
-----------------------------
+# Acknowledgments 
 
 Obviously I steal a lot work from others. Here is my special thanks to:
 
@@ -68,8 +60,7 @@ setup script.
 They are not using any licence. But some dotfiles I borrow is using MIT license,
 so I go for MIT license as well.
 
-Usage
------
+# Usage
 
 First please note:
 > `<Leader>` key is mapped to `,` 
@@ -78,27 +69,39 @@ First please note:
 
 > `<LocalLeader>u` i.e. `<space>u` will trigger the awesome Unite UI 
 
-===
-Below is from Joe...
+First give you a sense how the Unite UI looks like.
 
-The purpose of this document is to compile all the customizations available in
-my vim configuration, to help me reorganize them properly, and as a sort of
-cheat sheet when memory fails. Obviously it is not my intent to replicate the vim
-help or the plugins documentation, only to highlight those options that I found
-useful and might need to remember at a given moment. At the same time, this doc
-can serve as a sort of instruction manual to those who decide to clone this
-configuration.
+![intro](https://raw.github.com/liangxianzhe/dotvim-image/master/intro.gif "intro)
 
-Due to the "dynamic" nature of my configuration, this document is under a lot of
-stress. It changes frequently and it's better if you watch the DVCS commits to
-stay in the loop. Also, some images may be outdated with respect to the current
-configuration (also in GitHub the images are cached and maybe do not correspond
-with the current version of the image).
+The rest of this doc will introduce most features or tools I use.
 
-To all this we must add everything that Vim provides by default, which is no
-small service.
+First you will get to know the awesome Unite and how we use it.
 
+[Unite](#unite)
 
+Then all feature are organized as packages. Each package is a .vimrc file. We
+got a lot of benifit from modulization.
+
+- Each package is short, easy to read. (Totally 1600+ lines vimrc is not fun to 
+read)
+- You can add a package you need (for example, java or ruby), and share with 
+people or send a pull-request. 
+- You can ignore the package you don't need by setting a parameter 
+`g:dotvim_packages` in local.vimrc.
+
+Here is current packages.
+
+[Unite](#unite)
+
+[Unite](#unite)
+
+[Unite](#unite)
+
+[Unite](#unite)
+
+[Unite](#unite)
+
+<a name="unite"/>
 ## Unite
 
 Unite is an interface that unifies various "query results" under a common

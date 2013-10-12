@@ -19,8 +19,8 @@ map <LocalLeader>mp :Me<CR>
 map <LocalLeader>mr :Mer<CR>
 
 let g:VMEPextensions = ['extra', 'codehilite']
-" Choose a brower to open html file. It must accept file path as parameter
-let g:VMEPhtmlreader= '/usr/bin/open -a "/Applications/Google Chrome.app"'
+" This is for Mac only, need a program accept html file as parameter
+let g:VMEPhtmlreader= 'open'
 
 " }}}
 

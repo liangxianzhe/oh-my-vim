@@ -29,6 +29,15 @@ NeoBundleLazy 'Shougo/vimfiler', {'autoload' : { 'commands' : ['VimFiler']}}
 NeoBundleLazy 'Shougo/junkfile.vim', {'autoload':{'commands':'JunkfileOpen',
             \ 'unite_sources':['junkfile','junkfile/new']}}
 
+" Linux tools {{{
+
+" A diff tool for directories
+NeoBundleLazy 'joedicastro/DirDiff.vim', { 'autoload': { 'commands' : 'DirDiff'}}
+" Hexadecimal editor
+NeoBundle 'Shougo/vinarise.vim'
+
+" }}}
+
 " END Plugins }}}
 
 " Plugin Setup {{{

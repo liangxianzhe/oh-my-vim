@@ -37,5 +37,4 @@ let g:unite_source_menu_menus.searching.command_candidates = [
     \]
 nnoremap <silent>[menu]f :Unite -silent menu:searching<CR>
 
-
 " END Unite Menu }}}

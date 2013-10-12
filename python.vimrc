@@ -1,12 +1,5 @@
 " VIM Setup {{{
 
-" Count lines of code {{{
-
-function! LinesOfCode()
-    echo system('cloc --quiet '.bufname("%"))
-endfunction
-
-"}}}
 
 " END VIM SETUP }}}
 
@@ -16,14 +9,10 @@ endfunction
 NeoBundle 'jmcantrell/vim-virtualenv'
 " Show indent lines
 NeoBundleLazy 'Yggdroot/indentLine', {'autoload': {'filetypes': ['python']}}
-" Autocompletion
-NeoBundle 'Shougo/neocomplete.vim'
 " A Python plugin
 NeoBundleLazy 'klen/python-mode', {'autoload': {'filetypes': ['python']}}
 " Show reports from coverage.py
 NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python']}}
-" Powerful and advanced Snippets tool
-NeoBundle 'SirVer/ultisnips'
 
 " END Plugins }}}
 
@@ -57,21 +46,6 @@ let g:pymode_rope_always_show_complete_menu = 1
 
 " }}}
 
-" Syntastic {{{
-
-nmap <silent><Leader>N :SyntasticCheck<CR>:Errors<CR>
-
-let g:syntastic_python_pylint_exe = "pylint2"
-let g:syntastic_mode_map = { 'mode': 'active',
-            \ 'active_filetypes': [],
-            \ 'passive_filetypes': ['python'] }
-
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol  = '⚡'
-let g:syntastic_style_warning_symbol  = '⚡'
-
-" }}}
 
 " vimux {{{
 
@@ -115,24 +89,6 @@ let g:unite_source_menu_menus.python.command_candidates = [
         \'normal ,B'],
     \['▷ pylint check                               (pymode)        ⌘ ,n',
         \'PyLint'],
-    \['▷ run with python2 in tmux panel             (vimux)         ⌘ ,rr',
-        \'normal ,rr'],
-    \['▷ run with python3 in tmux panel             (vimux)         ⌘ ,r3',
-        \'normal ,r3'],
-    \['▷ run with python2 & time in tmux panel      (vimux)         ⌘ ,rt',
-        \'normal ,rt'],
-    \['▷ run with pypy & time in tmux panel         (vimux)         ⌘ ,rp',
-        \'normal ,rp'],
-    \['▷ command prompt to run in a tmux panel      (vimux)         ⌘ ,rc',
-        \'VimuxPromptCommand'],
-    \['▷ repeat last command                        (vimux)         ⌘ ,rl',
-        \'VimuxRunLastCommand'],
-    \['▷ stop command execution in tmux panel       (vimux)         ⌘ ,rs',
-        \'VimuxInterruptRunner'],
-    \['▷ inspect tmux panel                         (vimux)         ⌘ ,ri',
-        \'VimuxInspectRunner'],
-    \['▷ close tmux panel                           (vimux)         ⌘ ,rq',
-        \'VimuxCloseRunner'],
     \['▷ rope autocompletion                        (rope)          ⌘ C-[espacio]',
         \'RopeCodeAssist'],
     \['▷ go to definition                           (rope)          ⌘ C-C g',
@@ -165,10 +121,6 @@ let g:unite_source_menu_menus.python.command_candidates = [
         \'RopeModuleToPackage'],
     \['▷ show docs for current word                 (rope)          ⌘ C-C r a d',
         \'RopeShowDoc'],
-    \['▷ syntastic toggle                           (syntastic)',
-        \'SyntasticToggleMode'],
-    \['▷ syntastic check & errors                   (syntastic)     ⌘ ,N',
-        \'normal ,N'],
     \['▷ list virtualenvs                           (virtualenv)',
         \'Unite output:VirtualEnvList'],
     \['▷ activate virtualenv                        (virtualenv)',
@@ -183,10 +135,6 @@ let g:unite_source_menu_menus.python.command_candidates = [
         \'Coveragepy session'],
     \['▷ toggle coverage marks                      (coveragepy)',
         \'Coveragepy show'],
-    \['▷ count lines of code',
-        \'Unite -default-action= output:call\\ LinesOfCode()'],
-    \['▷ toggle indent lines                                        ⌘ ,L',
-        \'IndentLinesToggle'],
     \]
 nnoremap <silent>[menu]p :Unite -silent -winheight=42 menu:python<CR>
 

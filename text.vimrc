@@ -1,5 +1,30 @@
 " VIM Setup {{{
 
+
+" Folding {{{
+
+set foldmethod=marker
+
+" Default open all folds
+set foldlevel=100
+
+" Toggle folding
+nnoremap \ za
+vnoremap \ za
+
+" }}}
+
+" Cut/Paste {{{
+
+" to/from the clipboard
+map <Leader>y "*y
+map <Leader>p "*p
+
+" toggle paste mode
+map <Leader>P :set invpaste<CR>
+
+" }}}
+
 " Toggle the search results highlighting {{{
 
 map <silent><Leader>eq :set invhlsearch<CR>
@@ -106,6 +131,18 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'terryma/vim-multiple-cursors'
 
 " END Plugins }}}
+
+" delimitmate {{{
+
+let delimitMate_expand_space = 1
+
+" }}}
+
+" easydigraph {{{
+
+let g:EasyDigraph_nmap = '<Leader>dd'
+
+" }}}
 
 " Plugin Setup {{{
 
