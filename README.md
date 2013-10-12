@@ -71,7 +71,7 @@ First please note:
 
 First give you a sense how the Unite UI looks like.
 
-![intro](https://github.com/liangxianzhe/dotvim-image/blob/master/intro.gif?raw=true "intro)
+![intro](https://github.com/liangxianzhe/dotvim-image/blob/master/intro.gif?raw=true "intro")
 
 The rest of this doc will introduce most features or tools I use.
 
