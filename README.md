@@ -1,6 +1,6 @@
 # My Vim Configuration
 
-__Version 0.8  (2013-09-29)__
+__Version 0.9  (2013-10-13)__
 
 Everyone should try this awesome vim config. It is clean, easy to use
 out of the box, well organized and easy to fork and maintain.
@@ -69,21 +69,22 @@ First please note:
 
 > `<LocalLeader>u` i.e. `<space>u` will trigger the awesome Unite UI 
 
-First give you a sense how the Unite UI looks like.
+First give you a sense how the Unite UI looks like (grep, preview results, and
+open selected files).
 
 ![intro](https://github.com/liangxianzhe/dotvim-image/blob/master/intro.gif?raw=true "intro")
 
 The rest of this doc will introduce most features or tools I use.
 
-First you will get to know the awesome Unite and how we use it.
+You will get to know the awesome Unite and how we use it.
 
-[Unite](#unite)
+- [Unite](#unite)
 
 Then all feature are organized as packages. Each package is a .vimrc file. We
 got a lot of benifit from modulization.
 
-- Each package is short, easy to read. (Totally 1600+ lines vimrc is not fun to 
-read)
+- Each package is short, easy to read and modify. (Totally 1600+ lines vimrc is 
+not fun to read)
 - You can add a package you need (for example, java or ruby), and share with 
 people or send a pull-request. 
 - You can ignore the package you don't need by setting a parameter 
@@ -91,17 +92,26 @@ people or send a pull-request.
 
 Here is current packages.
 
-[Unite](#unite)
+- [basic](#basic) - some basic vim config to make it easy to use
+- [code](#code) - general coding 
+- [text](#text) - text edition
+- [grep](#grep) - search text in files
+- [searching](#searching) - search text in current buffer
+- [registers](#registers) - yanks, registers & history
+- [navigation](#navigation) - navigate by buffers, tabs & windows
+- [files](#files) - files & dirs
+- [git](#git) - git
+- [python](#python) - python
+- [web](#web) - web
+- [bookmarks](#bookmarks) - bookmarks
+- [vim](#vim) - vim 
+- [neobundle](#neobundle) - plugins administration with neobundle
+- [spelling](#spelling) - spell checking & translation
+- [colorv](#colorv) - color management
+- [markdown](#markdown) - markdown
+- [tools](#tools) - some other tools
 
-[Unite](#unite)
-
-[Unite](#unite)
-
-[Unite](#unite)
-
-[Unite](#unite)
-
-<a id="unite"/>
+<a id="unite"></a>
 ## Unite
 
 Unite is an interface that unifies various "query results" under a common
@@ -114,54 +124,18 @@ Even you can take a look at the Vim registers, messages, help, command, function
 several different plugins with only one (in this case: CtrlP, Ack, YankRing,
 TagmaTasks and Tagbar).
 
-> One of the main advantages of Unite is that it allows me to address one of the
-problems that I initially tried to resolve with this document, which is to
-remember all the options and mappings that, with so much effort and time, I added
-to my Vim configuration. It's pretty normal that we have a plugin installed and
-customized but do not use it frequently. Then when we need it, we don't remember
-a thing about it. Not the mappings, nor the commands, nor even its name. Well,
-with Unite it is easy to create a menu for the plugin where we show the options
-it has and its mappings, and, thanks again to the magic of Unite, we don't even
-need to remember the mapping of this menu, we can look for it in the Unite menu for
-menus. __Problem solved quickly and gracefully.__
+The Unite menu will show what functionality we have and what's their
+key-mappings. You can always refer the menu for something you don't
+remember the shortcut.
 
-The mayor drawback of Unite and also one of its greatest advantages is that it
-comes hardly configured, leaving to our own judgement and responsibility the
-way we set it to work to our liking. In fact, we can make our own Unite plugins
-to make new Unite sources and scratch your itches.
-
-### Sources and Menus
-
-I set Unite following two different ways. On one hand I use it to access
-Unite sources via mappings with the `<Leader>` key, and secondly calling Unite
-menus through `<LocalLeader>` key mappings.
-
-- The __sources__ that I call from a `<Leader>` mapping are used to access the
-  most common tasks, like open files, search inside the buffer, do regex
-  searchs (grep), etc. Here is an example of how to open a file in this way:
-
-    ![unite_file](http://joedicastro.com/static/pictures/unite_file_en.gif "unite file")
-
-- The __menus__ are used to group options either by plugins or by functionality.
-  Also shows the mappings for all of those options that have one, this allows me
-  to avoid looking for them in the `~/.vimrc` file when I forget one. The next
-  image shows a Unite menu for managing a git repository:
-
-    ![unite_git](http://joedicastro.com/static/pictures/unite_git_en.gif "unite_git")
-
-Unite has a master menu that shows all the custom menus that we have created,
-allowing us to access them and see the mapping associated with each one. This
-menu doesn't show the mappings by design, but I arranged their descriptions to
-allow that. This is what the Vim command `:menu` should have been: *comfortable,
-intuitive and easy to navigate.*
-
-- `<LocalLeader>u` or `:Unite menu` shows the available menus
-
-![unite menu](http://joedicastro.com/static/pictures/unite_menu_en.png "unite menu")
+The main Unite munu:
+![unite_menu](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu.png?raw=true "unite_menu")
 
 ### Navigation inside Unite
 
-These are some of the available mappings:
+In Unite, you can filter result in Insert mode, you can select candidates and 
+apply operations to selected candidates in Normal mode. Below are some of the 
+available mappings:
 
 > __Mappings__
 
@@ -214,154 +188,73 @@ These are some of the available mappings:
 
 > - `<Space>` mark the current candidate
 
-## Managing Plugins
+<a id="basic"></a>
+## Basic
 
-![neobundle](http://joedicastro.com/static/pictures/unite_menu_neobundle_en.png "neobundle")
+Put most basic vim config here, like indent, quick saving, history, backup.
+There is no Unite menu for this package.  
 
-A plugin to rule them all! NeoBundle allows us to manage the rest of the plugins,
-itself included. __I have it configured to auto install itself and all of the
-plugins when Vim is executed for the first time__.
+<a id="code"></a>
+## Code
 
-The advantages of NeoBundle versus Vundle and other similar plugins are the
-following:
-
-- Allows to use another VCS other than git (hg, svn), even a local dir
-- Allows revision lock or even set a plugin to not be updated
-- Supports lazy initialization of plugins to optimizing startup time
-- Supports multiple config options per plugin, like automatic building if needed
-- and so on...
-
-The best way to use NeoBundle is through Unite:
+![unite code](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_code.png?raw=true "unite code")
 
 __Unite__
 
-- `<LocalLeader>n` or `:Unite menu:neobundle`, shows the NeoBundle menu
+- `<LocalLeader>c` or `:Unite menu:code`, shows the Code menu
 
-### Menu
+__Menu__
 
 These are the menu entries in detail:
 
-- *neobundle* shows the installed plugins as candidates. Via the actions we can
-  delete them, browse the repository page, ...
+- *count lines of code* count the lines of code of the current file by the
+  external program `$ cloc` and shows the output in Unite
 
-- *log* shows the last NeoBundle log
+- *toggle indent lines* show/hide the indent lines, that works as a visual guide
+  for long nested blocks of code, putting vertical lines for each indentation
+  level. Is disabled by default.
+    ![indentLine](http://joedicastro.com/static/pictures/indentline_en.gif "indentLine")
 
-- *lazy* shows all the installed plugins configured as Lazy. Those are loaded on
-  demand and allow us to have a lot of plugins installed that are not frequently
-  used without delaying the vim startup. I use this option a lot in this
-  configuration.
+- *syntastic toggle*,  *syntastic check & errors* are two options
+  of Syntastic, a plugin for code quality (syntax revision) for various
+  programming and markup languages (python, ruby, lua, haskell, css, html, js,
+  json, ...) via external tools (these tools are required). Show the syntax
+  errors in the signs column (gutter). Also shows the total of errors and the
+  number line of the first in the status line
 
-- *update* updates all the plugins automatically (and installs those not already
-  installed)
+__Other tools__
 
-- *search* searches plugins by name on vim.org & GitHub (duplicates prone)
+- __Ultisnips__ is a plugin to manage snippets, the most advanced and powerful
+  for this task that I know for Vim. Snippets are portions of code or text in
+  which certain parts are declared as variable and the rest is fixed. They are
+  very helpful to insert the same code structures again and again without need
+  to write all the text, saving us an important number of keystrokes. To use
+  them we only have to type the snippet keyword and the mapping, the fixed part
+  of text is inserted automatically. Then the cursor moves to the first variable
+  field to enter the desired text interactively, and so on. In the image you can
+  see how it really works.
 
-- *install* installs all the plugins already present in the `.vimrc` file or in
-  the `direct_bundles.vim` file that are not yet installed
+    Ultisnips brings by default a bunch of snippets classified for languages and
+some globals. The best feature of Ultisnips is that allows us to define our
+custom snippets with a level of control and automation than any other one
+offers. To know all the details is essential to read carefully the plugin help.
+BTW certain features are remarkable, like: nested snippets, embed external
+commands (shell, vimscript and python) in the snippets, use the snippets over
+visual selections, and text transformations into the snippets.
 
-- *check* checks if all the plugins are already installed, and if not, prompt
-  for their installation
-
-- *docs* installs help docs for all plugins manually
-
-- *clean* deletes, upon confirmation, those plugin folders that are no longer
-  needed because they are not still installed
-
-- *list* lists all the installed plugins
-
-- *direct edit* edits the `~/.vim/bundle/.neobundle/direct_bundles.vim` file
-  where NeoBundle stores those plugins installed directly (e.g. via NeoBundle
-  search)
-
-> __Plugins updating__
-
-> Since we often install plugins from repositories, we are exposed to error-
-> prone updates. Once in a while, a plugin update introduces a bug and you end up
-> with an unstable configuration until that bug is fixed (which may take a while).
-> If we use Vim for work, that is very inconvenient.
-
-> A way to avoid this is by using symbolic links and backups of our vim folder.
-> If we made a backup of our vim config before an update, is easy to restore it
-> to a previous stable state without much effort. But this is tedious and
-> error-prone too. And alternative is managing this via NeoBundle. We can use
-> the revision lock feature to specify what revision we want to install or even
-> say to NeoBundle that a plugin should not be updated. But it is not a perfect
-> solution either, and very manual. Maybe in a future, we could do plugin
-> rollbacks...
-
-## Colorschemes
-
-![unite_colorscheme](http://joedicastro.com/static/pictures/unite_colorscheme_en.gif "unite colorscheme")
-
-To choose a colorscheme we can do it easily and comfortably with an included
-preview through a Unite menu:
-
-__Unite__
-
-- `<LocalLeader>v` or `:Unite menu:vim` shows the *vim* menu where we can access
-  to an option to choose the colorscheme
-- `:Unite colorscheme -auto-preview` choose the colorscheme from the candidates
-
-
-## Navigation
-
-![unite navigation](http://joedicastro.com/static/pictures/unite_menu_navigation.png "unite navigation")
-
->   __Mappings__
-
-> In addition to the options available on the menui, I have set a number of
-> mappings that make it much easier to manage windows
-
->   - `<C-H>` move to the next window to the left
->   - `<C-J>` move to the lower window
->   - `<C-K>` move to the upper window
->   - `<C-L>` move to the next window to the right
-
-__Unite__
-
-`<LocalLeader>b` or `:Unite menu:navigation` shows the navigation menu
-
-### Menu
-
-- The first three menu entries let us to easily move to the chosen buffer, tab,
-  or window from the candidates
-
-- *location list* and *quickfix* to access these windows content through
-  Unite interface
-
-- *resize windows* use the winresizer plugin to easily resize the windows
+    ![ulti](http://joedicastro.com/static/pictures/ulti_en.gif "ulti")
 
     > __Mappings__
-    >
-    > - `h`, `j`, `k`, `l` use vim motions to move the windows separator
-    > - `<ESC>` end the resizing
-    > - `q` cancel the resizing
 
-- the next two entries are for creating new windows (horizontal and vertical) and
-  the third one is to close any window (except the last)
+    > - `<Tab>` preceded by the snippet keyword, trigger the snippet
+    > - `<C-J>` jump to the next field
+    > - `<C-K>` jump to the previous field
+    > - `<BS>`  cancel the text enter in an optional field
 
-- *toggle quickfix window* toggle the quickfix window, also close the location
-  list if is opened
+<a id="code"></a>
+## Text
 
-- *zoom* make zoom in a window
-
-- *delete buffer* delete a buffer
-
-
-## Bookmarks
-
-![unite bookmarks](http://joedicastro.com/static/pictures/unite_menu_bookmarks.png "unite bookmarks")
-
-With this menu we can manage the bookmarks easily.
-
-__Unite__
-
-`<LocalLeader>m` or `:Unite menu:bookmarks` shows the bookmarks menu
-
-
-## Text Edition
-
-![unite text](http://joedicastro.com/static/pictures/unite_menu_text.png "unite text")
+![unite text](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_text.png?raw=true "unite text")
 
 This menu groups several options to edit text
 
@@ -369,7 +262,7 @@ __Unite__
 
 `<LocalLeader>e` or `:Unite menu:text` shows the text menu
 
-### Menu
+__Menu__
 
 - *toggle search results highlight* toggle the search results highlight,
   obviously
@@ -410,7 +303,7 @@ __Unite__
   The info includes the decimal Unicode value, hexadecimal, octal, Unicode name,
   HTML entity, Emoji code and any digraph available.
 
-### Other tools
+__Other text edition tools__
 
 Apart from the tools included in the menu, and apart from the Vanilla Vim ones
 too, we have another bunch of tools available to help us to edit the text more
@@ -532,20 +425,10 @@ easily.
     > - `:TransposeWords` transpose by words (inserts a `?` where is no one)
     > - `:TransposeInteractive` for complex transpositions
 
+<a id="grep"></a>
+## Grep
 
-## Spell checking
-
-![unite spell](http://joedicastro.com/static/pictures/unite_menu_spell_en.png "unite spell")
-
-These menu entries are used for spell checking the text
-
-__Unite__
-
-- `<LocalLeader>s` or `:Unite menu:spelling` shows the spelling menu
-
-## Regular expression searching (grep)
-
-![unite grep](http://joedicastro.com/static/pictures/unite_menu_grep_en.png "unite grep")
+![unite grep](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_grep.png?raw=true "unite grep")
 
 This menu allows us to search files by regular expression engines. I have it
 configured to use the `ag` program first, then `ack` if `ag` is not found, and
@@ -556,12 +439,14 @@ __Unite__
 
 - `<LocalLeader>a` or `:Unite menu:grep` shows the grep menu
 
-### Menu
+__Menu__
 
 - *grep (ag → ack → grep)* search files by content. Using a regular
   expression pattern in a target directory, shows us the results in Unite.
   Between brackets are the list of programs to use sorted by priority. It uses
   the first available.
+
+- *grep current word* grep the word under cursor.
 
 - *find* use the known Unix tool `find` to search files by name
 
@@ -572,7 +457,7 @@ __Unite__
   in comparison with another of the mentioned in the first entry. So, use it
   only if you are desperate.
 
-
+<a id="searching"></a>
 ## Searching inside the buffer
 
 ![unite searching](http://joedicastro.com/static/pictures/unite_menu_searching.png "unite searching")
@@ -581,7 +466,7 @@ __Unite__
 
 - `<LocalLeader>f` or `:Unite menu:searching` shows the searching menu
 
-### Menu
+__Menu__
 
 - *line* find all the lines where the introduced string appears
 
@@ -607,7 +492,7 @@ __Unite__
   are defined by the following keywords: __TODO__, __FIXME__, __NOTE__, __XXX__
   , __COMBAK__, and __@todo__
 
-### Other tools
+__Other tools__
 
 - __vim-signature__ a plugin that improves the default Vim marks. It shows the
   marks in the lateral signs column.
@@ -634,7 +519,7 @@ __Unite__
     >   -  `[-`           jump to prev line having same marker
     >   -  `m<BS>`        remove all markers
 
-
+<a id="registers"></a>
 ## Registers
 
 ![unite registers](http://joedicastro.com/static/pictures/unite_menu_registers.png "unite registers")
@@ -643,7 +528,7 @@ __Unite__
 
 - `<LocalLeader>i` or `:Unite menu:registers` shows the registers menu
 
-### Menu
+__Menu__
 
 - *yanks* list all the yanks arranged chronologically starting with the most
   recent
@@ -661,6 +546,52 @@ __Unite__
 
     ![gundo](http://joedicastro.com/static/pictures/gundo_en.gif "gundo")
 
+<a id="navigation"></a>
+## Navigation
+
+![unite navigation](http://joedicastro.com/static/pictures/unite_menu_navigation.png "unite navigation")
+
+>   __Mappings__
+
+> In addition to the options available on the menui, I have set a number of
+> mappings that make it much easier to manage windows
+
+>   - `<C-H>` move to the next window to the left
+>   - `<C-J>` move to the lower window
+>   - `<C-K>` move to the upper window
+>   - `<C-L>` move to the next window to the right
+
+__Unite__
+
+`<LocalLeader>b` or `:Unite menu:navigation` shows the navigation menu
+
+__Menu__
+
+- The first three menu entries let us to easily move to the chosen buffer, tab,
+  or window from the candidates
+
+- *location list* and *quickfix* to access these windows content through
+  Unite interface
+
+- *resize windows* use the winresizer plugin to easily resize the windows
+
+    > __Mappings__
+    >
+    > - `h`, `j`, `k`, `l` use vim motions to move the windows separator
+    > - `<ESC>` end the resizing
+    > - `q` cancel the resizing
+
+- the next two entries are for creating new windows (horizontal and vertical) and
+  the third one is to close any window (except the last)
+
+- *toggle quickfix window* toggle the quickfix window, also close the location
+  list if is opened
+
+- *zoom* make zoom in a window
+
+- *delete buffer* delete a buffer
+
+<a id="files"></a>
 ## Files and directories
 
 ![unite files](http://joedicastro.com/static/pictures/unite_menu_files.png "unite files")
@@ -669,7 +600,7 @@ __Unite__
 
 - `<LocalLeader>o` or `:Unite menu:archivos` show the file menu
 
-### Menu
+__Menu__
 
 - *open file* show a list of files available in the current working directory
 
@@ -760,151 +691,8 @@ __Unite__
     > - `gs` toggle the safe mode __Warning!__
     > - `gS` toggle the simple mode
 
-### Other tools
-
-- __utl__ is a plugin to open URLs and files with an external tool from Vim
-
-    ![utl](http://joedicastro.com/static/pictures/utl_en.gif "utl")
-
-    > __Mapping__
-
-    > `<Leader>j` if we use the mapping over a link, it will be opened into the
-    > preconfigured application
-
-## Code Edition
-
-![unite code](http://joedicastro.com/static/pictures/unite_menu_code_en.png "unite code")
-
-### Menu
-
-- *run python code* run the current buffer python code via pymode. It shows the
-  output in a new vertical window below
-
-- *show docs for the current word* show the documentation available for the word
-  under the cursor
-
-- *insert a breakpoint* insert a breakpoint in python code. If we have `ipython`
-  or `pudb` installed, it will use one of those instead the python `pdb`
-
-- *pylint check* do a code revision by [pylint][pylint] by demand
-
-  [pylint]: http://www.pylint.org/
-
-- *run with python2 in tmux panel* use the Vimux plugin to interact with Tmux.
-  It allows to send commands to a Tmux panel and interact with it without losing
-  focus in Vim. If there are no other tmux panels opened, then a new panel is
-  opened in the 20% lower space. In other case, the command runs in the already
-  opened panel. This specific command run the buffer content with the `python2`
-  executable in the tmux panel. In the next image we can see the actual
-  behavior:
-
-    ![vimux](http://joedicastro.com/static/pictures/vimux_en.gif "vimux")
-
-- *run with python3 in tmux panel* same as above but using the `python3`
-  interpreter
-
-- *run with python2 & time in tmux panel* run the python code wrapped by the
-  Unix `time` program to know the time consumed in the execution
-
-- *run with pypy & time in tmux panel* same as above but using `pypy` instead of
-  `python2`
-
-- *command prompt to run in tmux panel* open a command line prompt to enter a
-  custom command to run in a tmux panel
-
-- *repeat last command* repeat the last vimux command
-
-- *stop command execution in tmux panel* stop the execution of the last vimux
-  command
-
-- *inspect tmux panel* jump to the tmux panel where the last vimux command was
-  executed and enter in the tmux *copy mode* allowing us to scroll around the
-  panel and use the *vi mode* to copy text lines
-
-- *close tmux panel* close the tmux panel opened or used by Vimux
-
-- *rope auto-completion* allow us to use the rope auto-completion. Useful for
-  methods auto-completion.
-
-- *jump to definition* jump to the location where the word under the cursor
-  (variable, function, class, method, ...) is defined. Open a new window with
-  the location, even if it is in another module or library
-
-- *reorganize imports* reorganize automatically the import statements
-
-- *refactorize - x* the entries that begin in this way are for refactorize the
-  python code with rope, using the method mentioned in each description
-
-- *show docs for current word* use rope to show the available documentation
-  about the word under the cursor. The advantage of this entry against the
-  pymode one is that this one allow us to search in the external libraries
-  documentation
-
-- *syntastic toggle*,  *syntastic check & errors* are two options
-  of Syntastic, a plugin for code quality (syntax revision) for various
-  programming and markup languages (python, ruby, lua, haskell, css, html, js,
-  json, ...) via external tools (these tools are required). Show the syntax
-  errors in the signs column (gutter). Also shows the total of errors and the
-  number line of the first in the status line
-
-- *list virtualenvs* use the virtualenv plugin to list the python virtualenvs.
-
-- *activate virtualenv* activate the virtualenv
-
-- *deactivate virtualenv* deactivate the virtualenv
-
-- *run coverage2* and *run coverage3* use the [coverage.py][cvg] tool for
-  python2 and python3 respectively. It shows us the results in a window and as
-  marks in the signs column (gutter) to know the code coverage of the current
-  code.
-
-  [cvg]: http://nedbatchelder.com/code/coverage/
-
-- *toggle coverage report* and *toggle coverage marks* toggle the visibility of
-  the marks and report from coverage
-
-- *count lines of code* count the lines of code of the current file by the
-  external program `$ cloc` and shows the output in Unite
-
-- *toggle indent lines* show/hide the indent lines, that works as a visual guide
-  for long nested blocks of code, putting vertical lines for each indentation
-  level. Is disabled by default.
-
-    ![indentLine](http://joedicastro.com/static/pictures/indentline_en.gif "indentLine")
-
-### Other tools
-
-- __Ultisnips__ is a plugin to manage snippets, the most advanced and powerful
-  for this task that I know for Vim. Snippets are portions of code or text in
-  which certain parts are declared as variable and the rest is fixed. They are
-  very helpful to insert the same code structures again and again without need
-  to write all the text, saving us an important number of keystrokes. To use
-  them we only have to type the snippet keyword and the mapping, the fixed part
-  of text is inserted automatically. Then the cursor moves to the first variable
-  field to enter the desired text interactively, and so on. In the image you can
-  see how it really works.
-
-    Ultisnips brings by default a bunch of snippets classified for languages and
-some globals. The best feature of Ultisnips is that allows us to define our
-custom snippets with a level of control and automation than any other one
-offers. To know all the details is essential to read carefully the plugin help.
-BTW certain features are remarkable, like: nested snippets, embed external
-commands (shell, vimscript and python) in the snippets, use the snippets over
-visual selections, and text transformations into the snippets.
-
-    I save my custom snippets in the `./Ultisnips` directory
-
-    ![ulti](http://joedicastro.com/static/pictures/ulti_en.gif "ulti")
-
-    > __Mappings__
-
-    > - `<Tab>` preceded by the snippet keyword, trigger the snippet
-    > - `<C-J>` jump to the next field
-    > - `<C-K>` jump to the previous field
-    > - `<BS>`  cancel the text enter in an optional field
-
-
-## DVCS: Git
+<a id="git"></a>
+## Git
 
 ![unite git](http://joedicastro.com/static/pictures/unite_menu_git_en.png "unite git")
 
@@ -912,7 +700,7 @@ __Unite__
 
 - `<localleader>g` or `:Unite menu:git` show the git menu
 
-### Menu
+__Menu__
 
 - *tig* open the external application [tig][tig], which is a ncurses interface
   for git. Obviously, this only works when the working directory is into a git
@@ -1167,15 +955,70 @@ __Unite__
 
   [shpt]: https://github.com/alejandrogomez/shipit
 
-
-
-### Other tools
+__Other tools__
 
 - *vim-gitgutter* show the changes that are made in the buffer versus the git
   repository index. It makes a `git diff` and shows the status
   (changed/added/deleted) of each line in the gutter (signs column).
 
+<a id="python"></a>
+## Python
 
+![unite python](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_python.png?raw=true "unite python")
+
+__Unite__
+
+- `<LocalLeader>p` or `:Unite menu:python` shows the python menu
+
+__Menu__
+
+- *run python code* run the current buffer python code via pymode. It shows the
+  output in a new vertical window below
+
+- *show docs for the current word* show the documentation available for the word
+  under the cursor
+
+- *insert a breakpoint* insert a breakpoint in python code. If we have `ipython`
+  or `pudb` installed, it will use one of those instead the python `pdb`
+
+- *pylint check* do a code revision by [pylint][pylint] by demand
+
+  [pylint]: http://www.pylint.org/
+
+- *rope auto-completion* allow us to use the rope auto-completion. Useful for
+  methods auto-completion.
+
+- *jump to definition* jump to the location where the word under the cursor
+  (variable, function, class, method, ...) is defined. Open a new window with
+  the location, even if it is in another module or library
+
+- *reorganize imports* reorganize automatically the import statements
+
+- *refactorize - x* the entries that begin in this way are for refactorize the
+  python code with rope, using the method mentioned in each description
+
+- *show docs for current word* use rope to show the available documentation
+  about the word under the cursor. The advantage of this entry against the
+  pymode one is that this one allow us to search in the external libraries
+  documentation
+
+- *list virtualenvs* use the virtualenv plugin to list the python virtualenvs.
+
+- *activate virtualenv* activate the virtualenv
+
+- *deactivate virtualenv* deactivate the virtualenv
+
+- *run coverage2* and *run coverage3* use the [coverage.py][cvg] tool for
+  python2 and python3 respectively. It shows us the results in a window and as
+  marks in the signs column (gutter) to know the code coverage of the current
+  code.
+
+  [cvg]: http://nedbatchelder.com/code/coverage/
+
+- *toggle coverage report* and *toggle coverage marks* toggle the visibility of
+  the marks and report from coverage
+
+<a id="web"></a>
 ## Web Development
 
 __HTML5__
@@ -1212,7 +1055,152 @@ emmet-tutorial` <vimhelp:emmet-tutorial>) or read the official documentation,
 > - `<C-Y>A` make quoted text from url
 > - `<C-Y>c` code pretty
 
+<a id="bookmarks"></a>
+## Bookmarks
 
+![unite bookmarks](http://joedicastro.com/static/pictures/unite_menu_bookmarks.png "unite bookmarks")
+
+With this menu we can manage the bookmarks easily.
+
+__Unite__
+
+`<LocalLeader>m` or `:Unite menu:bookmarks` shows the bookmarks menu
+
+<a id="vim"></a>
+## Vim
+
+![unite vim](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_vim.png?raw=true "unite vim")
+
+__Unite__
+
+- `<LocalLeader>v` or `:Unite menu:vim` shows the vim menu
+
+__Menu__
+
+These are the menu entries in detail:
+
+- *choose color scheme* display color scheme with preview support
+
+    ![unite_colorscheme](http://joedicastro.com/static/pictures/unite_colorscheme_en.gif "unite colorscheme")
+
+- *mappings*  shows all the customized mappings available whit their
+  corresponding associated action. Those ones that corresponds with plugins that
+  are Lazy are not showed unless the plugin is already loaded.
+
+- *edit configuration file (vimrc)* edits the vim configuration file `~./.vimrc`
+
+- *choose filetype* choose a filetype from a list to apply to the current buffer
+
+- *vim help* search into the vim help (slow)
+
+- *vim commands* list all commands available as candidates. For Lazy plugins,
+  these need to be loaded before appears in the list.
+
+- *vim functions* same as above for functions instead of commands
+
+- *vim runtimepath* shows all paths in the vim runtimepath
+
+- *vim command output* shows the output of a Vim command through the Unite
+  interface (e.g. `:ls`)
+
+- *unite sources* all the Unite sources available
+
+- *kill process* shows the output of the Unix command `top` where we can select
+  one or more process to kill them with `kill`
+
+- *launch executable* launch an executable from a list, in a similar behavior as
+  `dmenu`
+
+<a id="neobundle"></a>
+## Neobundle
+
+![neobundle](http://joedicastro.com/static/pictures/unite_menu_neobundle_en.png "neobundle")
+
+A plugin to rule them all! NeoBundle allows us to manage the rest of the plugins,
+itself included. __I have it configured to auto install itself and all of the
+plugins when Vim is executed for the first time__.
+
+The advantages of NeoBundle versus Vundle and other similar plugins are the
+following:
+
+- Allows to use another VCS other than git (hg, svn), even a local dir
+- Allows revision lock or even set a plugin to not be updated
+- Supports lazy initialization of plugins to optimizing startup time
+- Supports multiple config options per plugin, like automatic building if needed
+- and so on...
+
+The best way to use NeoBundle is through Unite:
+
+__Unite__
+
+- `<LocalLeader>n` or `:Unite menu:neobundle`, shows the NeoBundle menu
+
+__Menu__
+
+These are the menu entries in detail:
+
+- *neobundle* shows the installed plugins as candidates. Via the actions we can
+  delete them, browse the repository page, ...
+
+- *log* shows the last NeoBundle log
+
+- *lazy* shows all the installed plugins configured as Lazy. Those are loaded on
+  demand and allow us to have a lot of plugins installed that are not frequently
+  used without delaying the vim startup. I use this option a lot in this
+  configuration.
+
+- *update* updates all the plugins automatically (and installs those not already
+  installed)
+
+- *search* searches plugins by name on vim.org & GitHub (duplicates prone)
+
+- *install* installs all the plugins already present in the `.vimrc` file or in
+  the `direct_bundles.vim` file that are not yet installed
+
+- *check* checks if all the plugins are already installed, and if not, prompt
+  for their installation
+
+- *docs* installs help docs for all plugins manually
+
+- *clean* deletes, upon confirmation, those plugin folders that are no longer
+  needed because they are not still installed
+
+- *list* lists all the installed plugins
+
+- *direct edit* edits the `~/.vim/bundle/.neobundle/direct_bundles.vim` file
+  where NeoBundle stores those plugins installed directly (e.g. via NeoBundle
+  search)
+
+> __Plugins updating__
+
+> Since we often install plugins from repositories, we are exposed to error-
+> prone updates. Once in a while, a plugin update introduces a bug and you end up
+> with an unstable configuration until that bug is fixed (which may take a while).
+> If we use Vim for work, that is very inconvenient.
+
+> A way to avoid this is by using symbolic links and backups of our vim folder.
+> If we made a backup of our vim config before an update, is easy to restore it
+> to a previous stable state without much effort. But this is tedious and
+> error-prone too. And alternative is managing this via NeoBundle. We can use
+> the revision lock feature to specify what revision we want to install or even
+> say to NeoBundle that a plugin should not be updated. But it is not a perfect
+> solution either, and very manual. Maybe in a future, we could do plugin
+> rollbacks...
+
+<a id="spelling"></a>
+## Spell checking & translation
+
+![unite spelling](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_spelling.png?raw=true "unite spelling")
+
+__Unite__
+
+- `<LocalLeader>s` or `:Unite menu:spelling` shows the spelling menu
+
+__Other tools__
+
+- `T` Translate selected text to Chinese. 
+
+<a id="colorv"></a>
 ## Color Management
 
 ![unite colorv](http://joedicastro.com/static/pictures/unite_menu_colorv_en.png "unite colorv")
@@ -1229,7 +1217,7 @@ __Unite__
 
 ![colorv](http://joedicastro.com/static/pictures/colorv_en.gif "ColorV")
 
-### Menu
+__Menu__
 
 - *open colorv* show the ColorV window
 
@@ -1277,7 +1265,7 @@ __Unite__
     > - `?` show the mappings ciclically
     > - `q` close the window
 
-
+<a id="markdown"></a>
 ## Markdown
 
 ![unite markdown](http://joedicastro.com/static/pictures/unite_menu_markdown_en.png "unite markdown")
@@ -1293,18 +1281,67 @@ __Unite__
 
 - `<localleader>k` or`:Unite menu:markdown` shows the markdown menu
 
-### Menu
+__Menu__
 
 - *preview* renders the Markdown document in a temporal html file and open it in
-  a new browser tab
+  a new browser tab (currently only work on Mac)
 
 - *refresh* rewrites the html file with the changes
 
     ![mep]( http://joedicastro.com/static/pictures/mep_en.gif "mep")
 
-## Linux/Unix tools
+<a id="tools"></a>
+## Some other tools
 
-__DirDiff__
+![unite tools](http://joedicastro.com/static/pictures/unite_menu_tools.png "unite tools")
+
+__Unite__
+
+`<LocalLeader>t` or `:Unite menu:tools` shows the tools menu
+
+__Menu__
+
+These are the menu entries in detail:
+
+- *run with python2 in tmux panel* use the Vimux plugin to interact with Tmux.
+  It allows to send commands to a Tmux panel and interact with it without losing
+  focus in Vim. If there are no other tmux panels opened, then a new panel is
+  opened in the 20% lower space. In other case, the command runs in the already
+  opened panel. This specific command run the buffer content with the `python2`
+  executable in the tmux panel. In the next image we can see the actual
+  behavior:
+
+    ![vimux](http://joedicastro.com/static/pictures/vimux_en.gif "vimux")
+
+- *run with python3 in tmux panel* same as above but using the `python3`
+  interpreter
+
+- *run with python2 & time in tmux panel* run the python code wrapped by the
+  Unix `time` program to know the time consumed in the execution
+
+- *run with pypy & time in tmux panel* same as above but using `pypy` instead of
+  `python2`
+
+- *command prompt to run in tmux panel* open a command line prompt to enter a
+  custom command to run in a tmux panel
+
+- *repeat last command* repeat the last vimux command
+
+- *stop command execution in tmux panel* stop the execution of the last vimux
+  command
+
+- *inspect tmux panel* jump to the tmux panel where the last vimux command was
+  executed and enter in the tmux *copy mode* allowing us to scroll around the
+  panel and use the *vi mode* to copy text lines
+
+- *close tmux panel* close the tmux panel opened or used by Vimux
+
+- *open link* open link under cursor using utl.vim
+    ![utl](http://joedicastro.com/static/pictures/utl_en.gif "utl")
+
+__Other tools__
+
+- DirDiff
 
 It has a similar behavior that the vimdiff tool but for directories instead
 of individual files
@@ -1318,7 +1355,7 @@ of individual files
 > - `:DirDiffQuit` exit from DirDiff mode
 
 
-__Hexadecimal Editor__
+- Hexadecimal Editor
 
 For this I use the Vinarise plugin, a well thought hexadecimal editor for Vim.
 
@@ -1348,173 +1385,7 @@ this tool is a sure candidate for a disaster.
 - `<C-L>` redraw
 - `g<C-L>` reload
 
-## Internationalization
-
-__Translate .po files__
-
-Is a tool to add syntax highlighting to `.po` files (GNU gettext) and some
-mappings to edit them easily.
-
-![po](http://joedicastro.com/static/pictures/po_en.gif "po")
-
-> __Mappings__
-
-> - `/u` move to the next untranslated string
-> - `/U` move to the previous untranslated string
-> - `/c` copy the `msgid` string to `msgstr`
-> - `/C` create a comment for that entry
-> - `/d` delete the `msgstr` string (Insert mode only)
-> - `/f` move to the next "fuzzy" string
-> - `/F` move to the previous "fuzzy" string
-> - `/z` tag the entry as "fuzzy"
-> - `/Z` delete the "fuzzy" tag
-> - `/s` show the `msgfmt` statistics from the file
-> - `/e` move along the `msgfmt` errors from the file
-> - `/t` entry the translator info in the header
-> - `/T` entry the translator team info in the header
-> - `/W` formats the entire file
-> - `gf` open in a new window the file under the cursor
-
-
-## Vim tools
-
-![unite vim](http://joedicastro.com/static/pictures/unite_menu_vim_en.png "unite vim")
-
-Several Vim tools grouped under this menu among others that not fitted well in
-any other menu.
-
-__Unite__
-
-- `<LocalLeader>v` or `:Unite menu:vim` shows this menu
-
-### Menu
-
-The first entry is already commented at the beginning of this document
-
-- *mappings*  shows all the customized mappings available whit their
-  corresponding associated action. Those ones that corresponds with plugins that
-  are Lazy are not showed unless the plugin is already loaded.
-
-- *edit configuration file (vimrc)* edits the vim configuration file `~./.vimrc`
-
-- *choose filetype* choose a filetype from a list to apply to the current buffer
-
-- *vim help* search into the vim help (slow)
-
-- *vim commands* list all commands available as candidates. For Lazy plugins,
-  these need to be loaded before appears in the list.
-
-- *vim functions* same as above for functions instead of commands
-
-- *vim runtimepath* shows all paths in the vim runtimepath
-
-- *vim command output* shows the output of a Vim command through the Unite
-  interface (e.g. `:ls`)
-
-- *unite sources* all the Unite sources available
-
-- *kill process* shows the output of the Unix command `top` where we can select
-  one or more process to kill them with `kill`
-
-- *launch executable* launch an executable from a list, in a similar behavior as
-  `dmenu`
-
-## Prerequisites
-
-__Vim__
-
-To have a completely functional version of Vim with this configuration, you need
-a Vim version greater or equal than __7.3__ and compiled with support for
-Python, Lua and Ruby. You can know that using the `:version` command, it shows
-the Vim version and the supported features (those one preceded by a plus symbol
-`+`)
-
-You can compile Vim from source if your distribution does not offer a package
-that fits those requirements. You only have to configure it with the adequate
-parameters, something like this:
-
-    $ hg clone https://code.google.com/p/vim/ vim
-    $ cd vim
-    $ ./configure --with-features=huge \
-                  --enable-gui=gnome2 \
-                  --enable-luainterp=yes \
-                  --enable-pythoninterp=yes \
-                  --enable-rubyinterp=yes \
-                  --enable-perlinterp=yes \
-                  --enable-cscope
-    $ make
-    $ sudo make install
-
-__Programs__
-
-You need also several programs to enjoy a complete experience:
-
-- __[ctags][ctags]__, to generate the tags for code files, usually distributed
-  as `exuberant-ctags`
-- __[ag][ag]__, __[ack][ack]__ or __[grep][grep]__ for regex searches of files
-- __[git][git]__ for git repositories administration
-
-__Optional programs__
-
-If you want to use the same external auxiliary programs that I use for this
-config, those are the needed:
-
-- __[tig][tig]__ is a ncurses git manager
-
-- __[coverage][cvg]__ analyze the coverage for a Python program
-
-- __[ranger][rngr]__ an amazing ncurses file explorer. My personal configuration
-  is also in this same repository in the `../ranger` folder
-
-- __[pylint][pylint]__ code quality tool for Python
-
-- __[virtualenvwrapper][venvwppr]__ to manage Python virtualenvs easily
-
-  [venvwppr]: http://virtualenvwrapper.readthedocs.org/en/latest/
-
-__Font__
-
-The __Dejavu Sans for Powerline__ font is required for the vim-airline plugin.
-It can be founded in this same repository under the `../fonts` folder. You can
-find more fonts ready for powerline in this repository, [powerline
-fonts][pwrfnts]
-
-  [ctags]: http://ctags.sourceforge.net/
-  [ag]: https://github.com/ggreer/the_silver_searcher
-  [ack]: http://beyondgrep.com/
-  [grep]:http://www.gnu.org/software/grep/
-  [git]: http://git-scm.com/
-  [pwrfnts]: https://github.com/Lokaltog/powerline-fonts
-
-## Alternative settings
-
-Maybe this setup can be helpful to you and decide to clone/fork it, but you
-don't like all the settings. Well, in this case you still can clone this config
-and customize it as you want without loose the evolution of mine.
-
-To do this I added the possibility to read an additional file to load your
-custom settings. This file is located by default in this path
-`~/.vim/custom.vim`. Those settings override the similar ones in the .vimrc file
-
-__Example__
-
-I like the folding setting by default in python files, but if you do not like
-it, you can add this line to that file:
-
-```VimL
-let g:pymode_folding = 0
-```
-
-At the same time I have all the folds closed by default, if you prefer open the
-file with all the folds opened, you can add this other line (currently is the
-default):
-
-```VimL
-au FileType python setlocal foldlevel=1000
-```
-
-
-## Plugins & Colorschemes
+# Plugins & Colorschemes
 
 - __badwolf__  <https://github.com/sjl/badwolf>
 - __colorv.vim__ <https://github.com/Rykka/colorv.vim>
@@ -1584,5 +1455,3 @@ au FileType python setlocal foldlevel=1000
 - __webapi-vim__ <https://github.com/mattn/webapi-vim>
 - __winresizer__ <https://github.com/jimsei/winresizer>
 - __zoomwintab.vim__ <https://github.com/vim-scripts/zoomwintab.vim>
-
-
