@@ -197,6 +197,12 @@ let g:airline#extensions#hunks#non_zero_only = 1
 
 " }}}
 
+" Font {{{
+
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
+
+" " }}}}
+
 " Unite {{{
 
 " files
