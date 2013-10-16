@@ -53,9 +53,6 @@ fi
 
 echo "You are all set. Open your vim and it will set up a bunch of plugins for you. This may take
 a while..."
-echo ""
-echo "We welcome any bros/sistas who want to contribute:
-https://github.com/liangxianzhe/dotvim#call-for-help"
 echo "Report any issue/need: https://github.com/liangxianzhe/dotvim/issues"
 echo "At last, and before all, read the documentation:
 https://github.com/liangxianzhe/dotvim"
