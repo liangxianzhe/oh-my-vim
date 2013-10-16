@@ -45,6 +45,12 @@ if [ ! -d "bundle" ]; then
     mkdir bundle
 fi
 
+# Copy the font if using mac
+if [[ `uname` == 'Darwin' ]]; then
+    echo "Install font."
+    cp $INSTALLDIR"/dotvim/font/DroidSansMono/Droid Sans Mono for Powerline.otf" ~/Library/fonts/
+fi
+
 echo "You are all set. Open your vim and it will set up a bunch of plugins for you. This may take
 a while..."
 echo ""

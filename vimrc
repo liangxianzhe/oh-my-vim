@@ -126,7 +126,7 @@ endif
 " which package you would like to include
 if ! exists('g:vimified_packages')
     let g:dotvim_packages = [
-                \'vim', 
+                \'vim',
                 \'basic',
                 \'code', 
                 \'text', 
@@ -153,8 +153,8 @@ endif
 " Import packages {{{
 
 for package in g:dotvim_packages
-if filereadable($HOME . "/.vim/" . package . ".vimrc")
-    exec ':so ' $HOME . "/.vim/" . package . ".vimrc"
+if filereadable($HOME . "/.vim/packages/" . package . ".vimrc")
+    exec ':so ' $HOME . "/.vim/packages/" . package . ".vimrc"
 endif
 endfor
 
@@ -179,7 +179,7 @@ filetype plugin indent on      " Indent and plugins by filetype
 
 " END NEOBUNDLE }}}
 
-" PLUGINS Setup {{{ ===========================================================
+" PLUGINS Setup {{{
 
 " Airline {{{
 
@@ -208,7 +208,7 @@ nnoremap <silent><Leader>b :Unite -silent buffer<CR>
 " tabs
 nnoremap <silent><Leader>B :Unite -silent tab<CR>
 " buffer search
-nnoremap <silent><Leader>f :Unite -silent no-split -start-insert -auto-preview
+nnoremap <silent><Leader>f :Unite -silent -no-split -start-insert -auto-preview
             \ line<CR>
 nnoremap <silent>[menu]8 :UniteWithCursorWord -silent -no-split -auto-preview
             \ line<CR>

@@ -30,6 +30,14 @@ all set.
 
 If you prefer mannual setup or care what has been done, please read the sript.
 
+## Set up the vim:
+For a better looking [powerline](https://github.com/bling/vim-airline), you will
+need setting install a [patched font](https://github.com/bling/vim-airline#integrating-with-powerline-fonts).
+
+If you are using mac, the above script has installed a font [DroidSansMono](https://github.com/Lokaltog/powerline-fonts/tree/master/DroidSansMono)
+for you. Please set this font for your terminal. (For macvim or gvim, nothing
+need to be done. For iTerm2, go for Profile - Open Profile - Default - Edit Profile - Text - Regular Font.)
+
 # Configuration
 
 You can overwrite default configuration and key bindings by using one of 
