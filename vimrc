@@ -16,8 +16,10 @@
 set nocompatible             " No to the total compatibility with the ancient vi
 
 " Load external configuration before anything else {{{
-if filereadable(expand("~/.before.vimrc"))
-  source ~/.before.vimrc
+
+let s:before_vimrc = expand('~/.before.vimrc')
+if filereadable(s:before_vimrc)
+    exec ':so ' . s:before_vimrc
 endif
 " }}}
 "
@@ -28,17 +30,18 @@ endif
 " Auto installing NeoBundle
 let iCanHazNeoBundle=1
 let neobundle_readme=expand(g:oh_my_vim."/bundle/neobundle.vim/README.md")
+let neobundle_runtimepath=expand(g:oh_my_vim."/bundle/neobundle.vim/")
 if !filereadable(neobundle_readme)
     echo "Installing NeoBundle.."
     echo ""
-    silent !mkdir -p g:oh_my_vim."/bundle"
-    silent !git clone https://github.com/Shougo/neobundle.vim g:oh_my_vim."/bundle/neobundle.vim"
+    execute "silent !mkdir -p ".g:oh_my_vim."/bundle"
+    execute "silent !git clone https://github.com/Shougo/neobundle.vim ".g:oh_my_vim."/bundle/neobundle.vim"
     let iCanHazNeoBundle=0
 endif
 
 " Call NeoBundle
 if has('vim_starting')
-    set rtp+=g:oh_my_vim."/bundle/neobundle.vim/"
+    let &rtp=neobundle_runtimepath.','.&rtp
 endif
 call neobundle#rc(expand(g:oh_my_vim.'/bundle/'))
 
@@ -113,9 +116,9 @@ nnoremap <silent>[menu]u :Unite -silent -winheight=20 menu<CR>
 
 " Local vimrc configuration {{{
 
-let s:localrc = expand('~/.local.vimrc')
-if filereadable(s:localrc)
-    exec ':so ' . s:localrc
+let s:local_vimrc = expand('~/.local.vimrc')
+if filereadable(s:local_vimrc)
+    exec ':so ' . s:local_vimrc
 endif
 
 " }}}
@@ -123,8 +126,9 @@ endif
 " Import packages {{{
 
 for package in g:oh_my_vim_packages
-if filereadable(g:oh_my_vim . "/packages/" . package . ".vimrc")
-    exec ':so ' g:oh_my_vim . "/packages/" . package . ".vimrc"
+let package_path = g:oh_my_vim . "/packages/" . package . ".vimrc"
+if filereadable(package_path)
+    exec ':so ' package_path
 endif
 endfor
 
@@ -228,8 +232,9 @@ let g:unite_source_directory_mru_time_format = '(%d-%m-%Y %H:%M:%S) '
 
 " Additional Configuration {{{
 
-if filereadable(expand("~/.after.vimrc"))
-  source ~/.after.vimrc
+let s:after_vimrc = expand('~/.after.vimrc')
+if filereadable(s:after_vimrc)
+    exec ':so ' . s:after_vimrc
 endif
 
 " }}}
