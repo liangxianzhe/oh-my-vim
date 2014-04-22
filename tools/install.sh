@@ -24,7 +24,7 @@ fi
 echo "\033[0;34mUsing the Oh My Vim template file and adding it to ~/.vimrc\033[0m"
 cp $OH_MY_VIM/templates/vimrc-template ~/.vimrc
 sed -i -e "/OH_MY_VIM=/ c\\
-let $OH_MY_VIM=\"$OH_MY_VIM\"
+let \$OH_MY_VIM=\"$OH_MY_VIM\"
 " ~/.vimrc
 
 if [ ! -d "bundle" ]; then
