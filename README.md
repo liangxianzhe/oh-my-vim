@@ -41,13 +41,13 @@ all set.
 You can overwrite default configuration and key bindings by using one of 
 following files:
 
-`~/.vim/before.vimrc` will be loaded before everything else.
+`~/.before.vimrc` will be loaded before everything else.
 
-`~/.vim/extra.vimrc` will be loaded after bundles are initialized and before
+`~/.local.vimrc` will be loaded after bundles are initialized and before
 the settings take place. The idea was so people could add Bundle lines
 without having to worry about conflicts in vimrc when pulling. 
 
-`~/.vim/after.vimrc` will be loaded after all configuration options are set. 
+`~/.after.vimrc` will be loaded after all configuration options are set. 
 This is the best place to change default behaviour (keybindings) or
 color scheme.
 
