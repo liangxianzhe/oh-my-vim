@@ -35,7 +35,7 @@ fi
 # Copy the font if using mac
 if [[ `uname` == 'Darwin' ]]; then
     echo "\033[0;34mInstalling font...\033[0m"
-    cp $OH_MY_VIM"/dotvim/font/DroidSansMono/Droid Sans Mono for Powerline.otf" ~/Library/fonts/
+    cp $OH_MY_VIM"/font/DroidSansMono/Droid Sans Mono for Powerline.otf" ~/Library/fonts/
 fi
 
 echo "\033[0;32m"'  ____  __     __  _____  __  _   ________  ___  '"\033[0m"

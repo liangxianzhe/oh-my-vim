@@ -12,23 +12,18 @@ out of the box, well organized and easy to fork and maintain.
 For Mac OS, you can just use my script (require brew installed). This will
 install some necessory tools and the latest vim (7.4) *with lua support*.
 
-    curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/prepare_mac.sh | sh
+    curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/prepare_mac.sh | sh
 
 For Linux, you will need to figure out what the above script does, and install them
 according (apt-get etc). Please note a vim with lua support is needed. 
 
 ## 2. Set up the vim:
 
-First delete your ~/.vimrc and ~/.vim (backup if you like), then run:
+Run:
 
-    curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/install.sh | sh
+    curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/install.sh | sh
 
-This will clone the repo to your current folder, then link to ~/.vimrc and ~/.vim.
-
-Now open vim, it will set up a bunch of plugins at the first time. Then you are
-all set.
-
-If you prefer mannual setup or care what has been done, please read the sript.
+By default it will install to ~/.oh-my-vim folder.
 
 ## 3. Set up font:
 For a better looking [powerline](https://github.com/bling/vim-airline), you will
@@ -37,6 +32,9 @@ need setting install a [patched font](https://github.com/bling/vim-airline#integ
 If you are using mac, the above script has installed a font [DroidSansMono](https://github.com/Lokaltog/powerline-fonts/tree/master/DroidSansMono)
 for you. Please set this font for your terminal. (For macvim or gvim, nothing
 need to be done. For iTerm2, go for Profile - Open Profile - Default - Edit Profile - Text - None-ASCII Font.)
+
+Now open vim, it will set up a bunch of plugins at the first time. Then you are
+all set.
 
 # Configuration
 
