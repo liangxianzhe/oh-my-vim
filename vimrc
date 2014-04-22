@@ -17,7 +17,7 @@ set nocompatible             " No to the total compatibility with the ancient vi
 
 " Load external configuration before anything else {{{
 if filereadable(expand("~/.before.vimrc"))
-  source ~/.vim/before.vimrc
+  source ~/.before.vimrc
 endif
 " }}}
 "
@@ -27,7 +27,7 @@ endif
 
 " Auto installing NeoBundle
 let iCanHazNeoBundle=1
-let neobundle_readme=expand(g:oh_my_vim.'/bundle/neobundle.vim/README.md')
+let neobundle_readme=expand(g:oh_my_vim."/bundle/neobundle.vim/README.md")
 if !filereadable(neobundle_readme)
     echo "Installing NeoBundle.."
     echo ""
@@ -38,9 +38,9 @@ endif
 
 " Call NeoBundle
 if has('vim_starting')
-    set rtp+=$HOME/.oh-my-vim/bundle/neobundle.vim/
+    set rtp+=g:oh_my_vim."/bundle/neobundle.vim/"
 endif
-call neobundle#rc(expand(g:oh_my_vim.'/.oh-my-vim/bundle/'))
+call neobundle#rc(expand(g:oh_my_vim.'/bundle/'))
 
 " is better if NeoBundle rules NeoBundle (needed!)
 NeoBundle 'Shougo/neobundle.vim'
@@ -113,7 +113,7 @@ nnoremap <silent>[menu]u :Unite -silent -winheight=20 menu<CR>
 
 " Local vimrc configuration {{{
 
-let s:localrc = expand($HOME . '~/.local.vimrc')
+let s:localrc = expand('~/.local.vimrc')
 if filereadable(s:localrc)
     exec ':so ' . s:localrc
 endif
@@ -123,8 +123,8 @@ endif
 " Import packages {{{
 
 for package in g:oh_my_vim_packages
-if filereadable(g:oh_my_vim . "/.oh-my-vim/packages/" . package . ".vimrc")
-    exec ':so ' g:oh_my_vim . "/.oh-my-vim/packages/" . package . ".vimrc"
+if filereadable(g:oh_my_vim . "/packages/" . package . ".vimrc")
+    exec ':so ' g:oh_my_vim . "/packages/" . package . ".vimrc"
 endif
 endfor
 
@@ -216,7 +216,7 @@ let g:unite_marked_icon = '✓'
 let g:unite_winheight = 15
 let g:unite_update_time = 200
 let g:unite_split_rule = 'botright'
-let g:unite_data_directory = $HOME.'/.vim/tmp/unite'
+let g:unite_data_directory = g:oh_my_vim.'/tmp/unite'
 let g:unite_source_buffer_time_format = '(%d-%m-%Y %H:%M:%S) '
 let g:unite_source_file_mru_time_format = '(%d-%m-%Y %H:%M:%S) '
 let g:unite_source_directory_mru_time_format = '(%d-%m-%Y %H:%M:%S) '
@@ -229,7 +229,7 @@ let g:unite_source_directory_mru_time_format = '(%d-%m-%Y %H:%M:%S) '
 " Additional Configuration {{{
 
 if filereadable(expand("~/.after.vimrc"))
-  source ~/.vim/after.vimrc
+  source ~/.after.vimrc
 endif
 
 " }}}
