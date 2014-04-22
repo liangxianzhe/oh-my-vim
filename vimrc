@@ -15,6 +15,8 @@
 
 set nocompatible             " No to the total compatibility with the ancient vi
 
+silent !sh $OH_MY_VIM/tools/check_for_upgrade.sh
+
 " Load external configuration before anything else {{{
 
 let s:before_vimrc = expand('~/.before.vimrc')
@@ -29,13 +31,13 @@ endif
 
 " Auto installing NeoBundle
 let iCanHazNeoBundle=1
-let neobundle_readme=expand(g:oh_my_vim."/bundle/neobundle.vim/README.md")
-let neobundle_runtimepath=expand(g:oh_my_vim."/bundle/neobundle.vim/")
+let neobundle_readme=expand($OH_MY_VIM."/bundle/neobundle.vim/README.md")
+let neobundle_runtimepath=expand($OH_MY_VIM."/bundle/neobundle.vim/")
 if !filereadable(neobundle_readme)
     echo "Installing NeoBundle.."
     echo ""
-    execute "silent !mkdir -p ".g:oh_my_vim."/bundle"
-    execute "silent !git clone https://github.com/Shougo/neobundle.vim ".g:oh_my_vim."/bundle/neobundle.vim"
+    execute "silent !mkdir -p ".$OH_MY_VIM."/bundle"
+    execute "silent !git clone https://github.com/Shougo/neobundle.vim ".$OH_MY_VIM."/bundle/neobundle.vim"
     let iCanHazNeoBundle=0
 endif
 
@@ -43,7 +45,7 @@ endif
 if has('vim_starting')
     let &rtp=neobundle_runtimepath.','.&rtp
 endif
-call neobundle#rc(expand(g:oh_my_vim.'/bundle/'))
+call neobundle#rc(expand($OH_MY_VIM.'/bundle/'))
 
 " is better if NeoBundle rules NeoBundle (needed!)
 NeoBundle 'Shougo/neobundle.vim'
@@ -126,7 +128,7 @@ endif
 " Import packages {{{
 
 for package in g:oh_my_vim_packages
-let package_path = g:oh_my_vim . "/packages/" . package . ".vimrc"
+let package_path = $OH_MY_VIM . "/packages/" . package . ".vimrc"
 if filereadable(package_path)
     exec ':so ' package_path
 endif
@@ -220,7 +222,7 @@ let g:unite_marked_icon = '✓'
 let g:unite_winheight = 15
 let g:unite_update_time = 200
 let g:unite_split_rule = 'botright'
-let g:unite_data_directory = g:oh_my_vim.'/tmp/unite'
+let g:unite_data_directory = $OH_MY_VIM.'/tmp/unite'
 let g:unite_source_buffer_time_format = '(%d-%m-%Y %H:%M:%S) '
 let g:unite_source_file_mru_time_format = '(%d-%m-%Y %H:%M:%S) '
 let g:unite_source_directory_mru_time_format = '(%d-%m-%Y %H:%M:%S) '

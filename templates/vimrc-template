@@ -1,5 +1,5 @@
 " This is the oh my vim directory
-let g:oh_my_vim=$HOME . "/.oh-my-vim"
+let $OH_MY_VIM=$HOME."/.oh-my-vim"
 
 " Select the packages you need
 let g:oh_my_vim_packages=[
@@ -24,4 +24,4 @@ let g:oh_my_vim_packages=[
             \'colorv'
             \]
 
-exec ':so ' g:oh_my_vim . "/vimrc"
+exec ':so ' $OH_MY_VIM."/vimrc"
