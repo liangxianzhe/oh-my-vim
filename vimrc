@@ -16,7 +16,7 @@
 set nocompatible             " No to the total compatibility with the ancient vi
 
 " Load external configuration before anything else {{{
-if filereadable(expand("~/.vim/before.vimrc"))
+if filereadable(expand("~/.before.vimrc"))
   source ~/.vim/before.vimrc
 endif
 " }}}
@@ -27,12 +27,12 @@ endif
 
 " Auto installing NeoBundle
 let iCanHazNeoBundle=1
-let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
+let neobundle_readme=expand(g:oh_my_vim.'/bundle/neobundle.vim/README.md')
 if !filereadable(neobundle_readme)
     echo "Installing NeoBundle.."
     echo ""
-    silent !mkdir -p $HOME/.oh-my-vim/bundle
-    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    silent !mkdir -p g:oh_my_vim."/bundle"
+    silent !git clone https://github.com/Shougo/neobundle.vim g:oh_my_vim."/bundle/neobundle.vim"
     let iCanHazNeoBundle=0
 endif
 
@@ -40,7 +40,7 @@ endif
 if has('vim_starting')
     set rtp+=$HOME/.oh-my-vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand($HOME.'/.oh-my-vim/bundle/'))
+call neobundle#rc(expand(g:oh_my_vim.'/.oh-my-vim/bundle/'))
 
 " is better if NeoBundle rules NeoBundle (needed!)
 NeoBundle 'Shougo/neobundle.vim'
@@ -113,7 +113,7 @@ nnoremap <silent>[menu]u :Unite -silent -winheight=20 menu<CR>
 
 " Local vimrc configuration {{{
 
-let s:localrc = expand($HOME . '/.vim/local.vimrc')
+let s:localrc = expand($HOME . '~/.local.vimrc')
 if filereadable(s:localrc)
     exec ':so ' . s:localrc
 endif
@@ -123,8 +123,8 @@ endif
 " Import packages {{{
 
 for package in g:oh_my_vim_packages
-if filereadable($HOME . "/.oh-my-vim/packages/" . package . ".vimrc")
-    exec ':so ' $HOME . "/.oh-my-vim/packages/" . package . ".vimrc"
+if filereadable(g:oh_my_vim . "/.oh-my-vim/packages/" . package . ".vimrc")
+    exec ':so ' g:oh_my_vim . "/.oh-my-vim/packages/" . package . ".vimrc"
 endif
 endfor
 
@@ -228,7 +228,7 @@ let g:unite_source_directory_mru_time_format = '(%d-%m-%Y %H:%M:%S) '
 
 " Additional Configuration {{{
 
-if filereadable(expand("~/.vim/after.vimrc"))
+if filereadable(expand("~/.after.vimrc"))
   source ~/.vim/after.vimrc
 endif
 
