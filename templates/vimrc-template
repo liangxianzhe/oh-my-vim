@@ -1,0 +1,27 @@
+" This is the oh my vim directory
+let g:oh_my_vim = $HOME . "/.oh-my-vim"
+
+" Select the packages you need
+let g:oh_my_vim_packages = [
+            \'vim',
+            \'basic',
+            \'code', 
+            \'text', 
+            \'grep', 
+            \'searching', 
+            \'registers', 
+            \'navigation', 
+            \'files', 
+            \'git', 
+            \'python', 
+            \'web',
+            \'tools', 
+            \'markdown', 
+            \'bookmarks', 
+            \'sessions', 
+            \'spelling',
+            \'neobundle', 
+            \'colorv'
+            \]
+
+exec ':so ' g:oh_my_vim . "/vimrc"

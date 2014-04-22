@@ -1,27 +1,27 @@
-# My Vim Configuration
+# Oh My Vim
 
-__Version 0.9  (2013-10-13)__
+__Version 0.95  (2014-04-22)__
 
 Everyone should try this awesome vim config. It is clean, easy to use
 out of the box, well organized and easy to fork and maintain.
 
 # How to install
 
-## Install a bunch of tools needed
+## 1. Install a bunch of tools needed
 
 For Mac OS, you can just use my script (require brew installed). This will
-install some necessory tools and the latest vim (7.4) with lua support.
+install some necessory tools and the latest vim (7.4) *with lua support*.
 
-    curl -L https://raw.github.com/liangxianzhe/dotvim/master/prepare_mac.sh | sh
+    curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/prepare_mac.sh | sh
 
 For Linux, you will need to figure out what the above script does, and install them
 according (apt-get etc). Please note a vim with lua support is needed. 
 
-## Set up the vim:
+## 2. Set up the vim:
 
 First delete your ~/.vimrc and ~/.vim (backup if you like), then run:
 
-    curl -L https://raw.github.com/liangxianzhe/dotvim/master/install.sh | sh
+    curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/install.sh | sh
 
 This will clone the repo to your current folder, then link to ~/.vimrc and ~/.vim.
 
@@ -30,7 +30,7 @@ all set.
 
 If you prefer mannual setup or care what has been done, please read the sript.
 
-## Set up font:
+## 3. Set up font:
 For a better looking [powerline](https://github.com/bling/vim-airline), you will
 need setting install a [patched font](https://github.com/bling/vim-airline#integrating-with-powerline-fonts).
 
@@ -80,7 +80,7 @@ First please note:
 First give you a sense how the Unite UI looks like (grep, preview results, and
 open selected files).
 
-![intro](https://github.com/liangxianzhe/dotvim-image/blob/master/intro.gif?raw=true "intro")
+![intro](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/intro.gif?raw=true "intro")
 
 The rest of this doc will introduce most features or tools I use.
 
@@ -96,7 +96,7 @@ not fun to read)
 - You can add a package you need (for example, java or ruby), and share with 
 people or send a pull-request. 
 - You can ignore the package you don't need by setting a parameter 
-`g:dotvim_packages` in local.vimrc.
+`g:oh-my-vim_packages` in local.vimrc.
 
 Here is current packages.
 
@@ -137,7 +137,7 @@ key-mappings. You can always refer the menu for something you don't
 remember the shortcut.
 
 The main Unite munu:
-![unite_menu](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu.png?raw=true "unite_menu")
+![unite_menu](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu.png?raw=true "unite_menu")
 
 ### Navigation inside Unite
 
@@ -205,7 +205,7 @@ There is no Unite menu for this package.
 <a id="code"></a>
 ## Code
 
-![unite code](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_code.png?raw=true "unite code")
+![unite code](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_code.png?raw=true "unite code")
 
 __Unite__
 
@@ -262,7 +262,7 @@ visual selections, and text transformations into the snippets.
 <a id="code"></a>
 ## Text
 
-![unite text](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_text.png?raw=true "unite text")
+![unite text](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_text.png?raw=true "unite text")
 
 This menu groups several options to edit text
 
@@ -406,19 +406,6 @@ easily.
     >
     > - `<Leader>dd {motion}` turns in digraph the motion selected text
 
-- __multiple cursors__ this allow us to edit the same visual selection in
-  multiple locations at the same time. It's like a interactive search & replace
-
-    ![multiple cursors](http://joedicastro.com/static/pictures/multiple_cursors_en.gif "multiple cursors")
-
-    > __Mappings__
-
-    > - `<C-N>` turn on the multiple cursors for the current word or visual
-    >   selection. Press it again to find the next occurrence & move to it
-    > - `<C-X>` skip the current position and move to the next one if it exists
-    > - `<C-P>` deselect the current position and move back to the previous one
-    > - `<ESC>` turn off the multiple cursors
-
 - __vim-transpose__ transpose rows & columns. For certain kind of files, like
   *CSV*, it can be really helpful to deal with them. It works in visual mode.
 
@@ -436,7 +423,7 @@ easily.
 <a id="grep"></a>
 ## Grep
 
-![unite grep](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_grep.png?raw=true "unite grep")
+![unite grep](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_grep.png?raw=true "unite grep")
 
 This menu allows us to search files by regular expression engines. I have it
 configured to use the `ag` program first, then `ack` if `ag` is not found, and
@@ -972,7 +959,7 @@ __Other tools__
 <a id="python"></a>
 ## Python
 
-![unite python](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_python.png?raw=true "unite python")
+![unite python](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_python.png?raw=true "unite python")
 
 __Unite__
 
@@ -1077,7 +1064,7 @@ __Unite__
 <a id="vim"></a>
 ## Vim
 
-![unite vim](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_vim.png?raw=true "unite vim")
+![unite vim](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_vim.png?raw=true "unite vim")
 
 __Unite__
 
@@ -1198,7 +1185,7 @@ These are the menu entries in detail:
 <a id="spelling"></a>
 ## Spell checking & translation
 
-![unite spelling](https://github.com/liangxianzhe/dotvim-image/blob/master/unite_menu_spelling.png?raw=true "unite spelling")
+![unite spelling](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_spelling.png?raw=true "unite spelling")
 
 __Unite__
 
@@ -1440,7 +1427,6 @@ this tool is a sure candidate for a disaster.
 - __vim-markdown__ <https://github.com/joedicastro/vim-markdown>
 - __vim-markdown-extra-preview__ <https://github.com/joedicastro/vim-markdown-extra-preview>
 - __vim-molokai256__  <https://github.com/joedicastro/vim-molokai256>
-- __vim-multiple-cursors__ <https://github.com/terryma/vim-multiple-cursors>
 - __vim-pentadactyl__ <https://github.com/joedicastro/vim-pentadactyl>
 - __vim-repeat__ <https://github.com/tpope/vim-repeat>
 - __vim-signature__ <https://github.com/kshenoy/vim-signature>

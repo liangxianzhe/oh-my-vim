@@ -5,7 +5,7 @@
 "                       (_)_/ |_|_| |_| |_|_|  \___|
 "
 " Author: Xianzhe Liang <liangxianzhe@gmail.com>
-" Source: https://github.com/liangxianzhe/dotvim
+" Source: https://github.com/liangxianzhe/oh-my-vim
 
 " Setup language {{{ ==========================================================
 
@@ -31,16 +31,16 @@ let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
 if !filereadable(neobundle_readme)
     echo "Installing NeoBundle.."
     echo ""
-    silent !mkdir -p $HOME/.vim/bundle
+    silent !mkdir -p $HOME/.oh-my-vim/bundle
     silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
     let iCanHazNeoBundle=0
 endif
 
 " Call NeoBundle
 if has('vim_starting')
-    set rtp+=$HOME/.vim/bundle/neobundle.vim/
+    set rtp+=$HOME/.oh-my-vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand($HOME.'/.vim/bundle/'))
+call neobundle#rc(expand($HOME.'/.oh-my-vim/bundle/'))
 
 " is better if NeoBundle rules NeoBundle (needed!)
 NeoBundle 'Shougo/neobundle.vim'
@@ -120,41 +120,11 @@ endif
 
 " }}}
 
-" PACKAGE LIST {{{
-
-" Use this variable inside your local configuration to declare
-" which package you would like to include
-if ! exists('g:vimified_packages')
-    let g:dotvim_packages = [
-                \'vim',
-                \'basic',
-                \'code', 
-                \'text', 
-                \'grep', 
-                \'searching', 
-                \'registers', 
-                \'navigation', 
-                \'files', 
-                \'git', 
-                \'python', 
-                \'web',
-                \'tools', 
-                \'markdown', 
-                \'bookmarks', 
-                \'sessions', 
-                \'spelling',
-                \'neobundle', 
-                \'colorv'
-                \]
-endif
-
-" }}}
-
 " Import packages {{{
 
-for package in g:dotvim_packages
-if filereadable($HOME . "/.vim/packages/" . package . ".vimrc")
-    exec ':so ' $HOME . "/.vim/packages/" . package . ".vimrc"
+for package in g:oh_my_vim_packages
+if filereadable($HOME . "/.oh-my-vim/packages/" . package . ".vimrc")
+    exec ':so ' $HOME . "/.oh-my-vim/packages/" . package . ".vimrc"
 endif
 endfor
 
