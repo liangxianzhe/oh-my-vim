@@ -28,6 +28,7 @@ let g:virtualenv_stl_format = '(%n)'
 " PythonMode {{{ -------------------------------------------------------------
 
 nmap <silent><Leader>n :PymodeLint<CR>
+nmap <silent><Leader>N :PymodeLintAuto<CR>
 
 let g:pymode_breakpoint_bind = '<Leader>B'
 
@@ -35,14 +36,14 @@ let g:pymode_lint = 1
 let g:pymode_lint_on_write = 0
 let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe', 'pep257']
 let g:pymode_lint_ignore = ''
-let g:pymode_virtualenv = 0
+let g:pymode_virtualenv = 1
 let g:pymode_rope = 1
 
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 1
 
 " Ignore missing docstring error
-let g:pymode_lint_ignore = "C0111,D100,D103" 
+let g:pymode_lint_ignore = "C0111,D100,D101,D102,D103" 
 
 " }}}
 
@@ -89,6 +90,8 @@ let g:unite_source_menu_menus.python.command_candidates = [
         \'normal ,B'],
     \['▷ pylint check                               (pymode)        ⌘ ,n',
         \'PymodeLint'],
+    \['▷ pylint auto correct                        (pymode)        ⌘ ,N',
+        \'PymodeLintAuto'],
     \['▷ go to definition                           (pymode-rope)   ⌘ C-C g',
         \'call pymode#rope#goto_definition()'],
     \['▷ find where a function is used              (pymode-rope)   ⌘ C-C f',
