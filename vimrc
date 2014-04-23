@@ -132,10 +132,10 @@ endif
 " Import packages {{{
 
 for package in g:oh_my_vim_packages
-let package_path = $OH_MY_VIM . "/packages/" . package . ".vimrc"
-if filereadable(package_path)
-    exec ':so ' package_path
-endif
+    let package_path = $OH_MY_VIM . "/packages/" . package . ".vimrc"
+    if filereadable(package_path)
+        exec ':so ' package_path
+    endif
 endfor
 
 " }}}

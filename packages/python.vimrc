@@ -41,6 +41,9 @@ let g:pymode_rope = 1
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 1
 
+" Ignore missing docstring error
+let g:pymode_lint_ignore = "C0111,D100,D103" 
+
 " }}}
 
 
