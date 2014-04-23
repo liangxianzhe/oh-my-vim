@@ -40,7 +40,7 @@ then
       read line
     else
       _update_vim_update
-  fi
+    fi
   fi
 else
   # create the vim file

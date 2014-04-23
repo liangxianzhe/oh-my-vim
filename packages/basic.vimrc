@@ -25,6 +25,7 @@ set ttimeoutlen=0               " toggle between modes almost instantly
 set backspace=indent,eol,start  " defines the backspace key behavior
 set virtualedit=all             " to edit where there is no actual character
 set scrolloff=7                 " buffer when scrolling
+nnoremap Q <nop>                " Never goback to compatible mode
 
 " }}}
 

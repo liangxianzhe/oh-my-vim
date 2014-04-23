@@ -15,6 +15,8 @@
 
 set nocompatible             " No to the total compatibility with the ancient vi
 
+" TODO use vimscript to check update, this will leave some blank lines after
+" leaving vim
 silent !sh $OH_MY_VIM/tools/check_for_upgrade.sh
 
 " Load external configuration before anything else {{{
@@ -83,6 +85,8 @@ NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
 NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
 NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
 NeoBundleLazy 'tsukkee/unite-tag', {'autoload':{'unite_sources':'tag'}}
+NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources': 
+            \['file_mru', 'directory_mru']}}
 
 " }}}
 
@@ -178,6 +182,13 @@ let g:airline#extensions#hunks#non_zero_only = 1
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
 
 " " }}}}
+
+" Neomru {{{
+
+let g:neomru#file_mru_path = $OH_MY_VIM.'/tmp/neomru/file'
+let g:neomru#directory_mru_path = $OH_MY_VIM.'/tmp/neomru/directory'
+
+" }}}
 
 " Unite {{{
 

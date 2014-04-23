@@ -27,22 +27,19 @@ let g:virtualenv_stl_format = '(%n)'
 
 " PythonMode {{{ -------------------------------------------------------------
 
-nmap <silent><Leader>n :PyLint<CR>
+nmap <silent><Leader>n :PymodeLint<CR>
 
-let g:pymode_breakpoint_key = '<Leader>B'
+let g:pymode_breakpoint_bind = '<Leader>B'
 
 let g:pymode_lint = 1
-let g:pymode_lint_write = 0
-let g:pymode_lint_checker = 'pylint,pep8,mccabe,pep257'
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe', 'pep257']
 let g:pymode_lint_ignore = ''
-" let g:pymode_lint_config = $HOME.'/dotfiles/pylint/pylint.rc'
 let g:pymode_virtualenv = 0
-
 let g:pymode_rope = 1
-let g:pymode_rope_goto_def_newwin = 'new'
-let g:pymode_rope_guess_project = 0
-let g:pymode_rope_vim_completion = 1
-let g:pymode_rope_always_show_complete_menu = 1
+
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 1
 
 " }}}
 
@@ -82,45 +79,35 @@ let g:unite_source_menu_menus.python = {
     \}
 let g:unite_source_menu_menus.python.command_candidates = [
     \['▷ run python code                            (pymode)        ⌘ ,r',
-        \'Pyrun'],
+        \'PymodeRun'],
     \['▷ show docs for the current word             (pymode)        ⌘ K',
         \'normal K'],
     \['▷ insert a breakpoint                        (pymode)        ⌘ ,B',
         \'normal ,B'],
     \['▷ pylint check                               (pymode)        ⌘ ,n',
-        \'PyLint'],
-    \['▷ rope autocompletion                        (rope)          ⌘ C-[espacio]',
-        \'RopeCodeAssist'],
-    \['▷ go to definition                           (rope)          ⌘ C-C g',
-        \'RopeGotoDefinition'],
-    \['▷ reorganize imports                         (rope)          ⌘ C-C r o',
-        \'RopeOrganizeImports'],
-    \['▷ refactorize - rename                       (rope)          ⌘ C-C r r',
-        \'RopeRename'],
-    \['▷ refactorize - extract variable             (rope)          ⌘ C-C r l',
-        \'RopeExtractVariable'],
-    \['▷ refactorize - extract method               (rope)          ⌘ C-C r m',
-        \'RopeExtractMethod'],
-    \['▷ refactorize - inline                       (rope)          ⌘ C-C r i',
-        \'RopeInline'],
-    \['▷ refactorize - move                         (rope)          ⌘ C-C r v',
-        \'RopeMove'],
-    \['▷ refactorize - restructure                  (rope)          ⌘ C-C r x',
-        \'RopeRestructure'],
-    \['▷ refactorize - use function                 (rope)          ⌘ C-C r u',
-        \'RopeUseFunction'],
-    \['▷ refactorize - introduce factory            (rope)          ⌘ C-C r f',
-        \'RopeIntroduceFactory'],
-    \['▷ refactorize - change signature             (rope)          ⌘ C-C r s',
-        \'RopeChangeSignature'],
-    \['▷ refactorize - rename current module        (rope)          ⌘ C-C r 1 r',
-        \'RopeRenameCurrentModule'],
-    \['▷ refactorize - move current module          (rope)          ⌘ C-C r 1 m',
-        \'RopeMoveCurrentModule'],
-    \['▷ refactorize - module to package            (rope)          ⌘ C-C r 1 p',
-        \'RopeModuleToPackage'],
-    \['▷ show docs for current word                 (rope)          ⌘ C-C r a d',
-        \'RopeShowDoc'],
+        \'PymodeLint'],
+    \['▷ go to definition                           (pymode-rope)   ⌘ C-C g',
+        \'call pymode#rope#goto_definition()'],
+    \['▷ find where a function is used              (pymode-rope)   ⌘ C-C f',
+        \'call pymode#rope#find_it()'],
+    \['▷ show docs for current word                 (pymode-rope)   ⌘ C-C d',
+        \'call pymode#rope#show_doc()'],
+    \['▷ reorganize imports                         (pymode-rope)   ⌘ C-C r o',
+        \'call pymode#rope#organize_imports()'],
+    \['▷ refactorize - rename                       (pymode-rope)   ⌘ C-C r r',
+        \'call pymode#rope#rename()'],
+    \['▷ refactorize - inline                       (pymode-rope)   ⌘ C-C r i',
+        \'call pymode#rope#inline()'],
+    \['▷ refactorize - move                         (pymode-rope)   ⌘ C-C r v',
+        \'call pymode#rope#move()'],
+    \['▷ refactorize - use function                 (pymode-rope)   ⌘ C-C r u',
+        \'call pymode#rope#use_function()'],
+    \['▷ refactorize - change signature             (pymode-rope)   ⌘ C-C r s',
+        \'call pymode#rope#signature()'],
+    \['▷ refactorize - rename current module        (pymode-rope)   ⌘ C-C r 1 r',
+        \'PymodeRopeRenameModule'],
+    \['▷ refactorize - module to package            (pymode-rope)   ⌘ C-C r 1 p',
+        \'PymodeRopeModuleToPackage'],
     \['▷ list virtualenvs                           (virtualenv)',
         \'Unite output:VirtualEnvList'],
     \['▷ activate virtualenv                        (virtualenv)',

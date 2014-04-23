@@ -1428,6 +1428,7 @@ this tool is a sure candidate for a disaster.
 - __vim-pentadactyl__ <https://github.com/joedicastro/vim-pentadactyl>
 - __vim-repeat__ <https://github.com/tpope/vim-repeat>
 - __vim-signature__ <https://github.com/kshenoy/vim-signature>
+- __vim-snippets__ <https://github.com/honza/vim-snippets>
 - __vim-speeddating__ <https://github.com/tpope/vim-speeddating>
 - __vim-surround__ <https://github.com/tpope/vim-surround>
 - __vim-textobj-entire__ <https://github.com/kana/vim-textobj-entire>
