@@ -47,7 +47,8 @@ endif
 if has('vim_starting')
     let &rtp=neobundle_runtimepath.','.&rtp
 endif
-call neobundle#rc(expand($OH_MY_VIM.'/bundle/'))
+
+call neobundle#begin(expand($OH_MY_VIM.'/bundle/'))
 
 " is better if NeoBundle rules NeoBundle (needed!)
 NeoBundle 'Shougo/neobundle.vim'
@@ -129,17 +130,6 @@ endif
 
 " }}}
 
-" Import packages {{{
-
-for package in g:oh_my_vim_packages
-    let package_path = $OH_MY_VIM . "/packages/" . package . ".vimrc"
-    if filereadable(package_path)
-        exec ':so ' package_path
-    endif
-endfor
-
-" }}}
-
 " Auto install the plugins {{{
 
 " First-time plugins installation
@@ -154,10 +144,24 @@ endif
 NeoBundleCheck
 
 " }}}
+call neobundle#end()
 
 filetype plugin indent on      " Indent and plugins by filetype
 
 " END NEOBUNDLE }}}
+
+
+" IMPORT PACKAGES {{{
+
+for package in g:oh_my_vim_packages
+    let package_path = $OH_MY_VIM . "/packages/" . package . ".vimrc"
+    if filereadable(package_path)
+        exec ':so ' package_path
+    endif
+endfor
+
+" END IMPORT PACKAGES }}}
+
 
 " PLUGINS Setup {{{
 
