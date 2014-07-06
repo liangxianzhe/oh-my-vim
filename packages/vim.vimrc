@@ -66,6 +66,9 @@ let g:unite_source_menu_menus.vim.command_candidates = [
     \['▷ launch executable (dmenu like)',
         \'Unite -start-insert launcher'],
     \]
+
+let g:unite_source_menu_menus.vim.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.vim.command_candidates, [])
+
 nnoremap <silent>[menu]v :Unite menu:vim -silent -start-insert<CR>
 
 " END Unite Menu }}}

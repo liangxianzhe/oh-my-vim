@@ -77,11 +77,11 @@ let g:unite_source_menu_menus.files = {
         \                                          ⌘ [space]o',
     \}
 let g:unite_source_menu_menus.files.command_candidates = [
-    \['▷ open file                                                  ⌘ ,o',
+    \['▷ open file                                                  ⌘ <Leader>o',
         \'Unite -start-insert file'],
-    \['▷ open more recently used files                              ⌘ ,m',
+    \['▷ open more recently used files                              ⌘ <Leader>m',
         \'Unite file_mru'],
-    \['▷ open file with recursive search                            ⌘ ,O',
+    \['▷ open file with recursive search                            ⌘ <Leader>O',
         \'Unite -start-insert file_rec/async'],
     \['▷ edit new file',
         \'Unite file/new'],
@@ -97,17 +97,20 @@ let g:unite_source_menu_menus.files.command_candidates = [
         \'Unite -default-action=lcd directory'],
     \['▷ know current working directory',
         \'Unite output:pwd'],
-    \['▷ junk files                                                 ⌘ ,d',
+    \['▷ junk files                                                 ⌘ <Leader>d',
         \'Unite junkfile/new junkfile'],
     \['▷ save as root                                               ⌘ :w!!',
         \'exe "write !sudo tee % >/dev/null"'],
-    \['▷ quick save                                                 ⌘ ,w',
-        \'normal ,w'],
-    \['▷ open ranger                                                ⌘ ,x',
+    \['▷ quick save                                                 ⌘ <Leader>w',
+        \'normal <Leader>w'],
+    \['▷ open ranger                                                ⌘ <Leader>x',
         \'call RangerChooser()'],
-    \['▷ open vimfiler                                              ⌘ ,X',
+    \['▷ open vimfiler                                              ⌘ <Leader>X',
         \'VimFiler'],
     \]
+
+let g:unite_source_menu_menus.files.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.files.command_candidates, [])
+
 nnoremap <silent>[menu]o :Unite -silent -winheight=17 -start-insert
             \ menu:files<CR>
 " END Unite Menu }}}

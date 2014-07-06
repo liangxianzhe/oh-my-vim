@@ -84,27 +84,30 @@ let g:unite_source_menu_menus.tools = {
         \                                           ⌘ [space]t',
     \}
 let g:unite_source_menu_menus.tools.command_candidates = [
-    \['▷ run with python2 in tmux panel             (vimux)         ⌘ ,rr',
+    \['▷ run with python2 in tmux panel             (vimux)         ⌘ <Leader>rr',
         \'normal ,rr'],
-    \['▷ run with python3 in tmux panel             (vimux)         ⌘ ,r3',
+    \['▷ run with python3 in tmux panel             (vimux)         ⌘ <Leader>r3',
         \'normal ,r3'],
-    \['▷ run with python2 & time in tmux panel      (vimux)         ⌘ ,rt',
+    \['▷ run with python2 & time in tmux panel      (vimux)         ⌘ <Leader>rt',
         \'normal ,rt'],
-    \['▷ run with pypy & time in tmux panel         (vimux)         ⌘ ,rp',
+    \['▷ run with pypy & time in tmux panel         (vimux)         ⌘ <Leader>rp',
         \'normal ,rp'],
-    \['▷ command prompt to run in a tmux panel      (vimux)         ⌘ ,rc',
+    \['▷ command prompt to run in a tmux panel      (vimux)         ⌘ <Leader>rc',
         \'VimuxPromptCommand'],
-    \['▷ repeat last command                        (vimux)         ⌘ ,rl',
+    \['▷ repeat last command                        (vimux)         ⌘ <Leader>rl',
         \'VimuxRunLastCommand'],
-    \['▷ stop command execution in tmux panel       (vimux)         ⌘ ,rs',
+    \['▷ stop command execution in tmux panel       (vimux)         ⌘ <Leader>rs',
         \'VimuxInterruptRunner'],
-    \['▷ inspect tmux panel                         (vimux)         ⌘ ,ri',
+    \['▷ inspect tmux panel                         (vimux)         ⌘ <Leader>ri',
         \'VimuxInspectRunner'],
-    \['▷ close tmux panel                           (vimux)         ⌘ ,rq',
+    \['▷ close tmux panel                           (vimux)         ⌘ <Leader>rq',
         \'VimuxCloseRunner'],
-    \['▷ open link                                                  ⌘ ,j',
+    \['▷ open link                                                  ⌘ <Leader>j',
         \'normal ,j'],
     \]
+
+let g:unite_source_menu_menus.tools.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.tools.command_candidates, [])
+
 nnoremap <silent>[menu]t :Unite -silent menu:tools<CR>
 
 " END Unite Menu }}}

@@ -40,19 +40,22 @@ let g:unite_source_menu_menus.spelling = {
         \                                        ⌘ [space]s',
     \}
 let g:unite_source_menu_menus.spelling.command_candidates = [
-    \['▷ spell checking in English                                  ⌘ ,se',
+    \['▷ spell checking in English                                  ⌘ <Leader>se',
         \'setlocal spell spelllang=en'],
-    \['▷ turn off spell checking                                    ⌘ ,so',
+    \['▷ turn off spell checking                                    ⌘ <Leader>so',
         \'setlocal nospell'],
-    \['▷ jumps to next bad spell word and show suggestions          ⌘ ,sc',
-        \'normal ,sc'],
-    \['▷ jumps to next bad spell word                               ⌘ ,sn',
-        \'normal ,sn'],
-    \['▷ suggestions                                                ⌘ ,sp',
-        \'normal ,sp'],
-    \['▷ add word to dictionary                                     ⌘ ,sa',
-        \'normal ,sa'],
+    \['▷ jumps to next bad spell word and show suggestions          ⌘ <Leader>sc',
+        \'normal <Leader>sc'],
+    \['▷ jumps to next bad spell word                               ⌘ <Leader>sn',
+        \'normal <Leader>sn'],
+    \['▷ suggestions                                                ⌘ <Leader>sp',
+        \'normal <Leader>sp'],
+    \['▷ add word to dictionary                                     ⌘ <Leader>sa',
+        \'normal <Leader>sa'],
     \]
+
+let g:unite_source_menu_menus.spelling.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.spelling.command_candidates, [])
+
 nnoremap <silent>[menu]s :Unite -silent menu:spelling<CR>
 
 " END Unite Menu }}}

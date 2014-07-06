@@ -33,9 +33,9 @@ let g:unite_source_menu_menus.grep = {
         \                                          ⌘ [space]a',
     \}
 let g:unite_source_menu_menus.grep.command_candidates = [
-    \['▷ grep (ag → ack → grep)                                     ⌘ ,a',
+    \['▷ grep (ag → ack → grep)                                     ⌘ <Leader>a',
         \'Unite -auto-preview -winheight=40 -no-quit grep'],
-    \['▷ grep current word                                          ⌘ ,A',
+    \['▷ grep current word                                          ⌘ <Leader>A',
         \'UniteWithCursorWord -auto-preview -winheight=40 -no-quit grep'],
     \['▷ find',
         \'Unite find'],
@@ -44,6 +44,9 @@ let g:unite_source_menu_menus.grep.command_candidates = [
     \['▷ vimgrep (very slow)',
         \'Unite vimgrep'],
     \]
+
+let g:unite_source_menu_menus.grep.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.grep.command_candidates, [])
+
 nnoremap <silent>[menu]a :Unite -silent menu:grep<CR>
 
 " END Unite Menu }}}

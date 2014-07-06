@@ -39,6 +39,9 @@ let g:unite_source_menu_menus.neobundle.command_candidates = [
     \['▷ neobundle direct edit',
         \'NeoBundleDirectEdit'],
     \]
+
+let g:unite_source_menu_menus.neobundle.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.neobundle.command_candidates, [])
+
 nnoremap <silent>[menu]n :Unite -silent -start-insert menu:neobundle<CR>
 
 " END Unite Menu }}}

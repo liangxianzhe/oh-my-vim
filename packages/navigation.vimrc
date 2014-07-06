@@ -37,9 +37,9 @@ let g:unite_source_menu_menus.navigation = {
         \                   ⌘ [space]b',
     \}
 let g:unite_source_menu_menus.navigation.command_candidates = [
-    \['▷ buffers                                                    ⌘ ,b',
+    \['▷ buffers                                                    ⌘ <Leader>b',
         \'Unite buffer'],
-    \['▷ tabs                                                       ⌘ ,B',
+    \['▷ tabs                                                       ⌘ <Leader>B',
         \'Unite tab'],
     \['▷ windows',
         \'Unite window'],
@@ -49,19 +49,22 @@ let g:unite_source_menu_menus.navigation.command_candidates = [
         \'Unite quickfix'],
     \['▷ resize windows                                             ⌘ C-C C-W',
         \'WinResizerStartResize'],
-    \['▷ new vertical window                                        ⌘ ,v',
+    \['▷ new vertical window                                        ⌘ <Leader>v',
         \'vsplit'],
-    \['▷ new horizontal window                                      ⌘ ,h',
+    \['▷ new horizontal window                                      ⌘ <Leader>h',
         \'split'],
-    \['▷ close current window                                       ⌘ ,k',
+    \['▷ close current window                                       ⌘ <Leader>k',
         \'close'],
-    \['▷ toggle quickfix window                                     ⌘ ,q',
-        \'normal ,q'],
-    \['▷ zoom                                                       ⌘ ,z',
+    \['▷ toggle quickfix window                                     ⌘ <Leader>q',
+        \'normal <Leader>q'],
+    \['▷ zoom                                                       ⌘ <Leader>z',
         \'ZoomWinTabToggle'],
-    \['▷ delete buffer                                              ⌘ ,K',
+    \['▷ delete buffer                                              ⌘ <Leader>K',
         \'bd'],
     \]
+
+let g:unite_source_menu_menus.navigation.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.navigation.command_candidates, [])
+
 nnoremap <silent>[menu]b :Unite -silent menu:navigation<CR>
 
 " END Unite Menu }}}
