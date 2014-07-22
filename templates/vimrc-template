@@ -21,7 +21,8 @@ let g:oh_my_vim_packages=[
             \'sessions', 
             \'spelling',
             \'neobundle', 
-            \'colorv'
+            \'colorv',
+            \'golang'
             \]
 
 exec ':so ' $OH_MY_VIM."/vimrc"
