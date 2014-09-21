@@ -11,7 +11,7 @@ NeoBundleLazy 'fatih/vim-go', {'autoload': {'filetypes': ['go']}}
 
 " Plugin Setup {{{
 
-let g:go_bin_path = expand("$OH_MY_VIM/vim-go")
+let g:go_fmt_command = "goimports"
 
 au FileType go nmap <C-C>i :GoInfo<CR> 
 au FileType go nmap <C-C>l :GoLint<CR> 
