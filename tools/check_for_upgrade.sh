@@ -1,21 +1,21 @@
 #!/bin/sh
 
-function _current_epoch() {
+_current_epoch() {
   echo $(($(date +%s) / 60 / 60 / 24))
 }
 
-function _update_vim_update() {
+_update_vim_update() {
   echo "LAST_EPOCH=$(_current_epoch)" > ~/.vim-update
 }
 
-function _upgrade_vim() {
+_upgrade_vim() {
   /usr/bin/env OH_MY_VIM=$OH_MY_VIM /bin/sh $OH_MY_VIM/tools/upgrade.sh
   # update the vim file
   _update_vim_update
 }
 
 epoch_target=$UPDATE_VIM_DAYS
-if [[ -z "$epoch_target" ]]; then
+if [ -z "$epoch_target" ]; then
   # Default to old behavior
   epoch_target=13
 fi
@@ -24,7 +24,7 @@ if [ -f ~/.vim-update ]
 then
   . ~/.vim-update
 
-  if [[ -z "$LAST_EPOCH" ]]; then
+  if [ -z "$LAST_EPOCH" ]; then
     _update_vim_update && return 0;
   fi
 
