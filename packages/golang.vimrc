@@ -28,6 +28,9 @@ au FileType go nmap <C-C>t :GoTest<CR>
 au FileType go nmap <C-C>e :GoErrCheck<CR> 
 au FileType go nmap <C-C>fi :GoFiles<CR> 
 au FileType go nmap <C-C>de :GoDeps<CR> 
+au FileType go nmap <C-C>R :GoRename<CR> 
+au FileType go nmap <C-C>im :GoImplements<CR> 
+au FileType go nmap <C-C>ce :GoCallees<CR> 
 au FileType go nmap <C-C>u :GoUpdateBinaries<CR> 
 au FileType go nmap <C-C>od :GoOracleDescribe<CR> 
 au FileType go nmap <C-C>oce :GoOracleCallees<CR> 
