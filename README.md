@@ -9,7 +9,7 @@ out of the box, well organized and easy to fork and maintain.
 
 ## 1. Install a bunch of tools needed
 
-For Mac OS, you can just use my script (require brew installed). This will
+For Mac OS, you can just [use my script](/tools/prepare_mac.sh) (require brew installed). This will
 install some necessory tools and the latest vim (7.4) *with lua support*.
 
     curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/prepare_mac.sh | sh
@@ -19,7 +19,7 @@ according (apt-get etc). Please note a vim with lua support is needed.
 
 ## 2. Set up the vim:
 
-Run:
+Run: [tools/install.sh](tools/install.sh)
 
     curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/install.sh | sh
 
