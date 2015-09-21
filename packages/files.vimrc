@@ -21,6 +21,7 @@ map <Leader>x :call RangerChooser()<CR>
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " File explorer (needed where ranger is not available)
 NeoBundleLazy 'Shougo/vimfiler', {'autoload' : { 'commands' : ['VimFiler']}}
@@ -38,6 +39,7 @@ NeoBundle 'Shougo/vinarise.vim'
 
 " }}}
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

@@ -3,6 +3,7 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " Admin Git
 NeoBundle 'tpope/vim-fugitive'
@@ -14,6 +15,7 @@ NeoBundleLazy 'gregsexton/gitv', {'depends':['tpope/vim-fugitive'],
 " Browse GitHub events in Vim
 NeoBundle 'joedicastro/vim-github-dashboard'
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

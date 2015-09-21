@@ -4,9 +4,11 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 NeoBundleLazy 'fatih/vim-go', {'autoload': {'filetypes': ['go']}}
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

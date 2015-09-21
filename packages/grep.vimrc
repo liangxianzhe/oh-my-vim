@@ -3,6 +3,7 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " grep
 nnoremap <silent><Leader>a :Unite -silent -auto-preview -winheight=40 -no-quit
@@ -25,6 +26,7 @@ elseif executable('ack')
     let g:unite_source_grep_search_word_highlight = 1
 endif
 
+call neobundle#end()
 " END Plugin Setup }}}
 
 " Unite Menu {{{

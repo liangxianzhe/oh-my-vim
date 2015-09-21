@@ -3,12 +3,14 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " Markdown Syntax
 NeoBundleLazy 'joedicastro/vim-markdown'
 " Makes a Markdown Extra preview into the browser
 NeoBundleLazy 'joedicastro/vim-markdown-extra-preview'
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

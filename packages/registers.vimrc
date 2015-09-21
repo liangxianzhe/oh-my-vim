@@ -3,10 +3,12 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " browse the vim undo tree
 NeoBundleLazy 'sjl/gundo.vim', { 'autoload' : {'commands': 'GundoToggle'}}
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

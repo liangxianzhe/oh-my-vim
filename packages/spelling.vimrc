@@ -16,10 +16,12 @@ nmap <Leader>sa zg
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " translate text with google translator
 NeoBundle 'maksimr/vim-translator'
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

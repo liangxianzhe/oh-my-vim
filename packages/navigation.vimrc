@@ -3,6 +3,7 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " Zooms a window
 NeoBundleLazy 'vim-scripts/zoomwintab.vim', {'autoload' :
@@ -10,6 +11,7 @@ NeoBundleLazy 'vim-scripts/zoomwintab.vim', {'autoload' :
 " easily window resizing
 NeoBundle 'jimsei/winresizer'
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

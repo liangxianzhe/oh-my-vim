@@ -4,30 +4,6 @@
 
 " Plugins {{{
 
-" Colorschemes {{{
-
-" Dark themes
-" Improved terminal version of molokai, almost identical to the GUI one
-NeoBundle 'joedicastro/vim-molokai256'
-
-NeoBundle 'tomasr/molokai'
-NeoBundleLazy 'sjl/badwolf', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-NeoBundleLazy 'nielsmadan/harlequin', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-
-
-" Light themes
-NeoBundleLazy 'vim-scripts/summerfruit256.vim', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-NeoBundleLazy 'joedicastro/vim-github256', { 'autoload' :
-        \ { 'unite_sources' : 'colorscheme', }}
-
-" Make terminal themes from GUI themes
-NeoBundleLazy 'godlygeek/csapprox', { 'autoload' :
-        \ { 'commands' : ['CSApprox', 'CSApproxSnapshot']}}
-
-" }}}
 
 " END Plugins }}}
 

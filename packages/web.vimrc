@@ -4,6 +4,7 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " HTML/CSS {{{
 
@@ -21,6 +22,7 @@ NeoBundle 'mattn/webapi-vim'
 
 " }}}
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

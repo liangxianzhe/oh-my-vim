@@ -91,6 +91,31 @@ NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources':
 
 " }}}
 
+" Colorschemes {{{
+
+" Dark themes
+" Improved terminal version of molokai, almost identical to the GUI one
+NeoBundle 'joedicastro/vim-molokai256'
+
+NeoBundle 'tomasr/molokai'
+NeoBundleLazy 'sjl/badwolf', { 'autoload' :
+        \ { 'unite_sources' : 'colorscheme', }}
+NeoBundleLazy 'nielsmadan/harlequin', { 'autoload' :
+        \ { 'unite_sources' : 'colorscheme', }}
+
+
+" Light themes
+NeoBundleLazy 'vim-scripts/summerfruit256.vim', { 'autoload' :
+        \ { 'unite_sources' : 'colorscheme', }}
+NeoBundleLazy 'joedicastro/vim-github256', { 'autoload' :
+        \ { 'unite_sources' : 'colorscheme', }}
+
+" Make terminal themes from GUI themes
+NeoBundleLazy 'godlygeek/csapprox', { 'autoload' :
+        \ { 'commands' : ['CSApprox', 'CSApproxSnapshot']}}
+
+" }}}
+
 " GUI {{{
 
 " A better looking status line
@@ -98,6 +123,7 @@ NeoBundle 'bling/vim-airline'
 
 " }}}
 
+call neobundle#end()
 " END BUNDLES }}}
 
 " <Leader> & <LocalLeader> mapping {{{
@@ -130,22 +156,6 @@ endif
 
 " }}}
 
-" Auto install the plugins {{{
-
-" First-time plugins installation
-if iCanHazNeoBundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :NeoBundleInstall
-endif
-
-" Check if all of the plugins are already installed, in other case ask if we
-" want to install them (useful to add plugins in the .vimrc)
-NeoBundleCheck
-
-" }}}
-call neobundle#end()
-
 filetype plugin indent on      " Indent and plugins by filetype
 
 " END NEOBUNDLE }}}
@@ -162,6 +172,22 @@ endfor
 
 " END IMPORT PACKAGES }}}
 
+" Auto install the plugins {{{
+
+" First-time plugins installation
+if iCanHazNeoBundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    set nomore
+    NeoBundleInstall
+endif
+set more
+
+" Check if all of the plugins are already installed, in other case ask if we
+" want to install them (useful to add plugins in the .vimrc)
+NeoBundleCheck
+
+" }}}
 
 " PLUGINS Setup {{{
 

@@ -53,6 +53,7 @@ autocmd FileType markdown NeoBundleSource vim-markdown-extra-preview
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " Autocompletion
 NeoBundle 'Shougo/neocomplete.vim'
@@ -71,6 +72,7 @@ NeoBundle 'scrooloose/syntastic'
 
 " }}}
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

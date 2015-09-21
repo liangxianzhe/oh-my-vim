@@ -97,6 +97,7 @@ map <Leader>ef :Unite output:WordFrequency<CR>
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " Autocompletion of (, [, {, ', ", ...
 NeoBundle 'delimitMate.vim'
@@ -128,6 +129,7 @@ NeoBundle 'kana/vim-textobj-line' " al, il
 NeoBundle 'kana/vim-textobj-underscore' " a_, i_
 NeoBundle 'kana/vim-textobj-user'
 
+call neobundle#end()
 " END Plugins }}}
 
 " delimitmate {{{

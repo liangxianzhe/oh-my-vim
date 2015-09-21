@@ -4,6 +4,7 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " Admin virtualenvs
 NeoBundle 'jmcantrell/vim-virtualenv'
@@ -14,6 +15,7 @@ NeoBundleLazy 'klen/python-mode', {'autoload': {'filetypes': ['python']}}
 " Show reports from coverage.py
 NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python']}}
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{

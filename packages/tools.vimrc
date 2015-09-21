@@ -4,6 +4,7 @@
 " END VIM SETUP }}}
 
 " Plugins {{{
+call neobundle#append()
 
 " Open external links {{{
 
@@ -21,6 +22,7 @@ NeoBundleLazy 'vimez/vim-tmux', { 'autoload' : { 'filetypes' : 'conf'}}
 
 " }}}
 
+call neobundle#end()
 " END Plugins }}}
 
 " Plugin Setup {{{
