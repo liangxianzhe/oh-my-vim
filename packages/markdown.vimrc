@@ -37,6 +37,9 @@ let g:unite_source_menu_menus.markdown.command_candidates = [
     \['▷ refresh',
         \'Mer'],
     \]
+
+let g:unite_source_menu_menus.markdown.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.markdown.command_candidates, [])
+
 nnoremap <silent>[menu]k :Unite -silent menu:markdown<CR>
 
 " END Unite Menu }}}

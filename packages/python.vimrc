@@ -82,15 +82,15 @@ let g:unite_source_menu_menus.python = {
         \                                          ⌘ [space]p',
     \}
 let g:unite_source_menu_menus.python.command_candidates = [
-    \['▷ run python code                            (pymode)        ⌘ ,r',
+    \['▷ run python code                            (pymode)        ⌘ <Leader>r',
         \'PymodeRun'],
     \['▷ show docs for the current word             (pymode)        ⌘ K',
         \'normal K'],
-    \['▷ insert a breakpoint                        (pymode)        ⌘ ,B',
-        \'normal ,B'],
-    \['▷ pylint check                               (pymode)        ⌘ ,n',
+    \['▷ insert a breakpoint                        (pymode)        ⌘ <Leader>B',
+        \'normal <Leader>B'],
+    \['▷ pylint check                               (pymode)        ⌘ <Leader>n',
         \'PymodeLint'],
-    \['▷ pylint auto correct                        (pymode)        ⌘ ,N',
+    \['▷ pylint auto correct                        (pymode)        ⌘ <Leader>N',
         \'PymodeLintAuto'],
     \['▷ go to definition                           (pymode-rope)   ⌘ C-C g',
         \'call pymode#rope#goto_definition()'],
@@ -129,6 +129,9 @@ let g:unite_source_menu_menus.python.command_candidates = [
     \['▷ toggle coverage marks                      (coveragepy)',
         \'Coveragepy show'],
     \]
+
+let g:unite_source_menu_menus.python.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.python.command_candidates, [])
+
 nnoremap <silent>[menu]p :Unite -silent -winheight=42 menu:python<CR>
 
 " END Unite Menu }}}

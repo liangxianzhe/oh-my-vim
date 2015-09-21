@@ -27,7 +27,7 @@ let g:unite_source_menu_menus.registers = {
         \                            ⌘ [space]i',
     \}
 let g:unite_source_menu_menus.registers.command_candidates = [
-    \['▷ yanks                                                      ⌘ ,i',
+    \['▷ yanks                                                      ⌘ <Leader>i',
         \'Unite history/yank'],
     \['▷ commands       (history)                                   ⌘ q:',
         \'Unite history/command'],
@@ -37,9 +37,12 @@ let g:unite_source_menu_menus.registers.command_candidates = [
         \'Unite register'],
     \['▷ messages',
         \'Unite output:messages'],
-    \['▷ undo tree      (gundo)                                     ⌘ ,u',
+    \['▷ undo tree      (gundo)                                     ⌘ <Leader>u',
         \'GundoToggle'],
     \]
+
+let g:unite_source_menu_menus.registers.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.registers.command_candidates, [])
+
 nnoremap <silent>[menu]i :Unite -silent menu:registers<CR>
 
 " END Unite Menu }}}

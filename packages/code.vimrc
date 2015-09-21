@@ -160,17 +160,20 @@ let g:unite_source_menu_menus.code = {
         \                                                ⌘ [space]c',
     \}
 let g:unite_source_menu_menus.code.command_candidates = [
-    \['▷ toggle auto-completion state (manual → disabled → auto)    ⌘ ,ea',
+    \['▷ toggle auto-completion state (manual → disabled → auto)  ⌘ <Leader>ea',
         \'call ToggleNeoComplete()'],
     \['▷ syntastic toggle                           (syntastic)',
         \'SyntasticToggleMode'],
-    \['▷ syntastic check & errors                   (syntastic)     ⌘ ,N',
-        \'normal ,N'],
+    \['▷ syntastic check & errors                   (syntastic)   ⌘ <Leader>N',
+        \'normal <Leader>N'],
     \['▷ count lines of code',
         \'Unite -default-action= output:call\\ LinesOfCode()'],
-    \['▷ toggle indent lines                                        ⌘ ,L',
+    \['▷ toggle indent lines                                      ⌘ <Leader>L',
         \'IndentLinesToggle'],
     \]
+
+let g:unite_source_menu_menus.code.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.code.command_candidates, [])
+
 nnoremap <silent>[menu]c :Unite -silent menu:code<CR>
 
 " END Unite Menu }}}

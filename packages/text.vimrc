@@ -152,13 +152,13 @@ let g:unite_source_menu_menus.text = {
         \                                          ⌘ [space]e',
     \}
 let g:unite_source_menu_menus.text.command_candidates = [
-    \['▷ toggle search results highlight                            ⌘ ,eq',
+    \['▷ toggle search results highlight                            ⌘ <Leader>eq',
         \'set invhlsearch'],
-    \['▷ toggle line numbers                                        ⌘ ,l',
+    \['▷ toggle line numbers                                        ⌘ <Leader>l',
         \'call ToggleRelativeAbsoluteNumber()'],
-    \['▷ toggle wrapping                                            ⌘ ,ew',
+    \['▷ toggle wrapping                                            ⌘ <Leader>ew',
         \'call ToggleWrap()'],
-    \['▷ show hidden chars                                          ⌘ ,eh',
+    \['▷ show hidden chars                                          ⌘ <Leader>eh',
         \'set list!'],
     \['▷ toggle fold                                                ⌘ /',
         \'normal za'],
@@ -166,17 +166,17 @@ let g:unite_source_menu_menus.text.command_candidates = [
         \'normal zR'],
     \['▷ close all folds                                            ⌘ zM',
         \'normal zM'],
-    \['▷ copy to the clipboard                                      ⌘ ,y',
-        \'normal ,y'],
-    \['▷ paste from the clipboard                                   ⌘ ,p',
-        \'normal ,p'],
-    \['▷ toggle paste mode                                          ⌘ ,P',
-        \'normal ,P'],
-    \['▷ remove trailing whitespaces                                ⌘ ,et',
-        \'normal ,et'],
-    \['▷ text statistics                                            ⌘ ,es',
+    \['▷ copy to the clipboard                                      ⌘ <Leader>y',
+        \'normal <Leader>y'],
+    \['▷ paste from the clipboard                                   ⌘ <Leader>p',
+        \'normal <Leader>p'],
+    \['▷ toggle paste mode                                          ⌘ <Leader>P',
+        \'normal <Leader>P'],
+    \['▷ remove trailing whitespaces                                ⌘ <Leader>et',
+        \'normal <Leader>et'],
+    \['▷ text statistics                                            ⌘ <Leader>es',
         \'Unite output:normal\ ,es -no-cursor-line'],
-    \['▷ show word frequency                                        ⌘ ,ef',
+    \['▷ show word frequency                                        ⌘ <Leader>ef',
         \'Unite output:WordFrequency'],
     \['▷ show available digraphs',
         \'digraphs'],
@@ -185,6 +185,9 @@ let g:unite_source_menu_menus.text.command_candidates = [
     \['▷ show current char info                                     ⌘ ga',
         \'normal ga'],
     \]
+
+let g:unite_source_menu_menus.text.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.text.command_candidates, [])
+
 nnoremap <silent>[menu]e :Unite -silent -winheight=20 menu:text <CR>
 
 " END Unite Menu }}}

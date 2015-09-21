@@ -21,6 +21,9 @@ let g:unite_source_menu_menus.bookmarks.command_candidates = [
     \['▷ add bookmark',
         \'UniteBookmarkAdd'],
     \]
+
+let g:unite_source_menu_menus.bookmarks.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.bookmarks.command_candidates, [])
+
 nnoremap <silent>[menu]m :Unite -silent menu:bookmarks<CR>
 
 " END Unite Menu }}}

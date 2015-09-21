@@ -38,6 +38,9 @@ let g:unite_source_menu_menus.web.command_candidates = [
     \['▷ show emmet tutorial',
         \'h emmet-tutorial'],
     \]
+
+let g:unite_source_menu_menus.web.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.web.command_candidates, [])
+
 nnoremap <silent>[menu]w :Unite -silent menu:web<CR>
 
 " END Unite Menu }}}

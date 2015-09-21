@@ -79,36 +79,39 @@ let g:unite_source_menu_menus.colorv = {
         \                                      ⌘ [space]l',
     \}
 let g:unite_source_menu_menus.colorv.command_candidates = [
-    \['▷ open colorv                                                ⌘ ,cv',
+    \['▷ open colorv                                                ⌘ <Leader>cv',
         \'ColorV'],
-    \['▷ open colorv with the color under the cursor                ⌘ ,cw',
+    \['▷ open colorv with the color under the cursor                ⌘ <Leader>cw',
         \'ColorVView'],
-    \['▷ preview colors                                             ⌘ ,cpp',
+    \['▷ preview colors                                             ⌘ <Leader>cpp',
         \'ColorVPreview'],
-    \['▷ color picker                                               ⌘ ,cd',
+    \['▷ color picker                                               ⌘ <Leader>cd',
         \'ColorVPicker'],
-    \['▷ edit the color under the cursor                            ⌘ ,ce',
+    \['▷ edit the color under the cursor                            ⌘ <Leader>ce',
         \'ColorVEdit'],
-    \['▷ edit the color under the cursor (and all the concurrences) ⌘ ,cE',
+    \['▷ edit the color under the cursor (and all the concurrences) ⌘ <Leader>cE',
         \'ColorVEditAll'],
-    \['▷ insert a color                                             ⌘ ,cii',
+    \['▷ insert a color                                             ⌘ <Leader>cii',
         \'exe "ColorVInsert " .GetColorFormat()'],
-    \['▷ color list relative to the current                         ⌘ ,cgh',
+    \['▷ color list relative to the current                         ⌘ <Leader>cgh',
         \'exe "ColorVList " .GetColorMethod() "
         \ ".input("number of colors? (optional): ")
         \ " ".input("number of steps?  (optional): ")'],
-    \['▷ show colors list (Web W3C colors)                          ⌘ ,cn',
+    \['▷ show colors list (Web W3C colors)                          ⌘ <Leader>cn',
         \'ColorVName'],
-    \['▷ choose color scheme (ColourLovers, Kuler)                  ⌘ ,css',
+    \['▷ choose color scheme (ColourLovers, Kuler)                  ⌘ <Leader>css',
         \'ColorVScheme'],
-    \['▷ show favorite color schemes                                ⌘ ,csf',
+    \['▷ show favorite color schemes                                ⌘ <Leader>csf',
         \'ColorVSchemeFav'],
-    \['▷ new color scheme                                           ⌘ ,csn',
+    \['▷ new color scheme                                           ⌘ <Leader>csn',
         \'ColorVSchemeNew'],
     \['▷ create hue gradation between two colors',
         \'exe "ColorVTurn2 " " ".input("Color 1 (hex): ")
         \" ".input("Color 2 (hex): ")'],
     \]
+
+let g:unite_source_menu_menus.colorv.command_candidates = helperfuncs#unite_menu_gen(g:unite_source_menu_menus.colorv.command_candidates, [])
+
 nnoremap <silent>[menu]l :Unite -silent menu:colorv<CR>
 
 " END Unite Menu }}}
