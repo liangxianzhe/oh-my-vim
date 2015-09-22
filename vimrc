@@ -156,7 +156,6 @@ endif
 
 " }}}
 
-filetype plugin indent on      " Indent and plugins by filetype
 
 " END NEOBUNDLE }}}
 
@@ -170,6 +169,9 @@ for package in g:oh_my_vim_packages
         exec ':so ' package_path
     endif
 endfor
+
+" Indent and plugins by filetype. Need to turn it on after importing packages.
+filetype plugin indent on      
 
 " END IMPORT PACKAGES }}}
 
