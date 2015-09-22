@@ -163,6 +163,7 @@ filetype plugin indent on      " Indent and plugins by filetype
 
 " IMPORT PACKAGES {{{
 
+exec ':so ' $OH_MY_VIM."/autoload/helperfuncs.vim"
 for package in g:oh_my_vim_packages
     let package_path = $OH_MY_VIM . "/packages/" . package . ".vimrc"
     if filereadable(package_path)

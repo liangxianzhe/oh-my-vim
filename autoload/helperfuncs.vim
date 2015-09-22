@@ -1,7 +1,6 @@
-let s:leaderKey = exists("&mapleader")?&mapleader:'\'
+let s:leaderKey = exists("&mapleader")?&mapleader:','
 
 function! helperfuncs#unite_menu_gen(unite_menu, empty_list)
-    let l:leaderKey = exists("&mapleader")?&mapleader:'\'
     let l:empty_list = a:empty_list
 
     if empty(a:unite_menu)
