@@ -113,7 +113,6 @@ Here is current packages.
 - [vim](#vim) - vim 
 - [neobundle](#neobundle) - plugins administration with neobundle
 - [spelling](#spelling) - spell checking & translation
-- [colorv](#colorv) - color management
 - [markdown](#markdown) - markdown
 - [tools](#tools) - some other tools
 
@@ -1193,71 +1192,6 @@ __Other tools__
 
 - `T` Translate selected text to Chinese. 
 
-<a id="colorv"></a>
-## Color Management
-
-![unite colorv](http://joedicastro.com/static/pictures/unite_menu_colorv_en.png "unite colorv")
-
-ColorV is the perfect plugin to deal with Color Management under Vim. And is
-ideal for edit CSS files and preview the colors that match with his definition.
-Also have a lot of tools for pick a color, choose/create a color scheme, deal
-with different color spaces, ... It has virtually everything you could need for
-color management, without envy too many professional tools
-
-__Unite__
-
-`<LocalLeader>c` or `:Unite menu:colorv` shows the *ColorV* menu
-
-![colorv](http://joedicastro.com/static/pictures/colorv_en.gif "ColorV")
-
-__Menu__
-
-- *open colorv* show the ColorV window
-
-- *open colorv with the color under the cursor* show the ColorV window with the
-  color under the cursor selected
-
-- *preview colors* is very useful for CSS sheets, where shows the color codes
-  highlighted with its matching color
-
-- *color picker* open a graphical color picker
-
-- *edit the color under the cursor* open ColorV window with the color under the
-  cursor and when we close it, put the edited color in the buffer
-
-- the next entry is similar as above, but in this case change all the buffer
-  colors similar to the selected one (previous confirmation)
-
-- *insert a color* insert a color using the ColorV window. In the mapping the
-  second `i` can be replaced for a `r` to insert a RGB color or a `m` for a CMYK
-  one, etcetera (look at the help for more information)
-
-- *color list relative to the current* show a side window with a color list with
-  the same hue that the one under the cursor. The `h` in the mapping can
-  replaced by a `s` to show a color list by saturation, `a` for analogues, and
-  so on (consult the help for more info)
-
-- *show color list (Web W3C colors)* show a side window with a colors list by
-  name (Web W3C colors)
-
-- *choose color scheme (ColourLovers, Kuler)* allow us to choose a color scheme
-  from [Kuler](https://kuler.adobe.com) o
-  [ColourLovers](http://www.colourlovers.com/)
-
-- *show favoire color schemes* show the color schemes marked as favorites
-  (`f` to mark it, `F` to unmark it)
-
-- *new color scheme* create a new color scheme
-
-- *create hue gradation between two colors* crate a color gradation based in a
-  parameter (hue, saturation, ...)
-
-    > __Mappings in the ColorV window__
-
-    > - `z/Z` resize the window
-    > - `?` show the mappings ciclically
-    > - `q` close the window
-
 <a id="markdown"></a>
 ## Markdown
 
@@ -1381,7 +1315,6 @@ this tool is a sure candidate for a disaster.
 # Plugins & Colorschemes
 
 - __badwolf__  <https://github.com/sjl/badwolf>
-- __colorv.vim__ <https://github.com/Rykka/colorv.vim>
 - __coveragepy.vim__ <https://github.com/alfredodeza/coveragepy.vim>
 - __crontab.vim__ <https://github.com/vim-scripts/crontab.vim>
 - __csapprox__ <https://github.com/godlygeek/csapprox>

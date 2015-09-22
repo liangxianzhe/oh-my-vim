@@ -22,7 +22,6 @@ let g:oh_my_vim_packages=[
             \'sessions', 
             \'spelling',
             \'neobundle', 
-            \'colorv',
             \'golang'
             \]
 
