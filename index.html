@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Oh-my-vim by liangxianzhe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Oh-my-vim</h1>
+      <h2 class="project-tagline">Awesome vim config for everyone.</h2>
+      <a href="https://github.com/liangxianzhe/oh-my-vim" class="btn">View on GitHub</a>
+      <a href="https://github.com/liangxianzhe/oh-my-vim/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/liangxianzhe/oh-my-vim/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="oh-my-vim" class="anchor" href="#oh-my-vim" aria-hidden="true"><span class="octicon octicon-link"></span></a>Oh My Vim</h1>
+
+<p><strong>Version 0.95  (2014-04-22)</strong></p>
+
+<p>Everyone should try this awesome vim config. It is clean, easy to use
+out of the box, well organized and easy to fork and maintain.</p>
+
+<h1>
+<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to install</h1>
+
+<h2>
+<a id="1-install-a-bunch-of-tools-needed" class="anchor" href="#1-install-a-bunch-of-tools-needed" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Install a bunch of tools needed</h2>
+
+<p>For Mac OS, you can just <a href="/tools/prepare_mac.sh">use my script</a> (require brew installed). This will
+install some necessory tools and the latest vim (7.4) <em>with lua support</em>.</p>
+
+<pre><code>curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/prepare_mac.sh | sh
+</code></pre>
+
+<p>For Linux, you will need to figure out what the above script does, and install them
+according (apt-get etc). Please note a vim with lua support is needed. </p>
+
+<h2>
+<a id="2-set-up-the-vim" class="anchor" href="#2-set-up-the-vim" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Set up the vim:</h2>
+
+<p>Run: <a href="tools/install.sh">tools/install.sh</a></p>
+
+<pre><code>curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/install.sh | sh
+</code></pre>
+
+<p>By default it will install to ~/.oh-my-vim folder.</p>
+
+<h2>
+<a id="3-set-up-font" class="anchor" href="#3-set-up-font" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Set up font:</h2>
+
+<p>For a better looking <a href="https://github.com/bling/vim-airline">powerline</a>, you will
+need setting install a <a href="https://github.com/bling/vim-airline#integrating-with-powerline-fonts">patched font</a>.</p>
+
+<p>If you are using mac, the above script has installed a font <a href="https://github.com/Lokaltog/powerline-fonts/tree/master/DroidSansMono">DroidSansMono</a>
+for you. Please set this font for your terminal. (For macvim or gvim, nothing
+need to be done. For iTerm2, go for Profile - Open Profile - Default - Edit Profile - Text - None-ASCII Font.)</p>
+
+<p>Now open vim, it will set up a bunch of plugins at the first time. Then you are
+all set.</p>
+
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h1>
+
+<p>You can overwrite default configuration and key bindings by using one of 
+following files:</p>
+
+<p><code>~/.before.vimrc</code> will be loaded before everything else.</p>
+
+<p><code>~/.local.vimrc</code> will be loaded after bundles are initialized and before
+the settings take place. The idea was so people could add Bundle lines
+without having to worry about conflicts in vimrc when pulling. </p>
+
+<p><code>~/.after.vimrc</code> will be loaded after all configuration options are set. 
+This is the best place to change default behaviour (keybindings) or
+color scheme.</p>
+
+<h1>
+<a id="acknowledgments" class="anchor" href="#acknowledgments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acknowledgments</h1>
+
+<p>Obviously I steal a lot work from others. Here is my special thanks to:</p>
+
+<p>Joe Di Castro (joedicastro)'s 
+<a href="https://github.com/joedicastro/dotfiles/tree/master/vim">dotfiles</a>. Most part 
+of this config is from Joe, including large amount of this README.  His idea of
+using Unite to create UI for vim commands is brilliant.</p>
+
+<p>Zaiste! (zaiste)'s <a href="https://github.com/zaiste/vimified">vimified</a>. Thanks to his 
+setup script.</p>
+
+<p>They are not using any licence. But some dotfiles I borrow is using MIT license,
+so I go for MIT license as well.</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>First please note:</p>
+
+<blockquote>
+<p><code>&lt;Leader&gt;</code> key is mapped to <code>,</code> </p>
+
+<p><code>&lt;LocalLeader&gt;</code> key is mapped to <code>&lt;space&gt;</code></p>
+
+<p><code>&lt;LocalLeader&gt;u</code> i.e. <code>&lt;space&gt;u</code> will trigger the awesome Unite UI </p>
+</blockquote>
+
+<p>First give you a sense how the Unite UI looks like (grep, preview results, and
+open selected files).</p>
+
+<p><img src="https://github.com/liangxianzhe/oh-my-vim-image/blob/master/intro.gif?raw=true" alt="intro" title="intro"></p>
+
+<p>The rest of this doc will introduce most features or tools I use.</p>
+
+<p>You will get to know the awesome Unite and how we use it.</p>
+
+<ul>
+<li><a href="#unite">Unite</a></li>
+</ul>
+
+<p>Then all feature are organized as packages. Each package is a .vimrc file. We
+got a lot of benifit from modulization.</p>
+
+<ul>
+<li>Each package is short, easy to read and modify. (Totally 1600+ lines vimrc is 
+not fun to read)</li>
+<li>You can add a package you need (for example, java or ruby), and share with 
+people or send a pull-request. </li>
+<li>You can ignore the package you don't need by setting a parameter 
+<code>g:oh-my-vim_packages</code> in local.vimrc.</li>
+</ul>
+
+<p>Here is current packages.</p>
+
+<ul>
+<li>
+<a href="#basic">basic</a> - some basic vim config to make it easy to use</li>
+<li>
+<a href="#code">code</a> - general coding </li>
+<li>
+<a href="#text">text</a> - text edition</li>
+<li>
+<a href="#grep">grep</a> - search text in files</li>
+<li>
+<a href="#searching">searching</a> - search text in current buffer</li>
+<li>
+<a href="#registers">registers</a> - yanks, registers &amp; history</li>
+<li>
+<a href="#navigation">navigation</a> - navigate by buffers, tabs &amp; windows</li>
+<li>
+<a href="#files">files</a> - files &amp; dirs</li>
+<li>
+<a href="#git">git</a> - git</li>
+<li>
+<a href="#python">python</a> - python</li>
+<li>
+<a href="#web">web</a> - web</li>
+<li>
+<a href="#bookmarks">bookmarks</a> - bookmarks</li>
+<li>
+<a href="#vim">vim</a> - vim </li>
+<li>
+<a href="#neobundle">neobundle</a> - plugins administration with neobundle</li>
+<li>
+<a href="#spelling">spelling</a> - spell checking &amp; translation</li>
+<li>
+<a href="#markdown">markdown</a> - markdown</li>
+<li>
+<a href="#tools">tools</a> - some other tools</li>
+</ul>
+
+<p><a id="unite"></a></p>
+
+<h2>
+<a id="unite" class="anchor" href="#unite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unite</h2>
+
+<p>Unite is an interface that unifies various "query results" under a common
+aspect and that follows Vim's default behavior (modal). It's almost an API
+that we can use to build our own solutions. In fact, the author describes it as
+"unite and create interfaces". With Unite you can open a file, change the
+buffer, choose a colorscheme, make a regex search (grep, Ack, Ag, ...), etc.
+Even you can take a look at the Vim registers, messages, help, command, functions,
+... In short, it is a Swiss army knife that, well used, allows us to replace
+several different plugins with only one (in this case: CtrlP, Ack, YankRing,
+TagmaTasks and Tagbar).</p>
+
+<p>The Unite menu will show what functionality we have and what's their
+key-mappings. You can always refer the menu for something you don't
+remember the shortcut.</p>
+
+<p>The main Unite munu:
+<img src="https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu.png?raw=true" alt="unite_menu" title="unite_menu"></p>
+
+<h3>
+<a id="navigation-inside-unite" class="anchor" href="#navigation-inside-unite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Navigation inside Unite</h3>
+
+<p>In Unite, you can filter result in Insert mode, you can select candidates and 
+apply operations to selected candidates in Normal mode. Below are some of the 
+available mappings:</p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<p><strong>Normal</strong> mode:</p>
+
+<ul>
+<li>
+<code>q</code> exit from Unite and submenus</li>
+<li>
+<code>Q</code> exit from Unite and all submenus</li>
+<li>
+<code>i</code> change to insert mode</li>
+<li>
+<code>v</code> change to visual mode</li>
+<li>
+<code>&lt;Tab&gt;</code> choose an action</li>
+<li>
+<code>a</code> choose an action for the selected candidate or add text at the end of
+the prompt</li>
+<li>
+<code>&lt;C-R&gt;</code> reset the menu</li>
+<li>
+<code>&lt;Space&gt;</code> mark the current candidate</li>
+<li>
+<code>*</code> mark all candidates</li>
+<li>
+<code>M</code> removes the candidate number limit</li>
+<li>
+<code>gg</code>, <code>G</code>, <code>j</code>, <code>k</code> typical Vim moves to move around candidates</li>
+<li>
+<code>?</code> shows help (mappings)</li>
+<li>
+<code>N</code> add a new candidate (only where have sense)</li>
+<li>
+<p><code>.</code> show hidden files (dotfiles)</p>
+
+<p><em>With a candidate selected:</em></p>
+
+<ul>
+<li>
+<code>&lt;CR&gt;</code> execute the default action</li>
+<li>
+<code>b</code> add it to bookmarks</li>
+<li>
+<code>d</code> delete it</li>
+<li>
+<code>e</code> expand the path</li>
+<li>
+<code>t</code> open the candidate in a new tab</li>
+<li>
+<code>yy</code> do a yank</li>
+<li>
+<code>p</code> preview it</li>
+<li>
+<code>x</code> launch the quick selection</li>
+</ul>
+</li>
+</ul>
+
+<p><strong>Insert</strong>  mode:</p>
+
+<ul>
+<li>
+<code>&lt;ESC&gt;</code> change to normal mode</li>
+<li>
+<code>&lt;Tab&gt;</code> choose an action</li>
+<li>
+<code>&lt;CR&gt;</code>  execute the default action</li>
+<li>
+<code>&lt;C-G&gt;</code> exit Unite</li>
+<li>
+<code>&lt;C-D&gt;</code> delete it</li>
+<li>
+<code>&lt;C-E&gt;</code> expand the path</li>
+<li>
+<code>&lt;C-T&gt;</code> open the candidate in a new tab</li>
+<li>
+<code>&lt;C-Y&gt;</code> do a yank</li>
+<li>
+<p><code>&lt;C-N&gt;</code>, <code>&lt;C-P&gt;</code>, <code>&lt;C-F&gt;</code> y <code>&lt;C-B&gt;</code> Vim motions to move around candidates</p>
+
+<p><em>With a candidate selected:</em></p>
+
+<ul>
+<li>
+<code>&lt;Space&gt;</code> mark the current candidate</li>
+</ul>
+</li>
+</ul>
+
+<p><strong>Visual</strong> mode:</p>
+
+<ul>
+<li>
+<code>&lt;Space&gt;</code> mark the current candidate</li>
+</ul>
+</blockquote>
+
+<p><a id="basic"></a></p>
+
+<h2>
+<a id="basic" class="anchor" href="#basic" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic</h2>
+
+<p>Put most basic vim config here, like indent, quick saving, history, backup.
+There is no Unite menu for this package.  </p>
+
+<p><a id="code"></a></p>
+
+<h2>
+<a id="code" class="anchor" href="#code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code</h2>
+
+<p><img src="https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_code.png?raw=true" alt="unite code" title="unite code"></p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;c</code> or <code>:Unite menu:code</code>, shows the Code menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<p>These are the menu entries in detail:</p>
+
+<ul>
+<li><p><em>count lines of code</em> count the lines of code of the current file by the
+external program <code>$ cloc</code> and shows the output in Unite</p></li>
+<li><p><em>toggle indent lines</em> show/hide the indent lines, that works as a visual guide
+for long nested blocks of code, putting vertical lines for each indentation
+level. Is disabled by default.
+  <img src="http://joedicastro.com/static/pictures/indentline_en.gif" alt="indentLine" title="indentLine"></p></li>
+<li><p><em>syntastic toggle</em>,  <em>syntastic check &amp; errors</em> are two options
+of Syntastic, a plugin for code quality (syntax revision) for various
+programming and markup languages (python, ruby, lua, haskell, css, html, js,
+json, ...) via external tools (these tools are required). Show the syntax
+errors in the signs column (gutter). Also shows the total of errors and the
+number line of the first in the status line</p></li>
+</ul>
+
+<p><strong>Other tools</strong></p>
+
+<ul>
+<li>
+<p><strong>Ultisnips</strong> is a plugin to manage snippets, the most advanced and powerful
+for this task that I know for Vim. Snippets are portions of code or text in
+which certain parts are declared as variable and the rest is fixed. They are
+very helpful to insert the same code structures again and again without need
+to write all the text, saving us an important number of keystrokes. To use
+them we only have to type the snippet keyword and the mapping, the fixed part
+of text is inserted automatically. Then the cursor moves to the first variable
+field to enter the desired text interactively, and so on. In the image you can
+see how it really works.</p>
+
+<p>Ultisnips brings by default a bunch of snippets classified for languages and
+some globals. The best feature of Ultisnips is that allows us to define our
+custom snippets with a level of control and automation than any other one
+offers. To know all the details is essential to read carefully the plugin help.
+BTW certain features are remarkable, like: nested snippets, embed external
+commands (shell, vimscript and python) in the snippets, use the snippets over
+visual selections, and text transformations into the snippets.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/ulti_en.gif" alt="ulti" title="ulti"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>&lt;Tab&gt;</code> preceded by the snippet keyword, trigger the snippet</li>
+<li>
+<code>&lt;C-J&gt;</code> jump to the next field</li>
+<li>
+<code>&lt;C-K&gt;</code> jump to the previous field</li>
+<li>
+<code>&lt;BS&gt;</code>  cancel the text enter in an optional field</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+
+<p><a id="code"></a></p>
+
+<h2>
+<a id="text" class="anchor" href="#text" aria-hidden="true"><span class="octicon octicon-link"></span></a>Text</h2>
+
+<p><img src="https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_text.png?raw=true" alt="unite text" title="unite text"></p>
+
+<p>This menu groups several options to edit text</p>
+
+<p><strong>Unite</strong></p>
+
+<p><code>&lt;LocalLeader&gt;e</code> or <code>:Unite menu:text</code> shows the text menu</p>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li><p><em>toggle search results highlight</em> toggle the search results highlight,
+obviously</p></li>
+<li><p><em>toggle line numbers</em> toggle between the four possible visualizations of the
+line numbers column: none, relative (two forms), and absolute</p></li>
+<li><p><em>toggle wrapping</em> toggle automatic wrapping and the vertical column color. The
+vertical column that indicates wrapping threshold turns green when the
+automatic wrapping is disabled</p></li>
+<li><p><em>show hidden chars</em> show the hidden chars, those that are not printable
+(tabs, carriage returns, spaces, ...)</p></li>
+<li><p>the next three entries are to fold/unfold the folds in our doc, one by one or
+all at the same time</p></li>
+<li><p>and the three after those allows us to copy/paste from system clipboard and
+for toggle the paste mode.</p></li>
+<li><p><em>remove trailing whitespaces</em> delete those empty and almost never significant
+spaces at the end of the line</p></li>
+<li><p><em>text statistics</em> show the number of columns, lines, words, chars and
+bytes in total and for the current position</p></li>
+<li><p><em>show word frequency</em> show the number of times that each word appears in the text</p></li>
+<li><p><em>show available digraphs</em> show a table with all the digraphs available and
+the pair of chars needed to generate each of them.</p></li>
+<li><p><em>insert lorem ipsum text</em> insert a text block containing the famous <a href="http://es.wikipedia.org/wiki/Lorem_ipsum">Lorem
+Ipsum</a> text</p></li>
+<li><p><em>show current char info</em> show extended info about the current character.
+The info includes the decimal Unicode value, hexadecimal, octal, Unicode name,
+HTML entity, Emoji code and any digraph available.</p></li>
+</ul>
+
+<p><strong>Other text edition tools</strong></p>
+
+<p>Apart from the tools included in the menu, and apart from the Vanilla Vim ones
+too, we have another bunch of tools available to help us to edit the text more
+easily.</p>
+
+<ul>
+<li>
+<p><strong>text-objects</strong> these are customized text objects that allow us to extend the
+Vim motions defined by default (word, sentence, paragraph, block,
+delimiters, and markup tags) and be able to use more efficient text
+selections. In this config I added the following ones:</p>
+
+<blockquote>
+<ul>
+<li>
+<strong>line</strong> select a line by <code>al</code> or <code>il</code>
+</li>
+<li>
+<strong>underscore</strong> select the text surrounded by underscores via <code>a_</code> or
+<code>i_</code>
+</li>
+<li>
+<strong>all the buffer</strong> select the entire buffer. We can use <code>ae</code> and <code>ie</code>
+</li>
+<li>
+<strong>indent</strong> select a indentation level. Options: <code>ai</code>, <code>ii</code>,
+<code>aI</code>, <code>iI</code>. <code>i</code> select the current level and the nested ones, <code>I</code> only
+selects the current indent level</li>
+<li>
+<strong>last search</strong> select the last search term results. Options:: <code>a/</code>,
+<code>i/</code>, <code>a?</code> and <code>i?</code>
+</li>
+<li>
+<strong>python class</strong> in a Python code file, selects a class by <code>aC</code>, <code>iC</code>
+and <code>C</code>
+</li>
+<li>
+<strong>python method or function</strong> same as above for methods and functions
+via <code>aM</code>, <code>iM</code> and <code>M</code>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>vim-commentary</strong> an extremely easy tool to toggle commentary in lines and
+visual selections. We only need to enter a mapping and a movement to do the
+action, as simple as that.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/commentary_en.gif" alt="commentary" title="commentary"></p>
+
+<blockquote>
+<p><strong>Mapping</strong></p>
+
+<ul>
+<li>
+<code>&lt;Leader&gt;c</code> or <code>gc</code> toggle the commentary</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>vim-surround</strong> surround a vim text object with a pair of symmetrical
+chars.  We can also remove or change the ones already there</p>
+
+<p><img src="http://joedicastro.com/static/pictures/surround_en.gif" alt="surround" title="surround"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>ys{motion or text-object}{char}</code> create surround (<em>'your surround'</em>)</li>
+<li>
+<code>cs{orig_char}{dest_char}</code> change surround</li>
+<li>
+<code>ds{char}</code> delete surround</li>
+<li>
+<code>S{char}</code> for create surrounds in visual mode</li>
+</ul>
+
+<p><em>If we choose the first member of a pair, e.g '(', then the surround is
+created with a whitespace between the char and the selection. If the last
+is choosen, e.g. ')', then the extra space is not added.</em></p>
+</blockquote>
+</li>
+<li>
+<p><strong>vim-speeddating</strong> provides a smart way to increase/decrease time values</p>
+
+<p><img src="http://joedicastro.com/static/pictures/speeddating_en.gif" alt="speeddating" title="speeddating"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>&lt;C-A&gt;</code> Increase the time value under the cursor</li>
+<li>
+<code>&lt;C-X&gt;</code> Decrease the time value under the cursor</li>
+<li>
+<code>d&lt;C-A&gt;</code> Change the time under the cursor to the current UTC time</li>
+<li>
+<code>d&lt;C-X&gt;</code> Change the time under the cursor to the current Local time</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>delimitMate</strong> provides smart auto-completion for delimiters like
+<strong>(), {}, [], "", '', ``</strong></p>
+
+<p>This is very easy to use. If we write the first pair of these chars, then
+  the second one is automatically introduced and the cursor moves to the
+  interior thereof. Then, we continue writing and to exit the inside you only
+  have to write the second character or press <code>&lt;S-Tab&gt;</code>. If you only want the
+  first char, you only have to press the <strong>Delete</strong> key</p>
+
+<p><img src="http://joedicastro.com/static/pictures/smartinput_en.gif" alt="smartinput" title="smartinput"></p>
+</li>
+<li>
+<p><strong>neocomplete</strong> auto-completion of keywords, methods, functions, etc by only
+typing a few letters (normally the first). Well used, this speeds up a lot writing
+of code or text. It improves the Vanilla Vim auto-completion, with a live
+fuzzy-logic search. It's powerful and totally customizable.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/neocomp_en.gif" alt="neocomp" title="neocomp"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>&lt;CR&gt;</code>    insert the selected word</li>
+<li>
+<code>&lt;C-N&gt;</code>   go to the next word (below) in the option list</li>
+<li>
+<code>&lt;C-P&gt;</code>   go to the previous word (above) in the option list</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>easydigraph</strong> easily insert digraphs, especially when trying to insert
+several simultaneously</p>
+
+<p><img src="http://joedicastro.com/static/pictures/easydigraph_en.gif" alt="easydigraph" title="easydigraph"></p>
+
+<blockquote>
+<p><strong>Mapping</strong></p>
+
+<ul>
+<li>
+<code>&lt;Leader&gt;dd {motion}</code> turns in digraph the motion selected text</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>vim-transpose</strong> transpose rows &amp; columns. For certain kind of files, like
+<em>CSV</em>, it can be really helpful to deal with them. It works in visual mode.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/transpose_en.gif" alt="transpose" title="transpose"></p>
+
+<blockquote>
+<p><strong>Commands</strong></p>
+
+<ul>
+<li>
+<code>:Transpose</code> do the transposition by default</li>
+<li>
+<code>:TransposeCSV {separator} {delimiter}</code> do the transposition by <code>;</code> or by
+the specified separator &amp; delimiter</li>
+<li>
+<code>:TransposeTab</code> transpose by tabs</li>
+<li>
+<code>:TransposeWords</code> transpose by words (inserts a <code>?</code> where is no one)</li>
+<li>
+<code>:TransposeInteractive</code> for complex transpositions</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+
+<p><a id="grep"></a></p>
+
+<h2>
+<a id="grep" class="anchor" href="#grep" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grep</h2>
+
+<p><img src="https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_grep.png?raw=true" alt="unite grep" title="unite grep"></p>
+
+<p>This menu allows us to search files by regular expression engines. I have it
+configured to use the <code>ag</code> program first, then <code>ack</code> if <code>ag</code> is not found, and
+else the <code>grep</code> program. We can also use other Unix tools like <code>locate</code> and
+<code>find</code> from this menu.</p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;a</code> or <code>:Unite menu:grep</code> shows the grep menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li><p><em>grep (ag → ack → grep)</em> search files by content. Using a regular
+expression pattern in a target directory, shows us the results in Unite.
+Between brackets are the list of programs to use sorted by priority. It uses
+the first available.</p></li>
+<li><p><em>grep current word</em> grep the word under cursor.</p></li>
+<li><p><em>find</em> use the known Unix tool <code>find</code> to search files by name</p></li>
+<li><p><em>locate</em> same as above using the <code>locate</code> tool instead</p></li>
+<li><p><em>vimgrep</em> as a last resort, in case you don't have any regex search tool
+installed, you can use the internal Vim grep one. But it is extremely low
+in comparison with another of the mentioned in the first entry. So, use it
+only if you are desperate.</p></li>
+</ul>
+
+<p><a id="searching"></a></p>
+
+<h2>
+<a id="searching-inside-the-buffer" class="anchor" href="#searching-inside-the-buffer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Searching inside the buffer</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_searching.png" alt="unite searching" title="unite searching"></p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;f</code> or <code>:Unite menu:searching</code> shows the searching menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li><p><em>line</em> find all the lines where the introduced string appears</p></li>
+<li><p><em>word under the cursor</em> find all the lines where the word under the cursor
+appears. It is a improved version of the <code>*</code> key behavior</p></li>
+<li><p><em>outlines &amp; tags (ctags)</em> list all the document "outlines" and allow us to
+navigate between them. Very useful to move around the headers of a Markdown
+document like this. In code files it shows the source tags (ctags) to move
+easily to a given point of the code.</p></li>
+<li><p><em>marks</em> list all the marks</p></li>
+<li><p><em>folds</em> navigate among folders</p></li>
+<li><p><em>changes</em> list all the changes made to the file</p></li>
+<li><p><em>jumps</em> list all the last window jumps</p></li>
+<li><p><em>undos</em> show the file undo history</p></li>
+<li><p><em>tasks</em> show all the pending tasks for the current buffer. These tasks (and notes)
+are defined by the following keywords: <strong>TODO</strong>, <strong>FIXME</strong>, <strong>NOTE</strong>, <strong>XXX</strong>
+, <strong>COMBAK</strong>, and <strong><a href="https://github.com/todo" class="user-mention">@todo</a></strong></p></li>
+</ul>
+
+<p><strong>Other tools</strong></p>
+
+<ul>
+<li>
+<p><strong>vim-signature</strong> a plugin that improves the default Vim marks. It shows the
+marks in the lateral signs column.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/signature_en.gif" alt="signature" title="signature"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<p>Alphabetic marks</p>
+
+<ul>
+<li>
+<code>m[a-zA-Z]</code> toggle the mark and display it in the signs column (gutter)</li>
+<li> <code>m,</code>       place the next available mark</li>
+<li> <code>m&lt;Space&gt;</code> delete all marks</li>
+<li> <code>]`</code>  jump the next mark</li>
+<li> <code>[`</code>  jmmp the previous mark</li>
+<li> <code>]'</code>       jump to start of next line containing a mark</li>
+<li> <code>['</code>       jump to start of previous line containing a mark</li>
+</ul>
+</li>
+<li>
+<p>Symbol marks (markers)</p>
+
+<ul>
+<li> <code>m[0-9]</code>       toggle the corresponding marker <code>!@#$%^&amp;*()</code>
+</li>
+<li> <code>m&lt;S-[0-9]&gt;</code>   remove all markers of the same type</li>
+<li> <code>]-</code>           jump to next line having same marker</li>
+<li> <code>[-</code>           jump to prev line having same marker</li>
+<li> <code>m&lt;BS&gt;</code>        remove all markers</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+
+<p><a id="registers"></a></p>
+
+<h2>
+<a id="registers" class="anchor" href="#registers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Registers</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_registers.png" alt="unite registers" title="unite registers"></p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;i</code> or <code>:Unite menu:registers</code> shows the registers menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li><p><em>yanks</em> list all the yanks arranged chronologically starting with the most
+recent</p></li>
+<li><p><em>commands</em> show the Ex command history</p></li>
+<li><p><em>searches</em> list the last searches</p></li>
+<li><p><em>registers</em> show the vim registers content</p></li>
+<li><p><em>messages</em> show the messages register (like the <code>:messages</code> command)</p></li>
+<li>
+<p><em>undo</em> launch the Gundo plugin. Gundo makes the Vim undo tree friendlier. We
+can preview the changes and navigate easily around the tree.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/gundo_en.gif" alt="gundo" title="gundo"></p>
+</li>
+</ul>
+
+<p><a id="navigation"></a></p>
+
+<h2>
+<a id="navigation" class="anchor" href="#navigation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Navigation</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_navigation.png" alt="unite navigation" title="unite navigation"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<p>In addition to the options available on the menui, I have set a number of
+mappings that make it much easier to manage windows</p>
+
+<ul>
+<li>
+<code>&lt;C-H&gt;</code> move to the next window to the left</li>
+<li>
+<code>&lt;C-J&gt;</code> move to the lower window</li>
+<li>
+<code>&lt;C-K&gt;</code> move to the upper window</li>
+<li>
+<code>&lt;C-L&gt;</code> move to the next window to the right</li>
+</ul>
+</blockquote>
+
+<p><strong>Unite</strong></p>
+
+<p><code>&lt;LocalLeader&gt;b</code> or <code>:Unite menu:navigation</code> shows the navigation menu</p>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li><p>The first three menu entries let us to easily move to the chosen buffer, tab,
+or window from the candidates</p></li>
+<li><p><em>location list</em> and <em>quickfix</em> to access these windows content through
+Unite interface</p></li>
+<li>
+<p><em>resize windows</em> use the winresizer plugin to easily resize the windows</p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>h</code>, <code>j</code>, <code>k</code>, <code>l</code> use vim motions to move the windows separator</li>
+<li>
+<code>&lt;ESC&gt;</code> end the resizing</li>
+<li>
+<code>q</code> cancel the resizing</li>
+</ul>
+</blockquote>
+</li>
+<li><p>the next two entries are for creating new windows (horizontal and vertical) and
+the third one is to close any window (except the last)</p></li>
+<li><p><em>toggle quickfix window</em> toggle the quickfix window, also close the location
+list if is opened</p></li>
+<li><p><em>zoom</em> make zoom in a window</p></li>
+<li><p><em>delete buffer</em> delete a buffer</p></li>
+</ul>
+
+<p><a id="files"></a></p>
+
+<h2>
+<a id="files-and-directories" class="anchor" href="#files-and-directories" aria-hidden="true"><span class="octicon octicon-link"></span></a>Files and directories</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_files.png" alt="unite files" title="unite files"></p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;o</code> or <code>:Unite menu:archivos</code> show the file menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li><p><em>open file</em> show a list of files available in the current working directory</p></li>
+<li><p><em>open more recently used files</em> show the last opened files</p></li>
+<li><p><em>open file with recursive search</em> same as above but including the files under
+the subdirectories recursively</p></li>
+<li><p>the next three entries are similar to the preceding ones but working with
+directories instead of files</p></li>
+<li><p><em>make new directory</em> make a new directory without opening a file browser</p></li>
+<li><p><em>change working directory</em> allow us to change the current working directory</p></li>
+<li><p><em>know current working directory</em> is like running the <code>:pwd</code> command</p></li>
+<li><p><em>junk files</em> to open a new (or a previous one) junk file to make annotations,
+tests, ...</p></li>
+<li><p><em>save as root</em> allow us to save a file that only have permissions for <code>root</code>
+without need to run Vim under that user (or use <code>$ sudo</code>) and lost our
+configuration advantages by doing that.</p></li>
+<li><p><em>quick save</em> save quickly the file without need to run the <code>:w</code> command</p></li>
+<li>
+<p><em>open ranger</em> call the external ncurses file manager <a href="http://joedicastro.com/productividad-linux-ranger.html">Ranger</a> to browse
+the directory hierarchy and choose the file that you want to edit.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/ranger_vim_en.gif" alt="ranger" title="ranger"></p>
+</li>
+<li>
+<p><em>open vimfiler</em> open the file explorer Vimfiler, Unite based and very
+powerful. I used mainly in those computers where ranger is not available. It
+has a safe mode (enabled by default) in which you cannot copy, rename, move,
+create or delete files and directories.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/vimfiler_en.png" alt="vimfiler" title="vimfiler"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>&lt;Tab&gt;</code> open a new vertical window, if is already opened toggle between them</li>
+<li>
+<code>j</code>, <code>k</code> and <code>gg</code> typical vim motions to move between the files</li>
+<li>
+<code>h</code>, <code>l</code> move between the parent and child directories</li>
+<li>
+<code>&lt;Space&gt;</code> select/deselect the current line</li>
+<li>
+<code>*</code> select/deselect all the lines</li>
+<li>
+<code>&amp;</code> select similar lines</li>
+<li>
+<code>U</code> deselect everything</li>
+<li>
+<code>S</code> change the sort type (by name, date, size, ...)</li>
+<li>
+<code>c</code> copy the file (preceded by <code>C</code> do it to the clipboard)</li>
+<li>
+<code>m</code> move the file(preceded by <code>C</code> do it to the clipboard)</li>
+<li>
+<code>d</code> delete the file</li>
+<li>
+<code>r</code> rename the file</li>
+<li>
+<code>Cp</code> paste file from clipboard</li>
+<li>
+<code>K</code> new directory</li>
+<li>
+<code>N</code> new file</li>
+<li>
+<code>x</code> run the file's system associated program</li>
+<li>
+<code>e</code> edit the file</li>
+<li>
+<code>E</code> edit the file in a new window</li>
+<li>
+<code>v</code> preview the file</li>
+<li>
+<code>L</code> change the drive unit</li>
+<li>
+<code>~</code> go to the <code>home</code> directory</li>
+<li>
+<code>\</code> go to the <code>root</code> directory</li>
+<li>
+<code>&lt;C-J&gt;</code> open the visited directories history (opened by )</li>
+<li>
+<code>&lt;CR&gt;</code> open a directory</li>
+<li>
+<code>&lt;BS&gt;</code> return to the parent directory</li>
+<li>
+<code>t</code> expand the directory tree</li>
+<li>
+<code>T</code> expand the directory tree recursively</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>
+<code>I</code> change to the directory entered in the command line
+&gt; - <code>M</code> set the current mask (to filter files)
+&gt; - <code>.</code> show/hide the hidden files (dotfiles)
+&gt; - <code>q</code> hide vimfiler
+&gt; - <code>Q</code> exit vimfiler
+&gt; - <code>H</code> exit to the shell (exit from shell to return to vimfiler)
+&gt; - <code>-</code> close the current vimfiler window
+&gt; - <code>?</code> show the vimfiler help (mappings)
+&gt; - <code>o</code> sync another vimfiler with this one
+&gt; - <code>O</code> open a file/directory in another vimfiler
+&gt; - <code>yy</code> yank the full path
+&gt; - <code>gr</code> make grep into the current directory
+&gt; - <code>gf</code> make find into the current directory
+&gt; - <code>gc</code> make the current directory in the Vim working directory
+&gt; - <code>a</code> choose the action to apply to the file
+&gt; - <code>Y</code> save the current path in a temporal list
+&gt; - <code>P</code> show the paths saved in the temporal list
+&gt; - <code>&lt;C-L&gt;</code> redraw the screen
+&gt; - <code>gs</code> toggle the safe mode <strong>Warning!</strong>
+&gt; - <code>gS</code> toggle the simple mode</li>
+</ul>
+</li>
+</ul>
+
+<p><a id="git"></a></p>
+
+<h2>
+<a id="git" class="anchor" href="#git" aria-hidden="true"><span class="octicon octicon-link"></span></a>Git</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_git_en.png" alt="unite git" title="unite git"></p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;localleader&gt;g</code> or <code>:Unite menu:git</code> show the git menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li>
+<p><em>tig</em> open the external application <a href="https://github.com/jonas/tig">tig</a>, which is a ncurses interface
+for git. Obviously, this only works when the working directory is into a git
+repository.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/tig_en.gif" alt="tig" title="tig"></p>
+</li>
+<li>
+<p><em>git viewer</em> and <em>git viewer - buffer</em> use the <strong>gitv</strong> plugin that is a clone
+of the <code>gitk</code> tool for Vim, which is the viewer provided originally by <code>git</code>.
+This plugin allows us to view the repository history, to do diffs, checkouts,
+merges, ... It works atop of Fugitive and requires of it for work, and both
+have a similar behavior. The first entry will open a viewer relative to the
+whole repository (explorer mode), while the second one will do it in function
+of the current buffer or a visual selection (file mode)</p>
+
+<p><img src="http://joedicastro.com/static/pictures/gitv_en.png" alt="gitv" title="gitv"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li><p><code>&lt;CR&gt;</code> open a commit, a diff, a tree, a file, more commits, etc,
+depending of where is used, with a similar behavior that Fugitive</p></li>
+<li><p><code>o</code> open the commit in a new horizontal window</p></li>
+<li><p><code>O</code> open the commit in a new tab</p></li>
+<li><p><code>s</code> open the commit in a new vertical window</p></li>
+<li><p><code>i</code> in "explorer mode" open the file &amp; in "file mode" open the commit
+details</p></li>
+<li><p><code>q</code> exit from gitv</p></li>
+<li><p><code>a</code> toggle the <code>-all</code> argument and update the window</p></li>
+<li><p><code>u</code> update the window content</p></li>
+<li><p><code>co</code> do a <code>git checkout</code>. In "explorer mode" dot it over the whole
+repository and in the "file mode" do it over the current file</p></li>
+<li><p><code>D</code> do a diff via vimdiff.</p></li>
+<li><p><code>S</code> show a <code>diffstat</code></p></li>
+<li><p><code>m</code> and <code>&lt;Leader&gt;m</code> do a merge in visual and normal modes respectively</p></li>
+<li><p><code>git</code> enter the <code>:Git</code> command in the command line to enter a custom
+git command. If the command changes the repository status, the changes
+will be updated in gitv</p></li>
+<li><p><code>yc</code> yank the commit short hash, <code>sha</code></p></li>
+</ul>
+
+<p><strong>Motions</strong></p>
+
+<ul>
+<li><p><code>x</code> and <code>X</code> to move around the branch points (where a merge is created)</p></li>
+<li><p><code>r</code> and <code>R</code> to move around the references</p></li>
+<li><p><code>P</code> jump to the commit tagged as <code>HEAD</code></p></li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>Almost of the rest of the entries are typical git commands which are executed
+via the <strong>Fugitive</strong> tool. Fugitive is a git wrapper, so good that allows us
+to manage git repositories without leave Vim. It's so complete and powerful
+that requires a certain amount of time to get used to it and get total control
+over its particular interface. The author, Tim Pope, says that about it: "A
+Git wrapper so awesome, it should be illegal" and is almost true.</p>
+
+<pre><code>![fugitive](http://joedicastro.com/static/pictures/fugitive_en.png "fugitive")
+</code></pre>
+
+<ul>
+<li>
+<p><em>status</em> show the repository status and from this window we can access to
+multiple options. In this window this mappings are available:</p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li><p><code>&lt;C-N&gt;</code> and <code>&lt;C-P&gt;</code> allow us to move between files</p></li>
+<li><p><code>&lt;CR&gt;</code> run the <code>:Gedit</code> command that allow us to "edit" a revision</p></li>
+<li><p><code>-</code> using it over a file that is not included in the 'stage area'
+(index) it add it, is like run a <code>git add</code> or <code>git stage</code> in the
+shell.  Using it over a file included in the <code>stage area</code>, remove it
+from there, like using a <code>git reset</code></p></li>
+<li><p><code>cc</code> or <code>C</code> do a commit with the command <code>:Gcommit</code> the same as
+doing a <code>git commit</code></p></li>
+<li><p><code>ca</code> do a commit which add the new changes to the previous commit,
+useful when we forgot add something in a commit. Same as <code>git commit
+--amend</code></p></li>
+<li><p><code>D</code> make a diff between the current version and the index one, using
+vimfiler via the <code>:Gdiff</code> command</p></li>
+<li><p><code>ds</code> do a diff with <code>:Gsdiff</code>, same as above but split windows
+horizontally</p></li>
+<li><p><code>dv</code> do a diff without <code>:Gvdiff</code>, with vertical split windows. A
+synonym of <code>D</code></p></li>
+<li><p><code>dp</code> has a dual behavior. On the one hand, if there are changes but
+those are not in the <code>stage area</code> (index), then show a diff with the
+changes, like running the <code>git diff</code> command. Then, if we make a
+<code>:Gwrite</code> (<code>&lt;Leader&gt;gw</code>) the changes are added to the index and we
+can submit a commit now. On the other hand, if there are files that
+are not being tracked, try to add them using the <code>git add
+--intent-to-add .</code> command</p></li>
+<li><p><code>p</code> to submit partial commits, where we choose interactively which
+changes portions are included in the index and which not. If we use
+it over a file that is not in the index, we will we asked about what
+parts we want to index, like running <code>git add --patch</code>. If we use it
+with an already indexed file, we'll choose what parts remove from
+the index, same as <code>git reset --patch</code></p></li>
+<li><p><code>o</code> open the file in a new horizontal window</p></li>
+<li><p><code>O</code> open the file in a new tab</p></li>
+<li><p><code>S</code> open the file in a new vertical window</p></li>
+<li><p><code>R</code> update the status window</p></li>
+<li><p><code>q</code> close the status window</p></li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><em>diff</em> make a diff (<code>:Gdiff</code>) between the current version of the file versus
+the one in the index. In conflict situations like in a merge, it will we a
+three-way diff, which makes it a good tool for dealing with <code>merge</code> and
+<code>rebase</code>. The mapping available for this window are the following (to know how
+vimdiff works, look up the help):</p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>do</code> do a <code>:diffget</code>, get the changes from the other file</li>
+<li>
+<code>dp</code> do a <code>:diffput</code>, put the changes to the other file</li>
+<li>
+<code>&lt;Leader&gt;du</code> do a  <code>:diffupdate</code>, update changes</li>
+<li>
+<code>&lt;Leader&gt;dq</code> exit from diffmode</li>
+<li>
+<code>u</code> undoes all changes</li>
+<li>
+<code>[c</code> and <code>]c</code> to move between diffs</li>
+<li>
+<code>:Gwrite</code> or <code>&lt;Leader&gt;gw</code> write the changes to the index</li>
+</ul>
+</blockquote>
+</li>
+<li><p><em>commit</em> use the <code>:Gcommit</code> command (same as <code>git commit</code>). If there is
+nothing in the index, then do a <code>:Gstatus</code> and show the status window.
+<strong>Warning</strong>: Unlike when running the actual git-commit command, it is
+possible (but unadvisable) to muck with the index with commands like
+git-add and git-reset while a commit message is pending</p></li>
+<li><p><em>log</em> show all the previous revisions of the current file in a Unite
+window, starting for the most recent and open the last in the current
+buffer. To return to the current file, use <code>:Gedit</code> (<code>&lt;Leader&gt;ge</code>). Within
+the buffer we can move between revision using the commands <code>:cnext</code>,
+<code>:cprevious</code>, <code>:cfirst</code> and <code>:clast</code></p></li>
+<li><p><em>log - all</em> similar as the previous one, but in this case all the
+repository commits are showed, and what appears in the buffer is something
+similar to the <code>git show</code> command output</p></li>
+<li>
+<p><em>blame</em> use the <code>:Gblame</code> command that opens a new vertical widow at the
+left of the current buffer, where is displayed the commit, the author and
+date for each line of the file. Similar to run <code>git blame</code>.</p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>A</code> resize the blame window to end of author column</li>
+<li>
+<code>C</code> resize the blame window to end of commit column</li>
+<li>
+<code>D</code> resize the blame window to end of date column</li>
+<li>
+<code>q</code> close the blame window</li>
+<li>
+<code>gq</code> close the blame window and runs <code>:Gedit</code> to restore the current
+version</li>
+<li>
+<code>&lt;CR&gt;</code> close the blame window and open the selected commit</li>
+<li>
+<code>o</code> open the selected commit in a new horizontal window</li>
+<li>
+<code>O</code> open the selected commit in a new tab</li>
+<li>
+<code>-</code> runs a new <code>blame</code> in the selected commit</li>
+</ul>
+</blockquote>
+</li>
+<li><p><em>add/stage</em> use the <code>:Gwrite</code> command that save the actual file and adds
+it to the index with the changes made. Is like doing a <code>git add</code> or its
+synonym <code>git stage</code></p></li>
+<li><p><em>checkout</em> do a <code>:Gread</code>, empty the current buffer and restore the index
+copy or what is the same, like if we were making a <code>git checkout</code> to the
+file. The changes are not permanent until we save the file.</p></li>
+<li><p><em>rm</em> remove the file with the <code>:Gremove</code> command and empty the buffer. We
+get the same as if we do a <code>git rm</code> in the shell</p></li>
+<li><p><em>mv</em> as for a new path and move the file there, renaming automatically the
+buffer. The similar git command would be <code>git mv</code>. The target is relative to
+the current path, unless is preceded by <code>/</code> in which case is relative to the
+repository root</p></li>
+<li><p><em>push</em> execute the <code>:Git! push</code> command, showing the output in the buffer</p></li>
+<li><p><em>pull</em> do a <code>:Git! pull</code> redirecting the output to the buffer</p></li>
+<li><p><em>command</em> run the git command that we entered in the command line and show
+the result in a new buffer (exit from there by pressing <code>q</code>). We can use
+the current custom alias in our git config. This option by itself is
+reason enough to use Fugitive.</p></li>
+<li><p><em>edit</em> allow us to "edit" any git object (blobs, trees, commits, tags). It
+supports auto-completion and we can use a SHA, a branch, a tag, a tree or a
+commit.</p></li>
+<li><p><em>grep</em> do a grep over the repository using <code>:Ggrep</code> which in turn use <code>git
+grep</code></p></li>
+<li><p><em>grep (messages)</em> make a grep over the repository using <code>:Glog --grep=</code> to
+search into the commit messages</p></li>
+<li><p><em>grep (text)</em> make a grep over the repository using <code>:Glog -S</code> to search
+into the commits where the text had been added or removed</p></li>
+<li><p><em>init</em> create a new git repository or reset a previous one (safe)</p></li>
+<li><p><em>cd</em> change the working directory to the repository one</p></li>
+<li><p><em>lcd</em> change the current buffer's working directory to the repository one</p></li>
+<li>
+<p><em>browse</em> if the remote repository is at GitHub open it in a browser,
+showing the git object that  we have selected in that moment. Otherwise,
+use <code>git instaweb</code> to display the current selected blob, tree, commit or
+tag.  If a range is given, it is appropriately appended to the URL as an
+anchor</p>
+
+<p>Fugitive is a very powerful plugin that you only can learn how to use it by
+using it. And is very advisable to read the help to get a global vision of
+it.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><em>github dashboard</em> and <em>github activity</em> are two options to browse events at
+GitHub. With the first one we can browse the GitHub Dashboard of a given user.
+The last one allow us to view the public activity of a given user or repository.
+There is a limit of 60 calls/hour on the GitHub API without authentication.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/gh_dashboard.png" alt="gh dashboard" title="gh dashboard"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>&lt;Tab&gt;</code> &amp; <code>&lt;S-Tab&gt;</code> to navigate back and forth through the links</li>
+<li>
+<code>&lt;Enter&gt;</code> open a link in the browser</li>
+<li>R refresh the window</li>
+<li>q close the window</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><em>github issues &amp; PR</em> open the external ncurses application <a href="https://github.com/alejandrogomez/shipit">shipit</a>
+that is an interface for GitHub issues and pull requests. The application is
+still in development but is an amazing way to manage GitHub issues without
+leaving Vim and the terminal. If you are inside a git repository that have a
+remote in GitHub, it will open the app for that repository.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/shipit.png" alt="shipit" title="shipit"></p>
+</li>
+</ul>
+
+<p><strong>Other tools</strong></p>
+
+<ul>
+<li>
+<em>vim-gitgutter</em> show the changes that are made in the buffer versus the git
+repository index. It makes a <code>git diff</code> and shows the status
+(changed/added/deleted) of each line in the gutter (signs column).</li>
+</ul>
+
+<p><a id="python"></a></p>
+
+<h2>
+<a id="python" class="anchor" href="#python" aria-hidden="true"><span class="octicon octicon-link"></span></a>Python</h2>
+
+<p><img src="https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_python.png?raw=true" alt="unite python" title="unite python"></p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;p</code> or <code>:Unite menu:python</code> shows the python menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li><p><em>run python code</em> run the current buffer python code via pymode. It shows the
+output in a new vertical window below</p></li>
+<li><p><em>show docs for the current word</em> show the documentation available for the word
+under the cursor</p></li>
+<li><p><em>insert a breakpoint</em> insert a breakpoint in python code. If we have <code>ipython</code>
+or <code>pudb</code> installed, it will use one of those instead the python <code>pdb</code></p></li>
+<li><p><em>pylint check</em> do a code revision by <a href="http://www.pylint.org/">pylint</a> by demand</p></li>
+<li><p><em>rope auto-completion</em> allow us to use the rope auto-completion. Useful for
+methods auto-completion.</p></li>
+<li><p><em>jump to definition</em> jump to the location where the word under the cursor
+(variable, function, class, method, ...) is defined. Open a new window with
+the location, even if it is in another module or library</p></li>
+<li><p><em>reorganize imports</em> reorganize automatically the import statements</p></li>
+<li><p><em>refactorize - x</em> the entries that begin in this way are for refactorize the
+python code with rope, using the method mentioned in each description</p></li>
+<li><p><em>show docs for current word</em> use rope to show the available documentation
+about the word under the cursor. The advantage of this entry against the
+pymode one is that this one allow us to search in the external libraries
+documentation</p></li>
+<li><p><em>list virtualenvs</em> use the virtualenv plugin to list the python virtualenvs.</p></li>
+<li><p><em>activate virtualenv</em> activate the virtualenv</p></li>
+<li><p><em>deactivate virtualenv</em> deactivate the virtualenv</p></li>
+<li><p><em>run coverage2</em> and <em>run coverage3</em> use the <a href="http://nedbatchelder.com/code/coverage/">coverage.py</a> tool for
+python2 and python3 respectively. It shows us the results in a window and as
+marks in the signs column (gutter) to know the code coverage of the current
+code.</p></li>
+<li><p><em>toggle coverage report</em> and <em>toggle coverage marks</em> toggle the visibility of
+the marks and report from coverage</p></li>
+</ul>
+
+<p><a id="web"></a></p>
+
+<h2>
+<a id="web-development" class="anchor" href="#web-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web Development</h2>
+
+<p><strong>HTML5</strong></p>
+
+<p>Provides autocompletion, syntax and indentation for HTML5. For that purpose
+supports SVG, RDFa, microdata and WAI-AIRA</p>
+
+<p><strong>Emmet</strong></p>
+
+<p><img src="http://joedicastro.com/static/pictures/emmet.gif" alt="emmet" title="emmet"></p>
+
+<p>Emmet (former Zen Coding) allow us to write HTML/XML and CSS files more fast and
+in a more brief and less tedious way. Emmet takes the snippets idea to a whole
+new level: you can type CSS-like expressions that can be dynamically parsed, and
+produce output depending on what you type in the abbreviation.</p>
+
+<p>The best way to know how this works is to look at the tutorial (<code>:h
+emmet-tutorial</code> vimhelp:emmet-tutorial) or read the official documentation,
+<a href="http://docs.emmet.io/">Emmet docs</a></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+
+<ul>
+<li>
+<code>&lt;C-Y&gt;,</code> expand abbreviation (works as a wraper in visual mode, see the help)</li>
+<li>
+<code>&lt;C-Y&gt;d</code> select the tag inward</li>
+<li>
+<code>&lt;C-Y&gt;D</code> select the tag outward</li>
+<li>
+<code>&lt;C-Y&gt;n</code> go to the next edit point</li>
+<li>
+<code>&lt;C-Y&gt;N</code> go to the previous edit point</li>
+<li>
+<code>&lt;C-Y&gt;i</code> update image size</li>
+<li>
+<code>&lt;C-Y&gt;k</code> remove tag</li>
+<li>
+<code>&lt;C-Y&gt;j</code> split/join tag</li>
+<li>
+<code>&lt;C-Y&gt;/</code> toggle comment</li>
+<li>
+<code>&lt;C-Y&gt;a</code> make anchor from url</li>
+<li>
+<code>&lt;C-Y&gt;A</code> make quoted text from url</li>
+<li>
+<code>&lt;C-Y&gt;c</code> code pretty</li>
+</ul>
+</blockquote>
+
+<p><a id="bookmarks"></a></p>
+
+<h2>
+<a id="bookmarks" class="anchor" href="#bookmarks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bookmarks</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_bookmarks.png" alt="unite bookmarks" title="unite bookmarks"></p>
+
+<p>With this menu we can manage the bookmarks easily.</p>
+
+<p><strong>Unite</strong></p>
+
+<p><code>&lt;LocalLeader&gt;m</code> or <code>:Unite menu:bookmarks</code> shows the bookmarks menu</p>
+
+<p><a id="vim"></a></p>
+
+<h2>
+<a id="vim" class="anchor" href="#vim" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vim</h2>
+
+<p><img src="https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_vim.png?raw=true" alt="unite vim" title="unite vim"></p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;v</code> or <code>:Unite menu:vim</code> shows the vim menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<p>These are the menu entries in detail:</p>
+
+<ul>
+<li>
+<p><em>choose color scheme</em> display color scheme with preview support</p>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_colorscheme_en.gif" alt="unite_colorscheme" title="unite colorscheme"></p>
+</li>
+<li><p><em>mappings</em>  shows all the customized mappings available whit their
+corresponding associated action. Those ones that corresponds with plugins that
+are Lazy are not showed unless the plugin is already loaded.</p></li>
+<li><p><em>edit configuration file (vimrc)</em> edits the vim configuration file <code>~./.vimrc</code></p></li>
+<li><p><em>choose filetype</em> choose a filetype from a list to apply to the current buffer</p></li>
+<li><p><em>vim help</em> search into the vim help (slow)</p></li>
+<li><p><em>vim commands</em> list all commands available as candidates. For Lazy plugins,
+these need to be loaded before appears in the list.</p></li>
+<li><p><em>vim functions</em> same as above for functions instead of commands</p></li>
+<li><p><em>vim runtimepath</em> shows all paths in the vim runtimepath</p></li>
+<li><p><em>vim command output</em> shows the output of a Vim command through the Unite
+interface (e.g. <code>:ls</code>)</p></li>
+<li><p><em>unite sources</em> all the Unite sources available</p></li>
+<li><p><em>kill process</em> shows the output of the Unix command <code>top</code> where we can select
+one or more process to kill them with <code>kill</code></p></li>
+<li><p><em>launch executable</em> launch an executable from a list, in a similar behavior as
+<code>dmenu</code></p></li>
+</ul>
+
+<p><a id="neobundle"></a></p>
+
+<h2>
+<a id="neobundle" class="anchor" href="#neobundle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Neobundle</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_neobundle_en.png" alt="neobundle" title="neobundle"></p>
+
+<p>A plugin to rule them all! NeoBundle allows us to manage the rest of the plugins,
+itself included. <strong>I have it configured to auto install itself and all of the
+plugins when Vim is executed for the first time</strong>.</p>
+
+<p>The advantages of NeoBundle versus Vundle and other similar plugins are the
+following:</p>
+
+<ul>
+<li>Allows to use another VCS other than git (hg, svn), even a local dir</li>
+<li>Allows revision lock or even set a plugin to not be updated</li>
+<li>Supports lazy initialization of plugins to optimizing startup time</li>
+<li>Supports multiple config options per plugin, like automatic building if needed</li>
+<li>and so on...</li>
+</ul>
+
+<p>The best way to use NeoBundle is through Unite:</p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;n</code> or <code>:Unite menu:neobundle</code>, shows the NeoBundle menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<p>These are the menu entries in detail:</p>
+
+<ul>
+<li><p><em>neobundle</em> shows the installed plugins as candidates. Via the actions we can
+delete them, browse the repository page, ...</p></li>
+<li><p><em>log</em> shows the last NeoBundle log</p></li>
+<li><p><em>lazy</em> shows all the installed plugins configured as Lazy. Those are loaded on
+demand and allow us to have a lot of plugins installed that are not frequently
+used without delaying the vim startup. I use this option a lot in this
+configuration.</p></li>
+<li><p><em>update</em> updates all the plugins automatically (and installs those not already
+installed)</p></li>
+<li><p><em>search</em> searches plugins by name on vim.org &amp; GitHub (duplicates prone)</p></li>
+<li><p><em>install</em> installs all the plugins already present in the <code>.vimrc</code> file or in
+the <code>direct_bundles.vim</code> file that are not yet installed</p></li>
+<li><p><em>check</em> checks if all the plugins are already installed, and if not, prompt
+for their installation</p></li>
+<li><p><em>docs</em> installs help docs for all plugins manually</p></li>
+<li><p><em>clean</em> deletes, upon confirmation, those plugin folders that are no longer
+needed because they are not still installed</p></li>
+<li><p><em>list</em> lists all the installed plugins</p></li>
+<li><p><em>direct edit</em> edits the <code>~/.vim/bundle/.neobundle/direct_bundles.vim</code> file
+where NeoBundle stores those plugins installed directly (e.g. via NeoBundle
+search)</p></li>
+</ul>
+
+<blockquote>
+<p><strong>Plugins updating</strong></p>
+
+<p>Since we often install plugins from repositories, we are exposed to error-
+prone updates. Once in a while, a plugin update introduces a bug and you end up
+with an unstable configuration until that bug is fixed (which may take a while).
+If we use Vim for work, that is very inconvenient.</p>
+
+<p>A way to avoid this is by using symbolic links and backups of our vim folder.
+If we made a backup of our vim config before an update, is easy to restore it
+to a previous stable state without much effort. But this is tedious and
+error-prone too. And alternative is managing this via NeoBundle. We can use
+the revision lock feature to specify what revision we want to install or even
+say to NeoBundle that a plugin should not be updated. But it is not a perfect
+solution either, and very manual. Maybe in a future, we could do plugin
+rollbacks...</p>
+</blockquote>
+
+<p><a id="spelling"></a></p>
+
+<h2>
+<a id="spell-checking--translation" class="anchor" href="#spell-checking--translation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Spell checking &amp; translation</h2>
+
+<p><img src="https://github.com/liangxianzhe/oh-my-vim-image/blob/master/unite_menu_spelling.png?raw=true" alt="unite spelling" title="unite spelling"></p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;LocalLeader&gt;s</code> or <code>:Unite menu:spelling</code> shows the spelling menu</li>
+</ul>
+
+<p><strong>Other tools</strong></p>
+
+<ul>
+<li>
+<code>T</code> Translate selected text to Chinese. </li>
+</ul>
+
+<p><a id="markdown"></a></p>
+
+<h2>
+<a id="markdown" class="anchor" href="#markdown" aria-hidden="true"><span class="octicon octicon-link"></span></a>Markdown</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_markdown_en.png" alt="unite markdown" title="unite markdown"></p>
+
+<p>This allows us to preview the rendering of a Markdown file in the browser,
+it supports the Markdown <code>extra</code> extension. The file is rendered by
+Python-markdown, creating a temporal html file and open it in a browser tab.</p>
+
+<p>Used in conjunction with a plugin that refresh the browser tab when the html file
+changes, we get a way to preview your document changes without leaving vim .</p>
+
+<p><strong>Unite</strong></p>
+
+<ul>
+<li>
+<code>&lt;localleader&gt;k</code> or<code>:Unite menu:markdown</code> shows the markdown menu</li>
+</ul>
+
+<p><strong>Menu</strong></p>
+
+<ul>
+<li><p><em>preview</em> renders the Markdown document in a temporal html file and open it in
+a new browser tab (currently only work on Mac)</p></li>
+<li>
+<p><em>refresh</em> rewrites the html file with the changes</p>
+
+<p><img src="http://joedicastro.com/static/pictures/mep_en.gif" alt="mep" title="mep"></p>
+</li>
+</ul>
+
+<p><a id="tools"></a></p>
+
+<h2>
+<a id="some-other-tools" class="anchor" href="#some-other-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Some other tools</h2>
+
+<p><img src="http://joedicastro.com/static/pictures/unite_menu_tools.png" alt="unite tools" title="unite tools"></p>
+
+<p><strong>Unite</strong></p>
+
+<p><code>&lt;LocalLeader&gt;t</code> or <code>:Unite menu:tools</code> shows the tools menu</p>
+
+<p><strong>Menu</strong></p>
+
+<p>These are the menu entries in detail:</p>
+
+<ul>
+<li>
+<p><em>run with python2 in tmux panel</em> use the Vimux plugin to interact with Tmux.
+It allows to send commands to a Tmux panel and interact with it without losing
+focus in Vim. If there are no other tmux panels opened, then a new panel is
+opened in the 20% lower space. In other case, the command runs in the already
+opened panel. This specific command run the buffer content with the <code>python2</code>
+executable in the tmux panel. In the next image we can see the actual
+behavior:</p>
+
+<p><img src="http://joedicastro.com/static/pictures/vimux_en.gif" alt="vimux" title="vimux"></p>
+</li>
+<li><p><em>run with python3 in tmux panel</em> same as above but using the <code>python3</code>
+interpreter</p></li>
+<li><p><em>run with python2 &amp; time in tmux panel</em> run the python code wrapped by the
+Unix <code>time</code> program to know the time consumed in the execution</p></li>
+<li><p><em>run with pypy &amp; time in tmux panel</em> same as above but using <code>pypy</code> instead of
+<code>python2</code></p></li>
+<li><p><em>command prompt to run in tmux panel</em> open a command line prompt to enter a
+custom command to run in a tmux panel</p></li>
+<li><p><em>repeat last command</em> repeat the last vimux command</p></li>
+<li><p><em>stop command execution in tmux panel</em> stop the execution of the last vimux
+command</p></li>
+<li><p><em>inspect tmux panel</em> jump to the tmux panel where the last vimux command was
+executed and enter in the tmux <em>copy mode</em> allowing us to scroll around the
+panel and use the <em>vi mode</em> to copy text lines</p></li>
+<li><p><em>close tmux panel</em> close the tmux panel opened or used by Vimux</p></li>
+<li><p><em>open link</em> open link under cursor using utl.vim
+<img src="http://joedicastro.com/static/pictures/utl_en.gif" alt="utl" title="utl"></p></li>
+</ul>
+
+<p><strong>Other tools</strong></p>
+
+<ul>
+<li>DirDiff</li>
+</ul>
+
+<p>It has a similar behavior that the vimdiff tool but for directories instead
+of individual files</p>
+
+<p><img src="http://joedicastro.com/static/pictures/dirdiff_en.gif" alt="DirDiff" title="DirDiff"></p>
+
+<blockquote>
+<p><strong>Commands</strong></p>
+
+<ul>
+<li>
+<code>:DirDiff {A:directory 1} {B: directory 2}</code> shows the differences between
+the two directories</li>
+<li>
+<code>:DirDiffQuit</code> exit from DirDiff mode</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>Hexadecimal Editor</li>
+</ul>
+
+<p>For this I use the Vinarise plugin, a well thought hexadecimal editor for Vim.</p>
+
+<p>No play with this, is not a toy, this is for grown ups only! If you do not know
+what you are doing, keep your hands out of it! <img class="emoji" title=":smile:" alt=":smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png" height="20" width="20" align="absmiddle"> If you are all thumbs,
+this tool is a sure candidate for a disaster.</p>
+
+<p><img src="http://joedicastro.com/static/pictures/vinarise_en.png" alt="hex" title="hex"></p>
+
+<blockquote>
+<p><strong>Mappings</strong></p>
+</blockquote>
+
+<ul>
+<li>
+<code>&lt;F6&gt;</code> entry into the Hexadecimal mode</li>
+<li>
+<code>V</code>  edit the file in ASCII mode with Vim (Vinarise keeps opened)</li>
+<li>
+<code>q</code>  hide Vinarise</li>
+<li>
+<code>Q</code>  quit Vinarise</li>
+<li>
+<code>&lt;C-G&gt;</code> show current position</li>
+<li>
+<code>r</code>  change current address</li>
+<li>
+<code>R</code>  overwrite from current address</li>
+<li>
+<code>gG</code> move to input address</li>
+<li>
+<code>go</code> move by offset address</li>
+<li>
+<code>/</code>  search binary value</li>
+<li>
+<code>?</code>  search binary value reverse</li>
+<li>
+<code>g/</code> search string value</li>
+<li>
+<code>g?</code> search string value reverse</li>
+<li>
+<code>e/</code> search regular expression (search only forward)</li>
+<li>
+<code>E</code>  change encoding</li>
+<li>
+<code>&lt;C-L&gt;</code> redraw</li>
+<li>
+<code>g&lt;C-L&gt;</code> reload</li>
+</ul>
+
+<h1>
+<a id="plugins--colorschemes" class="anchor" href="#plugins--colorschemes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plugins &amp; Colorschemes</h1>
+
+<ul>
+<li>
+<strong>badwolf</strong>  <a href="https://github.com/sjl/badwolf">https://github.com/sjl/badwolf</a>
+</li>
+<li>
+<strong>coveragepy.vim</strong> <a href="https://github.com/alfredodeza/coveragepy.vim">https://github.com/alfredodeza/coveragepy.vim</a>
+</li>
+<li>
+<strong>crontab.vim</strong> <a href="https://github.com/vim-scripts/crontab.vim">https://github.com/vim-scripts/crontab.vim</a>
+</li>
+<li>
+<strong>csapprox</strong> <a href="https://github.com/godlygeek/csapprox">https://github.com/godlygeek/csapprox</a>
+</li>
+<li>
+<strong>delimitMate</strong> <a href="https://github.com/Raimondi/delimitMate">https://github.com/Raimondi/delimitMate</a>
+</li>
+<li>
+<strong>DirDiff.vim</strong> <a href="http://github.com/joedicastro/DirDiff.vim">http://github.com/joedicastro/DirDiff.vim</a>
+</li>
+<li>
+<strong>easydigraph.vim</strong> <a href="https://github.com/Rykka/easydigraph.vim">https://github.com/Rykka/easydigraph.vim</a>
+</li>
+<li>
+<strong>emmet-vim</strong> <a href="https://github.com/mattn/emmet-vim">https://github.com/mattn/emmet-vim</a>
+</li>
+<li>
+<strong>gitv</strong> <a href="https://github.com/gregsexton/gitv">https://github.com/gregsexton/gitv</a>
+</li>
+<li>
+<strong>gundo.vim</strong> <a href="https://github.com/sjl/gundo.vim">https://github.com/sjl/gundo.vim</a>
+</li>
+<li>
+<strong>harlequin</strong> <a href="https://github.com/nielsmadan/harlequin">https://github.com/nielsmadan/harlequin</a>
+</li>
+<li>
+<strong>html5.vim</strong> <a href="https://github.com/othree/html5.vim">https://github.com/othree/html5.vim</a>
+</li>
+<li>
+<strong>indentLine</strong> <a href="https://github.com/Yggdroot/indentLine">https://github.com/Yggdroot/indentLine</a>
+</li>
+<li>
+<strong>JSON.vim</strong> <a href="https://github.com/vim-scripts/JSON.vim">https://github.com/vim-scripts/JSON.vim</a>
+</li>
+<li>
+<strong>junkfile.vim</strong> <a href="https://github.com/Shougo/junkfile.vim">https://github.com/Shougo/junkfile.vim</a>
+</li>
+<li>
+<strong>loremipsum</strong> <a href="https://github.com/vim-scripts/loremipsum">https://github.com/vim-scripts/loremipsum</a>
+</li>
+<li>
+<strong>molokai</strong> <a href="https://github.com/tomasr/molokai">https://github.com/tomasr/molokai</a>
+</li>
+<li>
+<strong>neobundle.vim</strong> <a href="https://github.com/Shougo/neobundle.vim">https://github.com/Shougo/neobundle.vim</a>
+</li>
+<li>
+<strong>neocomplete.vim</strong> <a href="https://github.com/Shougo/neocomplete.vim">https://github.com/Shougo/neocomplete.vim</a>
+</li>
+<li>
+<strong>po.vim--gray</strong> <a href="https://github.com/vim-scripts/po.vim--gray">https://github.com/vim-scripts/po.vim--gray</a>
+</li>
+<li>
+<strong>python-mode</strong> <a href="https://github.com/klen/python-mode">https://github.com/klen/python-mode</a>
+</li>
+<li>
+<strong>summerfruit256.vim</strong> <a href="https://github.com/vim-scripts/summerfruit256.vim">https://github.com/vim-scripts/summerfruit256.vim</a>
+</li>
+<li>
+<strong>syntastic</strong> <a href="https://github.com/scrooloose/syntastic">https://github.com/scrooloose/syntastic</a>
+</li>
+<li>
+<strong>ultisnips</strong> <a href="https://github.com/SirVer/ultisnips">https://github.com/SirVer/ultisnips</a>
+</li>
+<li>
+<strong>unite-colorscheme</strong> <a href="https://github.com/ujihisa/unite-colorscheme">https://github.com/ujihisa/unite-colorscheme</a>
+</li>
+<li>
+<strong>unite-filetype</strong> <a href="https://github.com/osyo-manga/unite-filetype">https://github.com/osyo-manga/unite-filetype</a>
+</li>
+<li>
+<strong>unite-fold</strong> <a href="https://github.com/osyo-manga/unite-fold">https://github.com/osyo-manga/unite-fold</a>
+</li>
+<li>
+<strong>unite-help</strong> <a href="https://github.com/tsukkee/unite-help?">https://github.com/tsukkee/unite-help?</a>
+</li>
+<li>
+<strong>unite-locate</strong> <a href="https://github.com/ujihisa/unite-locate">https://github.com/ujihisa/unite-locate</a>
+</li>
+<li>
+<strong>unite-mark</strong> <a href="https://github.com/tacroe/unite-mark">https://github.com/tacroe/unite-mark</a>
+</li>
+<li>
+<strong>unite-outline</strong> <a href="https://github.com/Shougo/unite-outline">https://github.com/Shougo/unite-outline</a>
+</li>
+<li>
+<strong>unite-quickfix</strong> <a href="https://github.com/osyo-manga/unite-quickfix">https://github.com/osyo-manga/unite-quickfix</a>
+</li>
+<li>
+<strong>unite.vim</strong> <a href="https://github.com/Shougo/unite.vim">https://github.com/Shougo/unite.vim</a>
+</li>
+<li>
+<strong>utl.vim</strong> <a href="https://github.com/vim-scripts/utl.vim">https://github.com/vim-scripts/utl.vim</a>
+</li>
+<li>
+<strong>vim-airline</strong> <a href="https://github.com/bling/vim-airline">https://github.com/bling/vim-airline</a>
+</li>
+<li>
+<strong>vim-characterize</strong> <a href="https://github.com/tpope/vim-characterize">https://github.com/tpope/vim-characterize</a>
+</li>
+<li>
+<strong>vim-commentary</strong> <a href="https://github.com/tpope/vim-commentary">https://github.com/tpope/vim-commentary</a>
+</li>
+<li>
+<strong>vim-fugitive</strong> <a href="https://github.com/tpope/vim-fugitive">https://github.com/tpope/vim-fugitive</a>
+</li>
+<li>
+<strong>vim-gitgutter</strong> <a href="https://github.com/airblade/vim-gitgutter">https://github.com/airblade/vim-gitgutter</a>
+</li>
+<li>
+<strong>vim-github256</strong> <a href="https://github.com/joedicastro/vim-github256">https://github.com/joedicastro/vim-github256</a>
+</li>
+<li>
+<strong>vim-github-dashboard</strong> <a href="https://github.com/junegunn/vim-github-dashboard">https://github.com/junegunn/vim-github-dashboard</a>
+</li>
+<li>
+<strong>vim-markdown</strong> <a href="https://github.com/joedicastro/vim-markdown">https://github.com/joedicastro/vim-markdown</a>
+</li>
+<li>
+<strong>vim-markdown-extra-preview</strong> <a href="https://github.com/joedicastro/vim-markdown-extra-preview">https://github.com/joedicastro/vim-markdown-extra-preview</a>
+</li>
+<li>
+<strong>vim-molokai256</strong>  <a href="https://github.com/joedicastro/vim-molokai256">https://github.com/joedicastro/vim-molokai256</a>
+</li>
+<li>
+<strong>vim-pentadactyl</strong> <a href="https://github.com/joedicastro/vim-pentadactyl">https://github.com/joedicastro/vim-pentadactyl</a>
+</li>
+<li>
+<strong>vim-repeat</strong> <a href="https://github.com/tpope/vim-repeat">https://github.com/tpope/vim-repeat</a>
+</li>
+<li>
+<strong>vim-signature</strong> <a href="https://github.com/kshenoy/vim-signature">https://github.com/kshenoy/vim-signature</a>
+</li>
+<li>
+<strong>vim-snippets</strong> <a href="https://github.com/honza/vim-snippets">https://github.com/honza/vim-snippets</a>
+</li>
+<li>
+<strong>vim-speeddating</strong> <a href="https://github.com/tpope/vim-speeddating">https://github.com/tpope/vim-speeddating</a>
+</li>
+<li>
+<strong>vim-surround</strong> <a href="https://github.com/tpope/vim-surround">https://github.com/tpope/vim-surround</a>
+</li>
+<li>
+<strong>vim-textobj-entire</strong> <a href="https://github.com/kana/vim-textobj-entire">https://github.com/kana/vim-textobj-entire</a>
+</li>
+<li>
+<strong>vim-textobj-indent</strong> <a href="https://github.com/kana/vim-textobj-indent">https://github.com/kana/vim-textobj-indent</a>
+</li>
+<li>
+<strong>vim-textobj-lastpat</strong> <a href="https://github.com/kana/vim-textobj-lastpat">https://github.com/kana/vim-textobj-lastpat</a>
+</li>
+<li>
+<strong>vim-textobj-line</strong> <a href="https://github.com/kana/vim-textobj-line">https://github.com/kana/vim-textobj-line</a>
+</li>
+<li>
+<strong>vim-textobj-underscore</strong> <a href="https://github.com/kana/vim-textobj-underscore">https://github.com/kana/vim-textobj-underscore</a>
+</li>
+<li>
+<strong>vim-textobj-user</strong> <a href="https://github.com/kana/vim-textobj-user">https://github.com/kana/vim-textobj-user</a>
+</li>
+<li>
+<strong>vim-tmux</strong> <a href="https://github.com/vimez/vim-tmux">https://github.com/vimez/vim-tmux</a>
+</li>
+<li>
+<strong>vim-transpose</strong> <a href="https://github.com/salsifis/vim-transpose">https://github.com/salsifis/vim-transpose</a>
+</li>
+<li>
+<strong>vim-unite-history</strong> <a href="https://github.com/thinca/vim-unite-history">https://github.com/thinca/vim-unite-history</a>
+</li>
+<li>
+<strong>vim-virtualenv</strong> <a href="https://github.com/jmcantrell/vim-virtualenv">https://github.com/jmcantrell/vim-virtualenv</a>
+</li>
+<li>
+<strong>vimfiler</strong> <a href="https://github.com/Shougo/vimfiler.vim">https://github.com/Shougo/vimfiler.vim</a>
+</li>
+<li>
+<strong>vimproc</strong> <a href="https://github.com/Shougo/vimproc.vim">https://github.com/Shougo/vimproc.vim</a>
+</li>
+<li>
+<strong>vimux</strong> <a href="https://github.com/benmills/vimux">https://github.com/benmills/vimux</a>
+</li>
+<li>
+<strong>vinarise.vim</strong> <a href="https://github.com/Shougo/vinarise.vim">https://github.com/Shougo/vinarise.vim</a>
+</li>
+<li>
+<strong>webapi-vim</strong> <a href="https://github.com/mattn/webapi-vim">https://github.com/mattn/webapi-vim</a>
+</li>
+<li>
+<strong>winresizer</strong> <a href="https://github.com/jimsei/winresizer">https://github.com/jimsei/winresizer</a>
+</li>
+<li>
+<strong>zoomwintab.vim</strong> <a href="https://github.com/vim-scripts/zoomwintab.vim">https://github.com/vim-scripts/zoomwintab.vim</a>
+</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/liangxianzhe/oh-my-vim">Oh-my-vim</a> is maintained by <a href="https://github.com/liangxianzhe">liangxianzhe</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
