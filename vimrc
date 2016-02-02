@@ -119,7 +119,8 @@ NeoBundleLazy 'godlygeek/csapprox', { 'autoload' :
 " GUI {{{
 
 " A better looking status line
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 
 " }}}
 
