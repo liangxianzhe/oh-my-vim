@@ -2,30 +2,35 @@
 
 __Version 0.95  (2014-04-22)__
 
-Everyone should try this awesome vim config. It is clean, easy to use
-out of the box, well organized and easy to fork and maintain.
+Out-of-box vim config for everyone. It is well organaized and easy to use.
+
+E.g. open Unite UI interface and find the grep feature, search a string in 
+current folder, preview results, and open selected files.
+
+![intro](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/intro.gif?raw=true "intro")
 
 # How to install
 
-## 1. Install a bunch of tools needed
+## 1. Install some needed tools
 
-For Mac OS, you can just [use my script](/tools/prepare_mac.sh) (require brew installed). This will
+For Mac OS, you can just run the [script](/tools/prepare_mac.sh). It will
 install some necessory tools and the latest vim (7.4) *with lua support*.
 
     curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/prepare_mac.sh | sh
 
-For Linux, you will need to figure out what the above script does, and install them
-according (apt-get etc). Please note a vim with lua support is needed. 
+For Linux, there is no script yet. You need to figure out what the above script 
+does, and install them according (apt-get etc). Please note a vim with lua 
+support is required. 
 
-## 2. Set up the vim:
+## 2. Install oh-my-vim:
 
 Run: [tools/install.sh](tools/install.sh)
 
     curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/install.sh | sh
 
-By default it will install to ~/.oh-my-vim folder.
+It will be installed to ~/.oh-my-vim folder.
 
-## 3. Set up font:
+## 3. Set up font (optional):
 For a better looking [powerline](https://github.com/bling/vim-airline), you will
 need setting install a [patched font](https://github.com/bling/vim-airline#integrating-with-powerline-fonts).
 
@@ -33,12 +38,13 @@ If you are using mac, the above script has installed a font [DroidSansMono](http
 for you. Please set this font for your terminal. (For macvim or gvim, nothing
 need to be done. For iTerm2, go for Profile - Open Profile - Default - Edit Profile - Text - None-ASCII Font.)
 
-Now open vim, it will set up a bunch of plugins at the first time. Then you are
-all set.
+## 4. Open vim:
+Open your vim, it will install a bunch of plugins at the first time. Close
+the vim and re-open it, then you are all set.
 
 # Configuration
 
-You can overwrite default configuration and key bindings by using one of 
+You can overwrite the default configuration and key bindings by creating one of 
 following files:
 
 `~/.before.vimrc` will be loaded before everything else.
@@ -57,46 +63,30 @@ Obviously I steal a lot work from others. Here is my special thanks to:
 
 Joe Di Castro (joedicastro)'s 
 [dotfiles](https://github.com/joedicastro/dotfiles/tree/master/vim). Most part 
-of this config is from Joe, including large amount of this README.  His idea of
-using Unite to create UI for vim commands is brilliant.
+of this config is copied from Joe, including large amount of this README.  His 
+idea of using Unite to create UI is brilliant.
 
-Zaiste! (zaiste)'s [vimified](https://github.com/zaiste/vimified). Thanks to his 
-setup script.
-
-They are not using any licence. But some dotfiles I borrow is using MIT license,
-so I go for MIT license as well.
+[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh). Copied it's name and 
+some scripts.
 
 # Usage
 
-First please note:
+Most shortcuts start with either `,` or `<space>`:
 > `<Leader>` key is mapped to `,` 
 
 > `<LocalLeader>` key is mapped to `<space>`
 
 > `<LocalLeader>u` i.e. `<space>u` will trigger the awesome Unite UI 
 
-First give you a sense how the Unite UI looks like (grep, preview results, and
-open selected files).
+Oh-my-vim features are organized as packages, while each package is just a
+.vimrc file. Modulization is good because:
 
-![intro](https://github.com/liangxianzhe/oh-my-vim-image/blob/master/intro.gif?raw=true "intro")
-
-The rest of this doc will introduce most features or tools I use.
-
-You will get to know the awesome Unite and how we use it.
-
-- [Unite](#unite)
-
-Then all feature are organized as packages. Each package is a .vimrc file. We
-got a lot of benifit from modulization.
-
-- Each package is short, easy to read and modify. (Totally 1600+ lines vimrc is 
-not fun to read)
-- You can add a package you need (for example, java or ruby), and share with 
-people or send a pull-request. 
+- Each package is short and easy to follow.
+- You can easily add a new package (such as java or ruby) and send a pull-request. 
 - You can ignore the package you don't need by setting a parameter 
 `g:oh-my-vim_packages` in local.vimrc.
 
-Here is current packages.
+The packages list:
 
 - [basic](#basic) - some basic vim config to make it easy to use
 - [code](#code) - general coding 
@@ -115,6 +105,8 @@ Here is current packages.
 - [spelling](#spelling) - spell checking & translation
 - [markdown](#markdown) - markdown
 - [tools](#tools) - some other tools
+
+All the packages are viewalbe in the Unite UI interface.
 
 <a id="unite"></a>
 ## Unite
