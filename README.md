@@ -582,7 +582,7 @@ __Menu__
 
 __Unite__
 
-- `<LocalLeader>o` or `:Unite menu:archivos` show the file menu
+- `<LocalLeader>o` or `:Unite menu:files` show the file menu
 
 __Menu__
 
