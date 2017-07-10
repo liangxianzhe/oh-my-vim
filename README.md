@@ -2,7 +2,7 @@
 
 __Version 0.95  (2014-04-22)__
 
-Out-of-box vim config for everyone. It is well organaized and easy to use.
+Out-of-box vim config for everyone. It is well organized and easy to use.
 
 E.g. open Unite UI interface and find the grep feature, search a string in 
 current folder, preview results, and open selected files.
