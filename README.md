@@ -1,6 +1,54 @@
 # Oh My Vim
 
-__Version 0.95  (2014-04-22)__
+> Deprecated [2022]
+
+This project is no longer maintained. I'm mostly using VSCode plus vim binding these days. As for vim, I'm using a much simpler setup. Here is my `.vimrc` in case you are curious.
+
+```
+" Automatically install vim-plug
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+" All plugs
+call plug#begin()
+
+  " Reasonable defaults
+  Plug 'tpope/vim-sensible'
+
+  " Better looking
+  Plug 'ghifarit53/tokyonight-vim'
+  Plug 'itchyny/lightline.vim'
+
+  " Language pack on demand
+  Plug 'sheerun/vim-polyglot'
+
+  " Comment out stuff
+  Plug 'tpope/vim-commentary'
+
+  " Edit surroundings
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+
+  " Move cursor around
+  Plug 'justinmk/vim-sneak'
+
+  " File search
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+```
+
+> Original Readme
 
 Out-of-box vim config for everyone. It is well organaized and easy to use.
 
