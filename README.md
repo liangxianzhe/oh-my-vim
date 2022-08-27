@@ -4,7 +4,7 @@
 
 This project is no longer maintained. I'm mostly using VSCode plus vim binding these days. As for vim, I'm using a much simpler setup. Here is my `.vimrc` in case you are curious.
 
-```
+```vim
 " Automatically install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
