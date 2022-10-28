@@ -1,6 +1,8 @@
 # Oh My Vim
 
-> Deprecated [2022]
+```
+Deprecated
+```
 
 This project is no longer maintained. I'm mostly using VSCode plus vim binding these days. As for vim, I'm using a much simpler setup. Here is my `.vimrc` in case you are curious.
 
@@ -48,7 +50,10 @@ autocmd VimEnter *
   \| endif
 ```
 
-> Original Readme
+---
+```
+Original Readme
+```
 
 Out-of-box vim config for everyone. It is well organaized and easy to use.
 
